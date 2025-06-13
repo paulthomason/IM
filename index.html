@@ -8,8 +8,9 @@
 </head>
 <body>
     <div class="container">
-        <button id="miniGames" class="two-player-btn" style="right:140px;">Mini Games</button>
-        <button id="doctorMode" class="two-player-btn" style="right:270px;">Doctor Mode</button>
+        <button id="miniGames" class="two-player-btn" style="right:180px;">Mini Games</button>
+        <button id="doctorMode" class="two-player-btn" style="right:310px;">Doctor Mode</button>
+        <button id="themeToggle" class="two-player-btn" style="right:50px;">Toggle Theme</button>
         <h1>Welcome, Pablo! What would you like to learn about today?</h1>
         <div id="categories" class="categories"></div>
         <div id="quiz" class="quiz hidden">
@@ -29,6 +30,11 @@
             <button id="startFlea">Flea Flicker</button>
             <button id="startMemory">Drug Match</button>
             <button id="startSort">Symptom Sorter</button>
+            <button id="startReaction">Reaction Test</button>
+            <button id="startCoin">Coin Flip</button>
+            <button id="startGuess">Number Guess</button>
+            <button id="startClick">Rapid Click</button>
+            <button id="startRiddle">Vet Riddle</button>
         </div>
 
         <div id="fleaGame" class="hidden">
@@ -52,6 +58,35 @@
             </div>
             <p id="sortResult"></p>
             <button id="sortBack">Back to Menu</button>
+        </div>
+        <div id="reactionGame" class="hidden">
+            <p id="reactionMsg">Press start to begin</p>
+            <button id="reactionStart">Start</button>
+            <button id="reactionBack">Back to Menu</button>
+        </div>
+        <div id="coinGame" class="hidden">
+            <p>Heads or Tails?</p>
+            <button id="coinHeads">Heads</button>
+            <button id="coinTails">Tails</button>
+            <p id="coinResult"></p>
+            <button id="coinBack">Back to Menu</button>
+        </div>
+        <div id="guessGame" class="hidden">
+            <p>Guess a number (1-5)</p>
+            <div id="guessButtons"></div>
+            <p id="guessResult"></p>
+            <button id="guessBack">Back to Menu</button>
+        </div>
+        <div id="clickGame" class="hidden">
+            <p id="clickScore">Score: 0</p>
+            <button id="clickBtn">Click!</button>
+            <button id="clickBack">Back to Menu</button>
+        </div>
+        <div id="riddleGame" class="hidden">
+            <p id="riddleQuestion"></p>
+            <div id="riddleOptions"></div>
+            <p id="riddleResult"></p>
+            <button id="riddleBack">Back to Menu</button>
         </div>
         <div id="doctorScreen" class="hidden">
             <p id="doctorText"></p>

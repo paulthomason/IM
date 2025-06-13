@@ -384,6 +384,7 @@ const p2El = document.getElementById('p2');
 const turnMessageEl = document.getElementById('turnMessage');
 const miniGamesBtn = document.getElementById('miniGames');
 const miniMenu = document.getElementById('miniGameMenu');
+const themeToggle = document.getElementById('themeToggle');
 const startFleaBtn = document.getElementById('startFlea');
 const startMemoryBtn = document.getElementById('startMemory');
 const startSortBtn = document.getElementById('startSort');
@@ -391,6 +392,28 @@ const fleaGame = document.getElementById('fleaGame');
 const fleaContainer = fleaGame.querySelector('.flea-container');
 const memoryGame = document.getElementById('memoryGame');
 const sortGame = document.getElementById('sortGame');
+const reactionGame = document.getElementById('reactionGame');
+const reactionMsg = document.getElementById('reactionMsg');
+const reactionStartBtn = document.getElementById('reactionStart');
+const reactionBack = document.getElementById('reactionBack');
+const coinGame = document.getElementById('coinGame');
+const coinResult = document.getElementById('coinResult');
+const coinBack = document.getElementById('coinBack');
+const coinHeads = document.getElementById('coinHeads');
+const coinTails = document.getElementById('coinTails');
+const guessGame = document.getElementById('guessGame');
+const guessButtons = document.getElementById('guessButtons');
+const guessResult = document.getElementById('guessResult');
+const guessBack = document.getElementById('guessBack');
+const clickGame = document.getElementById('clickGame');
+const clickBtn = document.getElementById('clickBtn');
+const clickScoreEl = document.getElementById('clickScore');
+const clickBack = document.getElementById('clickBack');
+const riddleGame = document.getElementById('riddleGame');
+const riddleQuestion = document.getElementById('riddleQuestion');
+const riddleOptions = document.getElementById('riddleOptions');
+const riddleResult = document.getElementById('riddleResult');
+const riddleBack = document.getElementById('riddleBack');
 const fleaScoreEl = document.getElementById('fleaScore');
 const fleaBack = document.getElementById('fleaBack');
 const memoryGrid = document.getElementById('memoryGrid');
@@ -638,6 +661,11 @@ function hideAllGames() {
     fleaGame.classList.add('hidden');
     memoryGame.classList.add('hidden');
     sortGame.classList.add('hidden');
+    reactionGame.classList.add('hidden');
+    coinGame.classList.add('hidden');
+    guessGame.classList.add('hidden');
+    clickGame.classList.add('hidden');
+    riddleGame.classList.add('hidden');
 }
 
 function showMenu() {
@@ -796,7 +824,7 @@ function selectAnswer(selected) {
     if (twoPlayer && !finalRound && activePlayer !== null && !firstAttempt && selected !== q.answer) {
         buttons[selected].style.borderColor = 'red';
         buttons[selected].disabled = true;
-        scores[activePlayer]--;
+        scores[activePlayer] -= 100;
         const el = activePlayer === 0 ? p1El : p2El;
         el.textContent = `${activePlayer === 0 ? player1 : player2}: ${scores[activePlayer]}`;
         firstAttempt = true;
@@ -823,12 +851,12 @@ function selectAnswer(selected) {
             if (currentIndex === currentQuestions.length - 1) {
                 scores[activePlayer] += wagers[activePlayer];
             } else {
-                scores[activePlayer]++;
+                scores[activePlayer] += 100;
             }
             const el = activePlayer === 0 ? p1El : p2El;
             el.textContent = `${activePlayer === 0 ? player1 : player2}: ${scores[activePlayer]}`;
         } else {
-            score++;
+            score += 100;
         }
         explanationEl.textContent = 'Correct! ' + q.explanation;
     } else {
@@ -867,11 +895,16 @@ nextBtn.addEventListener('click', () => {
         } else {
             resultEl.textContent = `You scored ${score} out of ${currentQuestions.length}.`;
         }
+        scoreboard.classList.add('hidden');
         categoryContainer.classList.remove('hidden');
     }
 });
 
 loadCategories();
+
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+});
 
 miniGamesBtn.addEventListener('click', () => {
     categoryContainer.classList.add('hidden');
@@ -884,10 +917,20 @@ miniGamesBtn.addEventListener('click', () => {
 fleaBack.addEventListener('click', showMenu);
 memoryBack.addEventListener('click', showMenu);
 sortBack.addEventListener('click', showMenu);
+reactionBack.addEventListener('click', showMenu);
+coinBack.addEventListener('click', showMenu);
+guessBack.addEventListener('click', showMenu);
+clickBack.addEventListener('click', showMenu);
+riddleBack.addEventListener('click', showMenu);
 
 startFleaBtn.addEventListener('click', startFleaGame);
 startMemoryBtn.addEventListener('click', startMemoryGame);
 startSortBtn.addEventListener('click', startSortGame);
+document.getElementById('startReaction').addEventListener('click', startReactionGame);
+document.getElementById('startCoin').addEventListener('click', startCoinGame);
+document.getElementById('startGuess').addEventListener('click', startGuessGame);
+document.getElementById('startClick').addEventListener('click', startClickGame);
+document.getElementById('startRiddle').addEventListener('click', startRiddleGame);
 
 // Flea Flicker
 let fleaScore = 0;
@@ -1001,6 +1044,118 @@ function startSortGame() {
         }
     });
 });
+
+// Reaction Test
+let reactionStartTime = null;
+function startReactionGame() {
+    hideAllGames();
+    reactionGame.classList.remove('hidden');
+    reactionMsg.textContent = 'Press start to begin';
+    reactionStartBtn.textContent = 'Start';
+    reactionStartTime = null;
+    reactionStartBtn.disabled = false;
+}
+
+reactionStartBtn.addEventListener('click', () => {
+    if (reactionStartTime) {
+        const diff = Date.now() - reactionStartTime;
+        reactionMsg.textContent = `Your reaction time: ${diff} ms`;
+        reactionStartBtn.textContent = 'Start Again';
+        reactionStartTime = null;
+    } else {
+        reactionStartBtn.disabled = true;
+        reactionMsg.textContent = 'Wait for it...';
+        setTimeout(() => {
+            reactionMsg.textContent = 'Click!';
+            reactionStartBtn.disabled = false;
+            reactionStartTime = Date.now();
+        }, Math.random() * 2000 + 1000);
+    }
+});
+
+// Coin Flip
+function startCoinGame() {
+    hideAllGames();
+    coinGame.classList.remove('hidden');
+    coinResult.textContent = '';
+}
+
+function flipCoin(choice) {
+    const result = Math.random() < 0.5 ? 'Heads' : 'Tails';
+    coinResult.textContent = result === choice ? `Correct! It was ${result}.` : `It was ${result}.`;
+}
+
+coinHeads.addEventListener('click', () => flipCoin('Heads'));
+coinTails.addEventListener('click', () => flipCoin('Tails'));
+
+// Number Guess
+let guessTarget = 0;
+function startGuessGame() {
+    hideAllGames();
+    guessGame.classList.remove('hidden');
+    guessResult.textContent = '';
+    guessButtons.innerHTML = '';
+    guessTarget = Math.floor(Math.random() * 5) + 1;
+    for (let i = 1; i <= 5; i++) {
+        const b = document.createElement('button');
+        b.textContent = i;
+        b.onclick = () => checkGuess(i);
+        guessButtons.appendChild(b);
+    }
+}
+
+function checkGuess(num) {
+    if (num === guessTarget) {
+        guessResult.textContent = 'Correct!';
+    } else {
+        guessResult.textContent = `Nope, it was ${guessTarget}`;
+    }
+}
+
+// Rapid Click
+let clickCount = 0;
+let clickTimer;
+function startClickGame() {
+    hideAllGames();
+    clickGame.classList.remove('hidden');
+    clickScoreEl.textContent = 'Score: 0';
+    clickCount = 0;
+    clickBtn.disabled = false;
+    clearTimeout(clickTimer);
+    clickTimer = setTimeout(() => {
+        clickBtn.disabled = true;
+        alert('Time up! You clicked ' + clickCount + ' times.');
+    }, 5000);
+}
+
+clickBtn.addEventListener('click', () => {
+    clickCount++;
+    clickScoreEl.textContent = 'Score: ' + clickCount;
+});
+
+// Riddle Game
+const riddles = [{
+    q: 'I have whiskers and purr but I am not a cat. What am I?',
+    options: ['Ferret', 'Dog', 'Rabbit', 'Horse'],
+    answer: 0
+}];
+
+function startRiddleGame() {
+    hideAllGames();
+    riddleGame.classList.remove('hidden');
+    riddleResult.textContent = '';
+    const r = riddles[Math.floor(Math.random() * riddles.length)];
+    riddleQuestion.textContent = r.q;
+    riddleOptions.innerHTML = '';
+    r.options.forEach((opt, idx) => {
+        const b = document.createElement('button');
+        b.textContent = opt;
+        b.onclick = () => {
+            riddleResult.textContent = idx === r.answer ? 'Correct!' : 'Incorrect!';
+        };
+        riddleOptions.appendChild(b);
+    });
+}
 
 doctorModeBtn.addEventListener('click', startDoctorMode);
 
