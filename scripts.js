@@ -362,6 +362,24 @@ const twoPlayerBtn = document.getElementById('twoPlayer');
 const scoreboard = document.getElementById('scoreboard');
 const p1El = document.getElementById('p1');
 const p2El = document.getElementById('p2');
+const miniGamesBtn = document.getElementById('miniGames');
+const miniMenu = document.getElementById('miniGameMenu');
+const startFleaBtn = document.getElementById('startFlea');
+const startMemoryBtn = document.getElementById('startMemory');
+const startSortBtn = document.getElementById('startSort');
+const fleaGame = document.getElementById('fleaGame');
+const fleaContainer = fleaGame.querySelector('.flea-container');
+const memoryGame = document.getElementById('memoryGame');
+const sortGame = document.getElementById('sortGame');
+const fleaScoreEl = document.getElementById('fleaScore');
+const fleaBack = document.getElementById('fleaBack');
+const memoryGrid = document.getElementById('memoryGrid');
+const memoryBack = document.getElementById('memoryBack');
+const sortItems = document.getElementById('symptomItems');
+const catZone = document.getElementById('catZone');
+const dogZone = document.getElementById('dogZone');
+const sortBack = document.getElementById('sortBack');
+const sortResultEl = document.getElementById('sortResult');
 
 let currentQuestions = [];
 let currentIndex = 0;
@@ -374,6 +392,7 @@ let activePlayer = null;
 let buzzActive = false;
 let typingInterval = null;
 let currentQuestion = null;
+let draggedItem = null;
 
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -381,6 +400,18 @@ function shuffle(array) {
         [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
+}
+
+function hideAllGames() {
+    miniMenu.classList.add('hidden');
+    fleaGame.classList.add('hidden');
+    memoryGame.classList.add('hidden');
+    sortGame.classList.add('hidden');
+}
+
+function showMenu() {
+    hideAllGames();
+    miniMenu.classList.remove('hidden');
 }
 
 function loadCategories() {
@@ -527,3 +558,132 @@ nextBtn.addEventListener('click', () => {
 });
 
 loadCategories();
+
+miniGamesBtn.addEventListener('click', () => {
+    categoryContainer.classList.add('hidden');
+    quizContainer.classList.add('hidden');
+    scoreboard.classList.add('hidden');
+    resultEl.classList.add('hidden');
+    showMenu();
+});
+
+fleaBack.addEventListener('click', showMenu);
+memoryBack.addEventListener('click', showMenu);
+sortBack.addEventListener('click', showMenu);
+
+startFleaBtn.addEventListener('click', startFleaGame);
+startMemoryBtn.addEventListener('click', startMemoryGame);
+startSortBtn.addEventListener('click', startSortGame);
+
+// Flea Flicker
+let fleaScore = 0;
+let fleaInterval;
+function startFleaGame() {
+    hideAllGames();
+    fleaGame.classList.remove('hidden');
+    fleaScore = 0;
+    fleaScoreEl.textContent = 'Score: 0';
+    fleaContainer.innerHTML = '';
+    spawnFlea();
+    fleaInterval = setInterval(spawnFlea, 800);
+    setTimeout(endFleaGame, 30000);
+}
+
+function spawnFlea() {
+    const flea = document.createElement('div');
+    flea.className = 'flea';
+    flea.style.left = Math.random() * 280 + 'px';
+    flea.style.top = Math.random() * 280 + 'px';
+    fleaContainer.appendChild(flea);
+    flea.addEventListener('click', () => {
+        flea.remove();
+        fleaScore++;
+        fleaScoreEl.textContent = 'Score: ' + fleaScore;
+    });
+    setTimeout(() => flea.remove(), 1500);
+}
+
+function endFleaGame() {
+    clearInterval(fleaInterval);
+    alert('Game over! You squashed ' + fleaScore + ' fleas.');
+    showMenu();
+}
+
+// Drug Match
+let memorySelection = [];
+function startMemoryGame() {
+    hideAllGames();
+    memoryGame.classList.remove('hidden');
+    memoryGrid.innerHTML = '';
+    memorySelection = [];
+    const pairs = ['Prednisone','Prednisone','Metronidazole','Metronidazole','Glargine','Glargine','Furosemide','Furosemide'];
+    shuffle(pairs).forEach(text => {
+        const card = document.createElement('div');
+        card.className = 'memory-card';
+        card.dataset.text = text;
+        card.addEventListener('click', () => flipCard(card));
+        memoryGrid.appendChild(card);
+    });
+}
+
+function flipCard(card) {
+    if (memorySelection.length === 2 || card.textContent) return;
+    card.textContent = card.dataset.text;
+    memorySelection.push(card);
+    if (memorySelection.length === 2) {
+        const [c1, c2] = memorySelection;
+        if (c1.dataset.text === c2.dataset.text) {
+            memorySelection = [];
+            if (!memoryGrid.querySelector('.memory-card:not(:empty)')) {
+                setTimeout(() => alert('Great job!'), 200);
+            }
+        } else {
+            setTimeout(() => {
+                c1.textContent = '';
+                c2.textContent = '';
+                memorySelection = [];
+            }, 800);
+        }
+    }
+}
+
+// Symptom Sorter
+function startSortGame() {
+    hideAllGames();
+    sortGame.classList.remove('hidden');
+    sortResultEl.textContent = '';
+    sortItems.innerHTML = '';
+    const items = [
+        {text:'Hyperthyroidism', type:'cat'},
+        {text:'Parvovirus', type:'dog'},
+        {text:'FIV', type:'cat'},
+        {text:'Heartworm', type:'dog'},
+        {text:'Diabetes Mellitus', type:'cat'},
+        {text:'Lyme Disease', type:'dog'}
+    ];
+    shuffle(items).forEach(it => {
+        const div = document.createElement('div');
+        div.className = 'item';
+        div.textContent = it.text;
+        div.draggable = true;
+        div.dataset.type = it.type;
+        div.addEventListener('dragstart', ev => {
+            draggedItem = div;
+            ev.dataTransfer.setData('text', it.type);
+        });
+        sortItems.appendChild(div);
+    });
+}
+
+[catZone, dogZone].forEach(zone => {
+    zone.addEventListener('dragover', e => e.preventDefault());
+    zone.addEventListener('drop', e => {
+        const type = e.dataTransfer.getData('text');
+        if (draggedItem) zone.appendChild(draggedItem);
+        if (zone.id.startsWith(type)) {
+            sortResultEl.textContent = 'Correct!';
+        } else {
+            sortResultEl.textContent = 'Oops, try again!';
+        }
+    });
+});

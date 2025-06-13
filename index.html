@@ -9,6 +9,7 @@
 <body>
     <div class="container">
         <button id="twoPlayer" class="two-player-btn">Two Player Mode</button>
+        <button id="miniGames" class="two-player-btn" style="right:140px;">Mini Games</button>
         <h1>Welcome, Pablo! What would you like to learn about today?</h1>
         <div id="categories" class="categories"></div>
         <div id="quiz" class="quiz hidden">
@@ -22,6 +23,35 @@
             <div id="p2" class="player-score"></div>
         </div>
         <div id="result" class="hidden"></div>
+        <div id="miniGameMenu" class="hidden">
+            <h2>Select a Mini Game</h2>
+            <button id="startFlea">Flea Flicker</button>
+            <button id="startMemory">Drug Match</button>
+            <button id="startSort">Symptom Sorter</button>
+        </div>
+
+        <div id="fleaGame" class="hidden">
+            <p id="fleaScore"></p>
+            <div class="flea-container"></div>
+            <button id="fleaBack">Back to Menu</button>
+        </div>
+
+        <div id="memoryGame" class="hidden">
+            <div id="memoryGrid" class="memory-grid"></div>
+            <button id="memoryBack">Back to Menu</button>
+        </div>
+
+        <div id="sortGame" class="hidden">
+            <div class="sort-wrapper">
+                <div id="symptomItems" class="items"></div>
+                <div class="drop-zones">
+                    <div id="catZone" class="drop-zone">Cat</div>
+                    <div id="dogZone" class="drop-zone">Dog</div>
+                </div>
+            </div>
+            <p id="sortResult"></p>
+            <button id="sortBack">Back to Menu</button>
+        </div>
         <p class="disclaimer">This quiz is for educational purposes only and does not replace professional veterinary advice.</p>
     </div>
     <script src="scripts.js"></script>
