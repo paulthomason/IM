@@ -231,3 +231,13 @@ body.dark button:hover {
     margin: 0 2px;
     cursor: pointer;
 }
+
+#colorPicker {
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: none;
+    margin-left: 5px;
+    background: none;
+}
