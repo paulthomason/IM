@@ -429,6 +429,14 @@ const doctorText = document.getElementById('doctorText');
 const doctorOptions = document.getElementById('doctorOptions');
 const doctorNext = document.getElementById('doctorNext');
 const doctorQuit = document.getElementById('doctorQuit');
+const whiteboardBtn = document.getElementById('whiteboardBtn');
+const whiteboardGame = document.getElementById('whiteboardGame');
+const whiteboardCanvas = document.getElementById('whiteboardCanvas');
+const drawThemeEl = document.getElementById('drawTheme');
+const whiteboardBack = document.getElementById('whiteboardBack');
+const whiteboardSave = document.getElementById('whiteboardSave');
+const eraserBtn = document.getElementById('eraserBtn');
+const colorButtons = document.querySelectorAll('.color-choice');
 
 let currentQuestions = [];
 let currentIndex = 0;
@@ -706,6 +714,7 @@ function hideAllGames() {
     guessGame.classList.add('hidden');
     clickGame.classList.add('hidden');
     riddleGame.classList.add('hidden');
+    whiteboardGame.classList.add('hidden');
 }
 
 function showMenu() {
@@ -1382,3 +1391,75 @@ function quitDoctorMode() {
     doctorNext.classList.add('hidden');
     doctorQuit.classList.add('hidden');
 }
+
+whiteboardBtn.addEventListener('click', startWhiteboardGame);
+
+function startWhiteboardGame() {
+    categoryContainer.classList.add('hidden');
+    quizContainer.classList.add('hidden');
+    scoreboard.classList.add('hidden');
+    resultEl.classList.add('hidden');
+    hideAllGames();
+    whiteboardGame.classList.remove('hidden');
+    clearCanvas();
+    const themes = ['Muppets', 'Nature', 'Favorite Foods', 'Outer Space', 'Underwater', 'Superheroes'];
+    drawThemeEl.textContent = 'Theme: ' + themes[Math.floor(Math.random() * themes.length)];
+}
+
+function clearCanvas() {
+    const ctx = whiteboardCanvas.getContext('2d');
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, whiteboardCanvas.width, whiteboardCanvas.height);
+}
+
+let drawing = false;
+let currentColor = '#000000';
+const ctx = whiteboardCanvas.getContext('2d');
+ctx.lineCap = 'round';
+ctx.lineWidth = 3;
+
+whiteboardCanvas.addEventListener('mousedown', e => {
+    drawing = true;
+    ctx.beginPath();
+    const rect = whiteboardCanvas.getBoundingClientRect();
+    ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+});
+
+whiteboardCanvas.addEventListener('mousemove', e => {
+    if (!drawing) return;
+    const rect = whiteboardCanvas.getBoundingClientRect();
+    ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+    ctx.strokeStyle = currentColor;
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+});
+
+window.addEventListener('mouseup', () => {
+    drawing = false;
+    ctx.beginPath();
+});
+
+colorButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        currentColor = btn.dataset.color;
+        ctx.lineWidth = 3;
+    });
+});
+
+eraserBtn.addEventListener('click', () => {
+    currentColor = '#ffffff';
+    ctx.lineWidth = 20;
+});
+
+whiteboardSave.addEventListener('click', () => {
+    const link = document.createElement('a');
+    link.href = whiteboardCanvas.toDataURL('image/jpeg');
+    link.download = 'drawing.jpg';
+    link.click();
+});
+
+whiteboardBack.addEventListener('click', () => {
+    whiteboardGame.classList.add('hidden');
+    categoryContainer.classList.remove('hidden');
+});
