@@ -429,9 +429,15 @@ const petDatabase = [
         sex: 'neutered male',
         disease: 'hip dysplasia',
         medication: 'carprofen',
+        examFindings: 'decreased range of motion and pain on hip extension',
         question: {
             q: 'Which medication is commonly used to control hip dysplasia pain?',
             options: ['Carprofen', 'Enrofloxacin', 'Furosemide', 'Methimazole'],
+            answer: 0
+        },
+        conversation: {
+            q: 'Owner asks about long term pain control. What do you recommend?',
+            options: ['Weight management', 'High-dose steroids', 'No exercise restrictions', 'Ignore the pain'],
             answer: 0
         }
     },
@@ -443,9 +449,15 @@ const petDatabase = [
         sex: 'spayed female',
         disease: 'asthma',
         medication: 'fluticasone inhaler',
+        examFindings: 'increased expiratory effort with wheezes on auscultation',
         question: {
             q: 'Which inhaled steroid is often prescribed for feline asthma?',
             options: ['Fluticasone', 'Prednisone', 'Albuterol', 'Amlodipine'],
+            answer: 0
+        },
+        conversation: {
+            q: 'Owner wonders how often to use the inhaler. What do you advise?',
+            options: ['Daily as prescribed', 'Only when coughing', 'Whenever convenient', 'Never use it'],
             answer: 0
         }
     },
@@ -457,9 +469,15 @@ const petDatabase = [
         sex: 'neutered male',
         disease: 'diabetes mellitus',
         medication: 'NPH insulin',
+        examFindings: 'cataracts noted and mildly underweight',
         question: {
             q: 'Which insulin type is commonly used in diabetic dogs?',
             options: ['NPH', 'Regular', 'Glargine', 'Glipizide'],
+            answer: 0
+        },
+        conversation: {
+            q: 'Owner asks when to recheck blood glucose.',
+            options: ['In two weeks', 'Only if signs worsen', 'Every year', 'Never'],
             answer: 0
         }
     },
@@ -471,9 +489,55 @@ const petDatabase = [
         sex: 'spayed female',
         disease: 'polycystic kidney disease',
         medication: 'renal diet',
+        examFindings: 'kidneys enlarged and irregular on palpation',
         question: {
             q: 'Which test best monitors progression of polycystic kidney disease?',
             options: ['Abdominal ultrasound', 'Thoracic radiographs', 'Urinalysis', 'Blood pressure'],
+            answer: 0
+        },
+        conversation: {
+            q: 'Owner asks when to repeat kidney values.',
+            options: ['In three months', 'In five years', 'Never', 'Every week'],
+            answer: 0
+        }
+    },
+    {
+        name: 'Daisy',
+        species: 'dog',
+        breed: 'Dachshund',
+        age: 5,
+        sex: 'spayed female',
+        disease: 'intervertebral disc disease',
+        medication: 'gabapentin',
+        examFindings: 'pain on palpation of the thoracolumbar spine',
+        question: {
+            q: 'Which medication provides neuropathic pain relief for IVDD?',
+            options: ['Gabapentin', 'Furosemide', 'Prednisone', 'Amoxicillin'],
+            answer: 0
+        },
+        conversation: {
+            q: 'Owner wonders if Daisy should rest. What is best?',
+            options: ['Strict cage rest', 'Normal activity', 'Intense exercise', 'Immediate surgery no matter what'],
+            answer: 0
+        }
+    },
+    {
+        name: 'Oliver',
+        species: 'cat',
+        breed: 'Maine Coon',
+        age: 3,
+        sex: 'neutered male',
+        disease: 'hypertrophic cardiomyopathy',
+        medication: 'atenolol',
+        examFindings: 'grade 3/6 systolic murmur with gallop rhythm',
+        question: {
+            q: 'Which drug is commonly used to slow heart rate in cats with HCM?',
+            options: ['Atenolol', 'Furosemide', 'Lidocaine', 'Enalapril'],
+            answer: 0
+        },
+        conversation: {
+            q: 'Owner asks about follow-up echocardiogram timing.',
+            options: ['6 months', '5 years', 'Never', 'Every week'],
             answer: 0
         }
     }
@@ -816,17 +880,37 @@ function appointmentEvent() {
         hr: pet.species === 'dog' ? Math.floor(Math.random() * 40 + 80) : Math.floor(Math.random() * 60 + 140),
         rr: Math.floor(Math.random() * 20 + 20)
     };
+    const techReports = ['not eating well', 'vomiting', 'acting normal', 'seems painful', 'coughing a bit'];
+    const complaint = techReports[Math.floor(Math.random() * techReports.length)];
     let step = 0;
     function run() {
         doctorOptions.innerHTML = '';
         doctorNext.classList.add('hidden');
         if (step === 0) {
-            doctorText.textContent = `Technician brings ${pet.name}, a ${pet.age}-year-old ${pet.sex} ${pet.breed} ${pet.species} for a ${consult} regarding ${pet.disease}. They are currently taking ${pet.medication}. Vitals: T ${vitals.temp}°F, HR ${vitals.hr}, RR ${vitals.rr}.`;
+            doctorText.textContent = `Technician brings ${pet.name}, a ${pet.age}-year-old ${pet.sex} ${pet.breed} ${pet.species} for a ${consult} regarding ${pet.disease}. They report the patient is ${complaint}. Current medication: ${pet.medication}. Vitals: T ${vitals.temp}°F, HR ${vitals.hr}, RR ${vitals.rr}.`;
             const btn = document.createElement('button');
-            btn.textContent = 'Begin Exam';
+            btn.textContent = 'Perform Physical Exam';
             btn.onclick = () => { step++; run(); };
             doctorOptions.appendChild(btn);
         } else if (step === 1) {
+            doctorText.textContent = `Physical exam findings: ${pet.examFindings}.`;
+            const btn = document.createElement('button');
+            btn.textContent = 'Talk to owner';
+            btn.onclick = () => { step++; run(); };
+            doctorOptions.appendChild(btn);
+        } else if (step === 2) {
+            doctorText.textContent = pet.conversation.q;
+            pet.conversation.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.textContent = opt;
+                btn.onclick = () => {
+                    doctorText.textContent = idx === pet.conversation.answer ? 'Owner is pleased with your answer.' : 'Owner seems unsure about that.';
+                    step++;
+                    setTimeout(run, 600);
+                };
+                doctorOptions.appendChild(btn);
+            });
+        } else if (step === 3) {
             doctorText.textContent = pet.question.q;
             pet.question.options.forEach((opt, idx) => {
                 const btn = document.createElement('button');
@@ -838,7 +922,7 @@ function appointmentEvent() {
                 };
                 doctorOptions.appendChild(btn);
             });
-        } else if (step === 2) {
+        } else if (step === 4) {
             doctorText.textContent = 'What do you recommend to the owner?';
             ['Run blood work', 'Adjust medication', 'Schedule recheck', 'Finish appointment'].forEach(opt => {
                 const btn = document.createElement('button');
