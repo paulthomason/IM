@@ -405,6 +405,7 @@ const doctorScreen = document.getElementById('doctorScreen');
 const doctorText = document.getElementById('doctorText');
 const doctorOptions = document.getElementById('doctorOptions');
 const doctorNext = document.getElementById('doctorNext');
+const doctorQuit = document.getElementById('doctorQuit');
 
 let currentQuestions = [];
 let currentIndex = 0;
@@ -419,13 +420,63 @@ let buzzActive = false;
 let typingInterval = null;
 let currentQuestion = null;
 let draggedItem = null;
-let doctorEvents = [];
-let doctorIndex = 0;
 const petDatabase = [
-    {name:'Buddy', species:'dog', breed:'Golden Retriever', age:8, sex:'neutered male', disease:'hip dysplasia'},
-    {name:'Luna', species:'cat', breed:'Siamese', age:4, sex:'spayed female', disease:'asthma'},
-    {name:'Max', species:'dog', breed:'Miniature Schnauzer', age:6, sex:'neutered male', disease:'diabetes mellitus'},
-    {name:'Molly', species:'cat', breed:'Persian', age:5, sex:'spayed female', disease:'polycystic kidney disease'}
+    {
+        name: 'Buddy',
+        species: 'dog',
+        breed: 'Golden Retriever',
+        age: 8,
+        sex: 'neutered male',
+        disease: 'hip dysplasia',
+        medication: 'carprofen',
+        question: {
+            q: 'Which medication is commonly used to control hip dysplasia pain?',
+            options: ['Carprofen', 'Enrofloxacin', 'Furosemide', 'Methimazole'],
+            answer: 0
+        }
+    },
+    {
+        name: 'Luna',
+        species: 'cat',
+        breed: 'Siamese',
+        age: 4,
+        sex: 'spayed female',
+        disease: 'asthma',
+        medication: 'fluticasone inhaler',
+        question: {
+            q: 'Which inhaled steroid is often prescribed for feline asthma?',
+            options: ['Fluticasone', 'Prednisone', 'Albuterol', 'Amlodipine'],
+            answer: 0
+        }
+    },
+    {
+        name: 'Max',
+        species: 'dog',
+        breed: 'Miniature Schnauzer',
+        age: 6,
+        sex: 'neutered male',
+        disease: 'diabetes mellitus',
+        medication: 'NPH insulin',
+        question: {
+            q: 'Which insulin type is commonly used in diabetic dogs?',
+            options: ['NPH', 'Regular', 'Glargine', 'Glipizide'],
+            answer: 0
+        }
+    },
+    {
+        name: 'Molly',
+        species: 'cat',
+        breed: 'Persian',
+        age: 5,
+        sex: 'spayed female',
+        disease: 'polycystic kidney disease',
+        medication: 'renal diet',
+        question: {
+            q: 'Which test best monitors progression of polycystic kidney disease?',
+            options: ['Abdominal ultrasound', 'Thoracic radiographs', 'Urinalysis', 'Blood pressure'],
+            answer: 0
+        }
+    }
 ];
 
 function shuffle(array) {
@@ -752,88 +803,120 @@ function startDoctorMode() {
     resultEl.classList.add('hidden');
     hideAllGames();
     doctorScreen.classList.remove('hidden');
-    doctorIndex = 0;
-    doctorEvents = [appointmentEvent(), messageEvent(), staffEvent()];
+    doctorQuit.classList.remove('hidden');
+    doctorQuit.onclick = quitDoctorMode;
     showDoctorEvent();
 }
 
 function appointmentEvent() {
     const pet = petDatabase[Math.floor(Math.random() * petDatabase.length)];
     const consult = Math.random() < 0.5 ? 'new consult' : 'recheck';
-    return function() {
-        doctorText.textContent = `Technician brings ${pet.name}, a ${pet.age}-year-old ${pet.sex} ${pet.breed} ${pet.species} for a ${consult} regarding ${pet.disease}. Vitals look good. What do you do next?`;
-        doctorOptions.innerHTML = '';
-        const options = ['Run blood work', 'Adjust medication', 'Schedule follow up', 'Send home'];
-        options.forEach(opt => {
-            const btn = document.createElement('button');
-            btn.textContent = opt;
-            btn.addEventListener('click', () => {
-                doctorText.textContent = `${opt} noted. The owner thanks you. Feedback: great visit!`;
-                doctorOptions.innerHTML = '';
-                doctorNext.classList.remove('hidden');
-            });
-            doctorOptions.appendChild(btn);
-        });
-        doctorNext.classList.add('hidden');
-        doctorNext.textContent = 'Next Event';
+    const vitals = {
+        temp: (Math.random() * 2 + 100.5).toFixed(1),
+        hr: pet.species === 'dog' ? Math.floor(Math.random() * 40 + 80) : Math.floor(Math.random() * 60 + 140),
+        rr: Math.floor(Math.random() * 20 + 20)
     };
+    let step = 0;
+    function run() {
+        doctorOptions.innerHTML = '';
+        doctorNext.classList.add('hidden');
+        if (step === 0) {
+            doctorText.textContent = `Technician brings ${pet.name}, a ${pet.age}-year-old ${pet.sex} ${pet.breed} ${pet.species} for a ${consult} regarding ${pet.disease}. They are currently taking ${pet.medication}. Vitals: T ${vitals.temp}°F, HR ${vitals.hr}, RR ${vitals.rr}.`;
+            const btn = document.createElement('button');
+            btn.textContent = 'Begin Exam';
+            btn.onclick = () => { step++; run(); };
+            doctorOptions.appendChild(btn);
+        } else if (step === 1) {
+            doctorText.textContent = pet.question.q;
+            pet.question.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.textContent = opt;
+                btn.onclick = () => {
+                    doctorText.textContent = idx === pet.question.answer ? 'Correct!' : 'Not quite the best choice.';
+                    step++;
+                    setTimeout(run, 600);
+                };
+                doctorOptions.appendChild(btn);
+            });
+        } else if (step === 2) {
+            doctorText.textContent = 'What do you recommend to the owner?';
+            ['Run blood work', 'Adjust medication', 'Schedule recheck', 'Finish appointment'].forEach(opt => {
+                const btn = document.createElement('button');
+                btn.textContent = opt;
+                btn.onclick = () => {
+                    doctorText.textContent = `You decide to ${opt.toLowerCase()}.`;
+                    step++;
+                    setTimeout(run, 600);
+                };
+                doctorOptions.appendChild(btn);
+            });
+        } else {
+            doctorText.textContent = 'Feedback card from client: "Thanks for taking care of my pet!"';
+            doctorNext.classList.remove('hidden');
+        }
+    }
+    return run;
 }
 
 function messageEvent() {
+    const pet = petDatabase[Math.floor(Math.random() * petDatabase.length)];
+    const templates = [
+        {
+            q: () => `Message from Gorgina: "${pet.name}'s owner is requesting a refill of ${pet.medication}."`,
+            options: ['Approve refill', 'Need exam first', 'Decline', 'Ask for more info']
+        },
+        {
+            q: () => `Message from Gorgina: "${pet.name} seemed lethargic today. Any advice for the owner?"`,
+            options: ['Schedule exam', 'Increase medication', 'Wait and monitor', 'Go to emergency clinic']
+        }
+    ];
+    const msg = templates[Math.floor(Math.random() * templates.length)];
     return function() {
-        doctorText.textContent = 'Message from Gorgina: "Client asks about refilling medication."';
+        doctorText.textContent = msg.q();
         doctorOptions.innerHTML = '';
-        ['Approve refill', 'Need exam first', 'Decline', 'Ask for more info'].forEach(opt => {
+        msg.options.forEach(opt => {
             const btn = document.createElement('button');
             btn.textContent = opt;
-            btn.addEventListener('click', () => {
+            btn.onclick = () => {
                 doctorText.textContent = `You chose: ${opt}.`;
                 doctorOptions.innerHTML = '';
                 doctorNext.classList.remove('hidden');
-            });
+            };
             doctorOptions.appendChild(btn);
         });
         doctorNext.classList.add('hidden');
-        doctorNext.textContent = 'Next Event';
     };
 }
 
 function staffEvent() {
     return function() {
-        doctorText.textContent = 'The staff invites you to play a quick game or doodle on the whiteboard.';
+        doctorText.textContent = 'The support staff invite you to relax for a moment.';
         doctorOptions.innerHTML = '';
-        ['Play trivia', 'Draw a doodle', 'Chat', 'Go back to work'].forEach(opt => {
+        ['Play a quick game', 'Doodle a cat on the whiteboard', 'Tell a joke', 'Get back to work'].forEach(opt => {
             const btn = document.createElement('button');
             btn.textContent = opt;
-            btn.addEventListener('click', () => {
-                doctorText.textContent = `You decide to ${opt.toLowerCase()}. Everyone has fun!`;
+            btn.onclick = () => {
+                doctorText.textContent = `You choose to ${opt.toLowerCase()}. Everyone enjoys the break.`;
                 doctorOptions.innerHTML = '';
                 doctorNext.classList.remove('hidden');
-            });
+            };
             doctorOptions.appendChild(btn);
         });
         doctorNext.classList.add('hidden');
-        doctorNext.textContent = 'Next Event';
     };
 }
 
 function showDoctorEvent() {
-    if (doctorIndex >= doctorEvents.length) {
-        doctorText.textContent = 'Doctor mode complete. Great job!';
-        doctorOptions.innerHTML = '';
-        doctorNext.textContent = 'Quit';
-        doctorNext.classList.remove('hidden');
-        doctorNext.onclick = quitDoctorMode;
-        return;
-    }
-    doctorNext.onclick = () => {
-        doctorIndex++;
-        showDoctorEvent();
-    };
-    doctorEvents[doctorIndex]();
+    doctorNext.onclick = showDoctorEvent;
+    doctorNext.textContent = 'Next Event';
+    const events = [appointmentEvent, messageEvent, staffEvent];
+    const handler = events[Math.floor(Math.random() * events.length)]();
+    handler();
 }
 
 function quitDoctorMode() {
     doctorScreen.classList.add('hidden');
     categoryContainer.classList.remove('hidden');
+    doctorNext.classList.add('hidden');
+    doctorQuit.classList.add('hidden');
 }
