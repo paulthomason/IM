@@ -378,10 +378,10 @@ const optionsEl = document.getElementById('options');
 const explanationEl = document.getElementById('explanation');
 const nextBtn = document.getElementById('next');
 const resultEl = document.getElementById('result');
-const twoPlayerBtn = document.getElementById('twoPlayer');
 const scoreboard = document.getElementById('scoreboard');
 const p1El = document.getElementById('p1');
 const p2El = document.getElementById('p2');
+const turnMessageEl = document.getElementById('turnMessage');
 const miniGamesBtn = document.getElementById('miniGames');
 const miniMenu = document.getElementById('miniGameMenu');
 const startFleaBtn = document.getElementById('startFlea');
@@ -417,6 +417,8 @@ let scores = [0, 0];
 let wagers = [0, 0];
 let activePlayer = null;
 let buzzActive = false;
+let firstAttempt = false;
+let finalRound = false;
 let typingInterval = null;
 let currentQuestion = null;
 let draggedItem = null;
@@ -647,9 +649,19 @@ function loadCategories() {
     Object.keys(categories).forEach(cat => {
         const btn = document.createElement('button');
         btn.textContent = cat;
-        btn.addEventListener('click', () => startQuiz(cat));
+        btn.addEventListener('click', () => choosePlayers(cat));
         categoryContainer.appendChild(btn);
     });
+}
+
+function choosePlayers(category) {
+    const players = prompt('How many players? (1 or 2)', '1');
+    twoPlayer = players && players.trim() === '2';
+    if (twoPlayer) {
+        player1 = prompt('Enter name for Player One:') || 'Player 1';
+        player2 = prompt('Enter name for Player Two:') || 'Player 2';
+    }
+    startQuiz(category);
 }
 
 function promptWagers() {
@@ -661,21 +673,13 @@ function promptWagers() {
     if (wagers[1] > scores[1]) wagers[1] = scores[1];
 }
 
-twoPlayerBtn.addEventListener('click', () => {
-    twoPlayer = true;
-    player1 = prompt('Enter name for Player One:') || 'Player 1';
-    player2 = prompt('Enter name for Player Two:') || 'Player 2';
-    p1El.textContent = `${player1}: 0`;
-    p2El.textContent = `${player2}: 0`;
-    scoreboard.classList.remove('hidden');
-});
 
 document.addEventListener('keydown', (e) => {
     if (!twoPlayer || !buzzActive || activePlayer !== null) return;
     const key = e.key.toLowerCase();
-    if (key === 'a') {
+    if (key === 'q') {
         setActivePlayer(0);
-    } else if (key === 'l') {
+    } else if (key === 'p') {
         setActivePlayer(1);
     }
 });
@@ -685,6 +689,8 @@ function setActivePlayer(num) {
     buzzActive = false;
     p1El.classList.toggle('active-player', num === 0);
     p2El.classList.toggle('active-player', num === 1);
+    turnMessageEl.textContent = `Go ahead, ${num === 0 ? player1 : player2}`;
+    turnMessageEl.classList.remove('hidden');
     if (typingInterval) {
         clearInterval(typingInterval);
         questionEl.textContent = `Question ${currentIndex + 1}: ${currentQuestion.question}`;
@@ -720,7 +726,10 @@ function showQuestion() {
     questionEl.textContent = '';
     optionsEl.innerHTML = '';
     activePlayer = null;
-    buzzActive = twoPlayer;
+    finalRound = twoPlayer && currentIndex === currentQuestions.length - 1;
+    buzzActive = twoPlayer && !finalRound;
+    firstAttempt = false;
+    turnMessageEl.classList.add('hidden');
     p1El.classList.remove('active-player');
     p2El.classList.remove('active-player');
     let i = 0;
@@ -738,15 +747,68 @@ function revealOptions() {
     currentQuestion.options.forEach((opt, idx) => {
         const btn = document.createElement('button');
         btn.textContent = opt;
-        btn.disabled = twoPlayer && activePlayer === null;
-        btn.addEventListener('click', () => selectAnswer(idx));
+        if (finalRound) {
+            btn.disabled = true;
+        } else {
+            btn.disabled = twoPlayer && activePlayer === null;
+            btn.addEventListener('click', () => selectAnswer(idx));
+        }
         optionsEl.appendChild(btn);
     });
+    if (finalRound) handleFinalRound();
+}
+
+function handleFinalRound() {
+    const q = currentQuestion;
+    turnMessageEl.classList.add('hidden');
+    const opts = q.options.map((opt, i) => `${i + 1}: ${opt}`).join('\n');
+    const ans1 = parseInt(prompt(`${player1}, enter the number of your answer:\n${opts}`), 10) - 1;
+    const ans2 = parseInt(prompt(`${player2}, enter the number of your answer:\n${opts}`), 10) - 1;
+    const correct = q.answer;
+    let msg = '';
+    if (ans1 === correct) {
+        scores[0] += wagers[0];
+        msg += `${player1} was correct. `;
+    } else {
+        scores[0] -= wagers[0];
+        msg += `${player1} was incorrect. `;
+    }
+    if (ans2 === correct) {
+        scores[1] += wagers[1];
+        msg += `${player2} was correct.`;
+    } else {
+        scores[1] -= wagers[1];
+        msg += `${player2} was incorrect.`;
+    }
+    p1El.textContent = `${player1}: ${scores[0]}`;
+    p2El.textContent = `${player2}: ${scores[1]}`;
+    explanationEl.textContent = `Correct answer: ${q.options[correct]}. ${msg}`;
+    explanationEl.classList.remove('hidden');
+    nextBtn.textContent = 'See Results';
+    nextBtn.classList.remove('hidden');
 }
 
 function selectAnswer(selected) {
     const q = currentQuestions[currentIndex];
-    Array.from(optionsEl.children).forEach((btn, idx) => {
+    const buttons = Array.from(optionsEl.children);
+    buzzActive = false;
+
+    if (twoPlayer && !finalRound && activePlayer !== null && !firstAttempt && selected !== q.answer) {
+        buttons[selected].style.borderColor = 'red';
+        buttons[selected].disabled = true;
+        scores[activePlayer]--;
+        const el = activePlayer === 0 ? p1El : p2El;
+        el.textContent = `${activePlayer === 0 ? player1 : player2}: ${scores[activePlayer]}`;
+        firstAttempt = true;
+        activePlayer = 1 - activePlayer;
+        p1El.classList.toggle('active-player', activePlayer === 0);
+        p2El.classList.toggle('active-player', activePlayer === 1);
+        turnMessageEl.textContent = `Go ahead, ${activePlayer === 0 ? player1 : player2}`;
+        buttons.forEach((btn, idx) => { if (idx !== selected) btn.disabled = false; });
+        return;
+    }
+
+    buttons.forEach((btn, idx) => {
         btn.disabled = true;
         if (idx === q.answer) {
             btn.style.borderColor = '#2e7d32';
@@ -755,7 +817,7 @@ function selectAnswer(selected) {
             btn.style.borderColor = 'red';
         }
     });
-    buzzActive = false;
+
     if (selected === q.answer) {
         if (twoPlayer && activePlayer !== null) {
             if (currentIndex === currentQuestions.length - 1) {
@@ -777,8 +839,10 @@ function selectAnswer(selected) {
         }
         explanationEl.textContent = `Incorrect. The correct answer was "${q.options[q.answer]}". ` + q.explanation;
     }
+
     explanationEl.classList.remove('hidden');
     nextBtn.classList.remove('hidden');
+    turnMessageEl.classList.add('hidden');
     if (currentIndex === currentQuestions.length - 1) {
         nextBtn.textContent = 'See Results';
     }
