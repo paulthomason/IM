@@ -5,7 +5,7 @@ const categories = {
             options: ["Canine parvovirus", "Canine distemper virus", "Canine coronavirus", "Rabies virus"],
             answer: 0,
             explanation: "Canine parvovirus targets rapidly dividing intestinal crypt cells leading to severe hemorrhagic diarrhea."
-        },
+        },,
         {
             question: "Feline leukemia virus (FeLV) is primarily transmitted through which route?",
             options: ["Fleas", "Saliva and close contact", "Fecal-oral", "In utero only"],
@@ -17,7 +17,27 @@ const categories = {
             options: ["Amoxicillin", "Doxycycline", "Enrofloxacin", "Metronidazole"],
             answer: 1,
             explanation: "Doxycycline eliminates leptospiral shedding and is considered the treatment of choice."
-        }
+        },
+        {question: "Which antibiotic is recommended for treating Bordetella bronchiseptica infection in dogs?", options: ["Doxycycline", "Amoxicillin-clavulanate", "Metronidazole", "Enrofloxacin"], answer: 0, explanation: "Doxycycline is considered effective against Bordetella."},
+        {question: "The SNAP test for canine parvovirus detects what?", options: ["Antibodies", "Viral antigen", "Viral RNA", "Immune complexes"], answer: 1, explanation: "The SNAP test identifies parvoviral antigen in feces."},
+        {question: "Which feline virus is associated with oral ulceration and lameness?", options: ["Feline herpesvirus", "Feline calicivirus", "Feline immunodeficiency virus", "Feline leukemia virus"], answer: 1, explanation: "Feline calicivirus causes oral ulcers and limping syndrome."},
+        {question: "What is the recommended isolation period for a dog diagnosed with distemper?", options: ["1 week", "2 weeks", "4 weeks", "6 weeks"], answer: 2, explanation: "Dogs can shed distemper virus for around four weeks."},
+        {question: "Which tick-borne disease is transmitted by Rhipicephalus sanguineus?", options: ["Ehrlichia canis", "Borrelia burgdorferi", "Anaplasma phagocytophilum", "Babesia canis"], answer: 0, explanation: "The brown dog tick spreads Ehrlichia canis."},
+        {question: "Cats infected with FIV typically test positive on ELISA due to detection of?", options: ["Viral antigen", "Viral DNA", "Antibodies", "Viral RNA"], answer: 2, explanation: "ELISA detects antibodies to FIV."},
+        {question: "Which zoonotic parasite commonly found in puppies can cause visceral larva migrans in humans?", options: ["Dipylidium caninum", "Toxocara canis", "Ancylostoma braziliense", "Trichuris vulpis"], answer: 1, explanation: "Toxocara canis larvae can migrate in humans."},
+        {question: "In dogs, which vector transmits Leishmania infantum?", options: ["Tick", "Flea", "Sandfly", "Mosquito"], answer: 2, explanation: "Sandflies transmit Leishmania infantum."},
+        {question: "What is the best sample type to confirm dermatophytosis in cats?", options: ["Skin scrape", "Fungal culture", "PCR from blood", "Serology"], answer: 1, explanation: "Fungal culture remains the gold standard."},
+        {question: "Which vaccine is considered core for all cats?", options: ["Feline leukemia virus", "Feline immunodeficiency virus", "Feline panleukopenia", "Chlamydia felis"], answer: 2, explanation: "Feline panleukopenia vaccination is core."},
+        {question: "What is the recommended treatment for toxoplasmosis in cats?", options: ["Doxycycline", "Clindamycin", "Metronidazole", "Ivermectin"], answer: 1, explanation: "Clindamycin is effective against Toxoplasma."},
+        {question: "Which canine parasite causes cutaneous larva migrans in humans?", options: ["Trichuris vulpis", "Ancylostoma braziliense", "Dipylidium caninum", "Toxocara canis"], answer: 1, explanation: "Ancylostoma braziliense larvae migrate in human skin."},
+        {question: "Which organism is the primary cause of infectious tracheobronchitis in dogs?", options: ["Canine adenovirus type 2", "Bordetella bronchiseptica", "Canine influenza", "Mycoplasma cynos"], answer: 1, explanation: "Bordetella bronchiseptica is a main agent of kennel cough."},
+        {question: "Rabies virus belongs to which viral family?", options: ["Paramyxoviridae", "Rhabdoviridae", "Coronaviridae", "Parvoviridae"], answer: 1, explanation: "Rabies virus is a rhabdovirus."},
+        {question: "Which species serves as the reservoir host for feline infectious peritonitis virus?", options: ["Cats", "Dogs", "Bats", "Rodents"], answer: 0, explanation: "FIP virus originates from feline coronavirus within cats."},
+        {question: "Brucella canis infection in dogs is most reliably diagnosed using which method?", options: ["Blood culture", "PCR on urine", "Rapid slide agglutination test", "ELISA"], answer: 0, explanation: "Blood culture provides definitive diagnosis."},
+        {question: "Which tick-borne disease often presents with thrombocytopenia and polyarthritis in dogs?", options: ["Anaplasma phagocytophilum", "Borrelia burgdorferi", "Babesia gibsoni", "Ehrlichia canis"], answer: 0, explanation: "Anaplasma phagocytophilum commonly causes these signs."},
+        {question: "What organism causes 'cat scratch disease' in humans?", options: ["Bartonella henselae", "Pasteurella multocida", "Capnocytophaga canimorsus", "Yersinia pestis"], answer: 0, explanation: "Bartonella henselae is transmitted by cats."},
+        {question: "The definitive host for Toxoplasma gondii is which species?", options: ["Dog", "Cat", "Sheep", "Pig"], answer: 1, explanation: "Cats are the definitive host for Toxoplasma."},
+        {question: "What is the main route of transmission for canine influenza virus?", options: ["Fecal-oral", "Aerosol respiratory droplets", "Vector-borne", "Venereal"], answer: 1, explanation: "Canine influenza spreads through respiratory droplets."},
     ],
     "Endocrine": [
         {
@@ -37,7 +57,27 @@ const categories = {
             options: ["Adrenocorticotropic hormone", "Antidiuretic hormone", "Insulin", "Thyroxine"],
             answer: 1,
             explanation: "Lack of antidiuretic hormone production or response leads to diabetes insipidus."
-        }
+        },
+        {question: "Which lab finding is most suggestive of hyperthyroidism in cats?", options: ["Low T4", "Elevated T4", "High TSH", "Low cortisol"], answer: 1, explanation: "High total T4 is typical of hyperthyroidism."},
+        {question: "Which medication is most appropriate for long-term management of feline hyperthyroidism?", options: ["Methimazole", "Levothyroxine", "Trilostane", "Prednisone"], answer: 0, explanation: "Methimazole is commonly used to manage hyperthyroid cats."},
+        {question: "Cushing's disease in dogs is commonly caused by a pituitary adenoma secreting which hormone?", options: ["ACTH", "TSH", "Growth hormone", "Prolactin"], answer: 0, explanation: "Pituitary adenomas secrete ACTH leading to cortisol excess."},
+        {question: "Which electrolyte pattern is most characteristic of hypoadrenocorticism?", options: ["Low sodium and high potassium", "High sodium and low potassium", "High sodium and high potassium", "Low sodium and low potassium"], answer: 0, explanation: "Addison's disease typically presents with hyponatremia and hyperkalemia."},
+        {question: "Which test confirms insulinoma in dogs?", options: ["Fructosamine level", "Fasting insulin:glucose ratio", "ACTH stimulation test", "TSH measurement"], answer: 1, explanation: "A high insulin:glucose ratio supports insulinoma."},
+        {question: "Atypical Cushing's disease may involve excess production of which adrenal hormones?", options: ["Aldosterone", "Sex steroids", "Insulin", "Thyroxine"], answer: 1, explanation: "Atypical cases often overproduce sex steroids."},
+        {question: "What is the most common cause of hypothyroidism in middle-aged dogs?", options: ["Iodine deficiency", "Immune-mediated thyroiditis", "Pituitary adenoma", "Neoplasia"], answer: 1, explanation: "Lymphocytic thyroiditis causes most canine hypothyroidism."},
+        {question: "Diabetic ketoacidosis is characterized by which acid-base disturbance?", options: ["Respiratory alkalosis", "Metabolic acidosis", "Metabolic alkalosis", "Respiratory acidosis"], answer: 1, explanation: "Accumulation of ketones results in metabolic acidosis."},
+        {question: "Which hormone increases blood calcium by stimulating bone resorption and renal reabsorption?", options: ["Calcitonin", "Parathyroid hormone", "Thyroxine", "Aldosterone"], answer: 1, explanation: "Parathyroid hormone raises serum calcium."},
+        {question: "Cats with acromegaly typically exhibit high serum levels of which hormone?", options: ["Cortisol", "Growth hormone", "Insulin", "Progesterone"], answer: 1, explanation: "Pituitary tumors secrete excess growth hormone."},
+        {question: "Failure of cortisol suppression on a low-dose dexamethasone test indicates which disorder in dogs?", options: ["Hypothyroidism", "Hyperadrenocorticism", "Hypoadrenocorticism", "Hyperthyroidism"], answer: 1, explanation: "Lack of suppression suggests Cushing's disease."},
+        {question: "Which drug is used to manage insulinoma-induced hypoglycemia when surgery is not an option?", options: ["Methimazole", "Diazoxide", "Mitotane", "Pergolide"], answer: 1, explanation: "Diazoxide suppresses insulin secretion."},
+        {question: "Which imaging technique is most useful for evaluating thyroid carcinoma in dogs?", options: ["Abdominal ultrasound", "Thoracic radiographs", "Cervical ultrasound", "Brain MRI"], answer: 2, explanation: "Neck ultrasound helps assess thyroid masses."},
+        {question: "What is the most common presenting sign of feline hyperthyroidism?", options: ["Weight gain", "Lethargy", "Weight loss with polyphagia", "Alopecia"], answer: 2, explanation: "Affected cats often lose weight despite a good appetite."},
+        {question: "Which test helps differentiate pituitary- from adrenal-dependent hyperadrenocorticism in dogs?", options: ["ACTH stimulation", "Low-dose dexamethasone", "High-dose dexamethasone", "TSH stimulation"], answer: 2, explanation: "The high-dose dexamethasone suppression test aids differentiation."},
+        {question: "Elevated fructosamine in a dog indicates what?", options: ["Stress hyperglycemia", "Persistent hyperglycemia over weeks", "Hypoglycemia", "Hyperlipidemia"], answer: 1, explanation: "Fructosamine reflects average blood glucose over 2-3 weeks."},
+        {question: "Which breed is predisposed to congenital hypothyroidism?", options: ["Giant Schnauzer", "Beagle", "Basenji", "Chihuahua"], answer: 0, explanation: "Giant Schnauzers can have inherited hypothyroidism."},
+        {question: "Which therapy offers a permanent cure for most cats with hyperthyroidism?", options: ["Methimazole", "Iodine-restricted diet", "Radioiodine treatment", "Surgical parathyroidectomy"], answer: 2, explanation: "Radioiodine ablates hyperactive thyroid tissue."},
+        {question: "Which medication is used to treat hypoadrenocorticism in dogs by replacing mineralocorticoids?", options: ["DOCP", "Fludrocortisone", "Pergolide", "Desoxycorticosterone"], answer: 0, explanation: "Desoxycorticosterone pivalate (DOCP) provides mineralocorticoid replacement."},
+        {question: "Acromegaly in cats typically results in which insulin response?", options: ["Low insulin needs", "Severe insulin resistance", "Normal insulin sensitivity", "No effect on insulin"], answer: 1, explanation: "Excess growth hormone causes marked insulin resistance."}
     ],
     "Gastrointestinal": [
         {
@@ -57,7 +97,28 @@ const categories = {
             options: ["Metoclopramide", "Famotidine", "Omeprazole", "Sucralfate"],
             answer: 0,
             explanation: "Metoclopramide enhances gastric emptying by acting as a dopamine antagonist." 
-        }
+        },
+    ],
+        {question: "Which parasite is a common cause of chronic diarrhea in kennelled dogs?", options: ["Giardia", "Hookworms", "Whipworms", "Tapeworms"], answer: 0, explanation: "Giardia infection can lead to chronic diarrhea."},
+        {question: "A cat with vomiting and weight loss is diagnosed with megaesophagus. Which underlying disease should be ruled out?", options: ["Hyperthyroidism", "Diabetes mellitus", "Dysautonomia", "Chronic renal failure"], answer: 2, explanation: "Feline dysautonomia can cause megaesophagus."},
+        {question: "Which antibiotic is recommended for small intestinal bacterial overgrowth in dogs?", options: ["Enrofloxacin", "Metronidazole", "Amoxicillin", "Doxycycline"], answer: 1, explanation: "Metronidazole is commonly used."},
+        {question: "What is the most common cause of regurgitation in dogs?", options: ["Esophageal disease", "Gastric ulcers", "Pancreatitis", "Liver failure"], answer: 0, explanation: "Megaesophagus and other esophageal disorders lead to regurgitation."},
+        {question: "Which breed is predisposed to congenital portosystemic shunts?", options: ["Yorkshire Terrier", "German Shepherd", "Labrador Retriever", "Boxer"], answer: 0, explanation: "Toy breeds such as Yorkshire Terriers commonly have PSS."},
+        {question: "Which antiemetic works by blocking NK-1 receptors in dogs?", options: ["Ondansetron", "Metoclopramide", "Maropitant", "Chlorpromazine"], answer: 2, explanation: "Maropitant (Cerenia) blocks NK-1 receptors."},
+        {question: "Biopsy of a cat's small intestine reveals eosinophilic infiltration. What is the likely diagnosis?", options: ["Lymphoma", "Eosinophilic enteritis", "Ulcerative colitis", "Pancreatitis"], answer: 1, explanation: "Eosinophilic enteritis features eosinophil-rich infiltrates."},
+        {question: "Which lab test is most sensitive for diagnosing pancreatitis in dogs?", options: ["Amylase", "Lipase", "cPLI", "ALT"], answer: 2, explanation: "Canine pancreatic lipase immunoreactivity (cPLI) is sensitive."},
+        {question: "Dogs with hepatic encephalopathy typically show which blood abnormality?", options: ["High ammonia", "Low bile acids", "Low bilirubin", "High glucose"], answer: 0, explanation: "Ammonia accumulates due to poor liver detoxification."},
+        {question: "What is the mechanism of action of sucralfate for gastric ulcers?", options: ["Proton pump inhibition", "H2 receptor blockade", "Coats ulcer base", "Stimulates motility"], answer: 2, explanation: "Sucralfate forms a protective barrier over ulcers."},
+        {question: "Which dietary modification is recommended for dogs with lymphangiectasia?", options: ["High fat", "Low fat", "High fiber", "High protein"], answer: 1, explanation: "A low-fat diet reduces lymph flow."},
+        {question: "In cats, triaditis involves inflammation of the liver, pancreas, and which organ?", options: ["Spleen", "Stomach", "Intestine", "Kidney"], answer: 2, explanation: "Triaditis includes inflammatory bowel disease."},
+        {question: "Which analgesic is contraindicated in cats with hepatic lipidosis?", options: ["Morphine", "Meloxicam", "Acetaminophen", "Buprenorphine"], answer: 2, explanation: "Acetaminophen is hepatotoxic in cats."},
+        {question: "Which probiotic is often recommended for antibiotic-associated diarrhea in dogs?", options: ["Saccharomyces boulardii", "Lactobacillus acidophilus", "Bifidobacterium", "Enterococcus faecium"], answer: 3, explanation: "Enterococcus faecium (e.g., FortiFlora) is commonly used."},
+        {question: "Chronic constipation leading to megacolon in cats is surgically treated by which procedure when medical therapy fails?", options: ["Subtotal colectomy", "Gastrotomy", "Ileocolic bypass", "Liver lobectomy"], answer: 0, explanation: "Subtotal colectomy removes the diseased colon."},
+        {question: "Which blood test is used to diagnose exocrine pancreatic insufficiency in cats?", options: ["Serum TLI", "Serum lipase", "ALT", "Bile acids"], answer: 0, explanation: "Low trypsin-like immunoreactivity indicates EPI."},
+        {question: "What is the preferred imaging modality to diagnose bile duct obstruction in dogs?", options: ["Abdominal radiographs", "Abdominal ultrasound", "CT scan", "MRI"], answer: 1, explanation: "Ultrasound visualizes the biliary tree well."},
+        {question: "Tylosin-responsive diarrhea is particularly observed in which breed?", options: ["German Shepherd", "Beagle", "Golden Retriever", "Pug"], answer: 0, explanation: "German Shepherds often respond to tylosin for chronic diarrhea."},
+        {question: "Pancreatic nodular hyperplasia in older dogs is usually considered what?", options: ["Malignant", "An incidental finding", "A cause of severe pancreatitis", "Metastatic disease"], answer: 1, explanation: "It is typically an incidental finding."},
+        {question: "Which infectious agent causes hemorrhagic colitis in young cats and is diagnosed by PCR of feces?", options: ["Salmonella", "Tritrichomonas foetus", "Campylobacter jejuni", "Clostridium perfringens"], answer: 1, explanation: "Tritrichomonas foetus is a protozoal cause of colitis."}
     ],
     "Cardiovascular": [
         {
@@ -79,6 +140,27 @@ const categories = {
             explanation: "Hypertrophic cardiomyopathy predisposes cats to thrombus formation in the heart, which can lodge in the aorta." 
         }
     ],
+        {question: "Which medication is commonly used to treat pulmonary hypertension in dogs?", options: ["Sildenafil", "Propranolol", "Digoxin", "Amlodipine"], answer: 0, explanation: "Sildenafil acts as a pulmonary vasodilator."},
+        {question: "Hypertrophic cardiomyopathy in cats is often associated with mutation in which gene?", options: ["Myosin binding protein C", "Collagen type II", "Ryanodine receptor", "Troponin I"], answer: 0, explanation: "Mutations in the MYBPC3 gene are implicated."},
+        {question: "Which clinical sign is most suggestive of left-sided congestive heart failure in dogs?", options: ["Ascites", "Coughing", "Jugular distension", "Hepatomegaly"], answer: 1, explanation: "Pulmonary edema from left-sided failure often causes coughing."},
+        {question: "Which diagnostic test is considered the gold standard for quantifying cardiac chamber size?", options: ["Auscultation", "Thoracic radiographs", "Echocardiography", "Electrocardiography"], answer: 2, explanation: "Echocardiography allows direct measurement of chamber dimensions."},
+        {question: "A dog with sudden hind limb paralysis and no femoral pulses should be evaluated for what condition?", options: ["Thromboembolic disease", "Hip dysplasia", "Vertebral fracture", "Septic arthritis"], answer: 0, explanation: "Arterial thromboembolism can cause acute limb paralysis."},
+        {question: "What arrhythmia is commonly seen with dilated cardiomyopathy in Doberman Pinschers?", options: ["Atrial fibrillation", "Ventricular premature complexes", "Supraventricular tachycardia", "Atrioventricular block"], answer: 1, explanation: "Ventricular arrhythmias are frequent in DCM Dobermans."},
+        {question: "Which diuretic is typically used to manage acute pulmonary edema in dogs?", options: ["Spironolactone", "Hydrochlorothiazide", "Furosemide", "Mannitol"], answer: 2, explanation: "Furosemide is the diuretic of choice for pulmonary edema."},
+        {question: "A paradoxical split S2 heart sound in a dog suggests which condition?", options: ["Aortic stenosis", "Pulmonic stenosis", "Patent ductus arteriosus", "Atrial septal defect"], answer: 0, explanation: "Delayed aortic valve closure from aortic stenosis can cause a paradoxical split."},
+        {question: "Which biomarker is useful in dogs for assessing heart failure severity?", options: ["Troponin I", "NT-proBNP", "Creatine kinase", "C-reactive protein"], answer: 1, explanation: "NT-proBNP correlates with heart failure severity."},
+        {question: "Which congenital defect results in a left-to-right shunt causing volume overload of the right ventricle?", options: ["Pulmonic stenosis", "Ventricular septal defect", "Aortic stenosis", "Tricuspid dysplasia"], answer: 1, explanation: "VSD allows blood flow from left to right ventricle."},
+        {question: "Heartworm preventatives act primarily against which stage of Dirofilaria immitis?", options: ["Adult worms", "L3 larvae", "Microfilariae", "Eggs"], answer: 1, explanation: "Preventatives kill the L3/L4 larval stages."},
+        {question: "What is the recommended treatment for feline arterial thromboembolism?", options: ["Heparin and analgesia", "Corticosteroids only", "Aspirin only", "No treatment"], answer: 0, explanation: "Anticoagulation and pain control are essential."},
+        {question: "Mitral valve degeneration is most prevalent in which canine breed group?", options: ["Large breed dogs", "Toy and small breeds", "Sighthounds", "Working breeds"], answer: 1, explanation: "Myxomatous degeneration commonly affects small breeds."},
+        {question: "Which imaging technique best identifies pericardial effusion?", options: ["Thoracic radiographs", "Echocardiography", "CT scan", "Fluoroscopy"], answer: 1, explanation: "Echo readily detects pericardial fluid."},
+        {question: "Dogs with subaortic stenosis often benefit from which medication to reduce arrhythmias?", options: ["Atenolol", "Enalapril", "Pimobendan", "Furosemide"], answer: 0, explanation: "Beta-blockers like atenolol control tachyarrhythmias."},
+        {question: "Which congenital defect is corrected surgically by ligating a vessel near the heart?", options: ["Patent ductus arteriosus", "Atrial septal defect", "Ventricular septal defect", "Tetralogy of Fallot"], answer: 0, explanation: "Surgical ligation closes a PDA."},
+        {question: "What is the most sensitive method for detecting arrhythmias in dogs with suspected syncope?", options: ["Standard ECG", "Holter monitoring", "Pulse oximetry", "Blood pressure"], answer: 1, explanation: "Holter monitors record arrhythmias over 24 hours."},
+        {question: "Chagas disease in dogs is caused by which parasite?", options: ["Trypanosoma cruzi", "Leishmania infantum", "Toxoplasma gondii", "Babesia canis"], answer: 0, explanation: "T. cruzi infection leads to myocarditis."},
+        {question: "Pulmonic stenosis primarily causes hypertrophy of which cardiac chamber?", options: ["Left ventricle", "Right ventricle", "Left atrium", "Right atrium"], answer: 1, explanation: "Right ventricular outflow obstruction results in RV hypertrophy."},
+        {question: "Which cardiomyopathy in cats often responds to beta-blocker therapy to slow heart rate?", options: ["Restrictive", "Hypertrophic", "Dilated", "Arrhythmogenic right ventricular"], answer: 1, explanation: "Beta-blockers are used in HCM cats."}
+    ],
     "Respiratory": [
         {
             question: "Which pathogen commonly causes feline upper respiratory tract infections along with feline herpesvirus?",
@@ -98,6 +180,26 @@ const categories = {
             answer: 2,
             explanation: "Fluoroscopy allows dynamic visualization of tracheal collapse during respiration." 
         }
+        {question: "Which fungal organism most commonly causes nasal disease in cats in North America?", options: ["Cryptococcus neoformans", "Aspergillus fumigatus", "Blastomyces dermatitidis", "Histoplasma capsulatum"], answer: 0, explanation: "Cryptococcus is the leading cause of feline fungal rhinitis."},
+        {question: "Bronchoalveolar lavage fluid from a dog with eosinophilic bronchopneumopathy will show predominance of which cell type?", options: ["Neutrophils", "Lymphocytes", "Eosinophils", "Mast cells"], answer: 2, explanation: "Eosinophils predominate in this condition."},
+        {question: "Which thoracic radiographic pattern is typical of cardiogenic pulmonary edema?", options: ["Bronchial", "Alveolar", "Interstitial", "Nodular"], answer: 1, explanation: "Pulmonary edema creates an alveolar pattern."},
+        {question: "A cat with chronic sneezing and unilateral nasal discharge may have which condition?", options: ["Allergic rhinitis", "Nasal polyp", "Pulmonary edema", "Lungworm infection"], answer: 1, explanation: "Nasal polyps commonly cause unilateral signs."},
+        {question: "Which diagnostic test best detects airway collapse in small-breed dogs during respiration?", options: ["Thoracic radiographs", "Bronchoscopy", "CT scan", "Fluoroscopy"], answer: 3, explanation: "Fluoroscopy shows dynamic tracheal collapse."},
+        {question: "What is the typical treatment for pulmonary edema secondary to left-sided heart failure?", options: ["Bronchodilators", "Diuretics and oxygen", "Antibiotics", "Thyroxine"], answer: 1, explanation: "Diuretics and oxygen therapy relieve pulmonary edema."},
+        {question: "Chronic bronchitis in dogs is defined by cough persisting for at least how long?", options: ["1 week", "1 month", "2 months", "6 months"], answer: 2, explanation: "Coughing for over two months meets the definition."},
+        {question: "Which lung lobe is most commonly affected by aspiration pneumonia in dogs?", options: ["Right middle", "Left caudal", "Right cranial", "Accessory"], answer: 0, explanation: "The right middle lung lobe is predisposed due to anatomy."},
+        {question: "The Baermann technique is used to diagnose infection with which parasite causing respiratory signs in cats?", options: ["Capillaria aerophila", "Filaroides osleri", "Aelurostrongylus abstrusus", "Oslerus osleri"], answer: 2, explanation: "Aelurostrongylus larvae are recovered using the Baermann method."},
+        {question: "Which medication is a methylxanthine bronchodilator used in dogs?", options: ["Theophylline", "Albuterol", "Clenbuterol", "Prednisone"], answer: 0, explanation: "Theophylline is an oral methylxanthine bronchodilator."},
+        {question: "Thoracic ultrasound is most useful for diagnosing which respiratory condition in cats?", options: ["Bronchitis", "Pneumonia", "Pleural effusion", "Asthma"], answer: 2, explanation: "Fluid accumulation is easily seen on ultrasound."},
+        {question: "Which breathing pattern is most consistent with upper airway obstruction?", options: ["Prolonged inspiratory phase with stridor", "Rapid shallow breathing", "Open mouth breathing with cyanosis", "Expiratory wheeze"], answer: 0, explanation: "Upper airway obstruction causes prolonged inspiratory effort."},
+        {question: "Dogs with laryngeal paralysis often benefit from which surgical procedure?", options: ["Tracheal stent", "Lateralization of the arytenoid cartilage", "Tracheostomy", "Palate resection"], answer: 1, explanation: "Arytenoid lateralization (tie-back) relieves obstruction."},
+        {question: "Which radiographic sign indicates an alveolar lung pattern?", options: ["Air bronchograms", "Bronchial rings", "Reticular opacity", "Unstructured interstitial opacity"], answer: 0, explanation: "Air bronchograms are classic for alveolar patterns."},
+        {question: "What is the most common presenting sign of feline asthma?", options: ["Sneezing", "Coughing and expiratory dyspnea", "Collapsing episodes", "Weight loss"], answer: 1, explanation: "Affected cats often cough and have difficulty breathing out."},
+        {question: "In dogs, nasal aspergillosis is typically treated with which therapy?", options: ["Systemic ketoconazole", "Topical clotrimazole infusion", "Oral itraconazole alone", "Radiation therapy"], answer: 1, explanation: "Topical clotrimazole is effective for nasal aspergillosis."},
+        {question: "Which imaging technique is best for evaluating masses within the nasal cavity of dogs?", options: ["Radiographs", "CT scan", "Ultrasound", "Endoscopy"], answer: 1, explanation: "CT provides detailed imaging of nasal structures."},
+        {question: "Pulmonary hypertension can be estimated on echocardiography by measuring what parameter?", options: ["Aortic velocity", "Tricuspid regurgitation velocity", "Mitral valve area", "Right atrial size"], answer: 1, explanation: "TR velocity helps estimate pulmonary artery pressure."},
+        {question: "Which sedative is often used for thoracic radiographs in cats due to minimal respiratory effects?", options: ["Dexmedetomidine", "Acepromazine", "Ketamine", "Midazolam"], answer: 3, explanation: "Midazolam provides mild sedation with minimal respiratory depression."},
+        {question: "Which lungworm infects dogs via ingestion of gastropods?", options: ["Filaroides hirthi", "Angiostrongylus vasorum", "Aelurostrongylus abstrusus", "Capillaria aerophila"], answer: 1, explanation: "Dogs acquire Angiostrongylus vasorum from snails and slugs."}
     ],
     "Renal": [
         {
@@ -119,6 +221,26 @@ const categories = {
             explanation: "Reducing dietary phosphorus helps slow progression of chronic kidney disease." 
         }
     ],
+        {question: "Which urine specific gravity value in dogs suggests isosthenuria?", options: ["1.002", "1.010", "1.030", "1.050"], answer: 1, explanation: "Isosthenuria occurs around 1.008-1.012."},
+        {question: "Which drug is first-line for lowering systemic blood pressure in cats with chronic kidney disease?", options: ["Enalapril", "Amlodipine", "Benazepril", "Hydrochlorothiazide"], answer: 1, explanation: "Amlodipine effectively controls hypertension in cats."},
+        {question: "Pyelonephritis is best diagnosed using which combination of tests?", options: ["Urine culture and ultrasound", "BUN/creatinine alone", "Radiographs alone", "CBC alone"], answer: 0, explanation: "Culture and imaging confirm infection of the kidneys."},
+        {question: "Which toxin commonly causes acute kidney injury in dogs after ingestion of sweet-tasting substances?", options: ["Lead", "Ethylene glycol", "Ibuprofen", "Aflatoxin"], answer: 1, explanation: "Ethylene glycol antifreeze ingestion is nephrotoxic."},
+        {question: "Which procedure is recommended for male cats that repeatedly obstruct their urethra?", options: ["Cystotomy", "Perineal urethrostomy", "Nephrectomy", "Cystocentesis"], answer: 1, explanation: "Perineal urethrostomy creates a wider urethral opening."},
+        {question: "Hypokalemia in cats is often treated with which oral supplement?", options: ["Potassium chloride", "Calcium carbonate", "Potassium iodide", "Sodium bicarbonate"], answer: 0, explanation: "Oral potassium chloride replaces deficits."},
+        {question: "Which glomerular disease is characterized by immune complex deposition causing proteinuria in dogs?", options: ["Amyloidosis", "Glomerulonephritis", "Pyelonephritis", "Interstitial nephritis"], answer: 1, explanation: "Glomerulonephritis involves immune complex deposition."},
+        {question: "Dialysis improves acute renal failure by what mechanism?", options: ["Increasing GFR", "Removing uremic toxins directly from blood", "Stimulating erythropoiesis", "Reducing urine output"], answer: 1, explanation: "Hemodialysis filters toxins from the bloodstream."},
+        {question: "Which imaging modality is preferred for detecting ectopic ureters in dogs?", options: ["Plain radiography", "CT urography", "Ultrasound", "MRI"], answer: 1, explanation: "CT urography clearly outlines ureteral anatomy."},
+        {question: "Which analgesic should be avoided in cats with kidney disease due to nephrotoxicity?", options: ["Buprenorphine", "Tramadol", "Meloxicam", "Gabapentin"], answer: 2, explanation: "NSAIDs like meloxicam can worsen renal injury."},
+        {question: "In dogs with protein-losing nephropathy, which medication reduces proteinuria via RAAS blockade?", options: ["Furosemide", "Enalapril", "Spironolactone", "Amlodipine"], answer: 1, explanation: "ACE inhibitors lower intraglomerular pressure."},
+        {question: "An increase in symmetric dimethylarginine (SDMA) indicates what?", options: ["Improving kidney function", "Decreased glomerular filtration rate", "Liver disease", "Anemia"], answer: 1, explanation: "SDMA rises with declining renal filtration."},
+        {question: "Which congenital renal disorder is characterized by numerous fluid-filled cysts in kittens?", options: ["Renal dysplasia", "Polycystic kidney disease", "Hydronephrosis", "Renal agenesis"], answer: 1, explanation: "PKD causes multiple renal cysts."},
+        {question: "What is the preferred method for monitoring chronic kidney disease progression in dogs?", options: ["Serum calcium", "Urine culture", "Serial creatinine and SDMA measurements", "Coagulation profile"], answer: 2, explanation: "Trending creatinine and SDMA tracks disease progression."},
+        {question: "Which electrolyte abnormality is commonly seen with urethral obstruction in cats?", options: ["Hypokalemia", "Hyperkalemia", "Hypernatremia", "Hypocalcemia"], answer: 1, explanation: "Obstruction leads to life-threatening hyperkalemia."},
+        {question: "A dog with renal failure is producing large volumes of urine. This represents which phase of acute renal failure?", options: ["Oliguric phase", "Polyuric phase", "Anuric phase", "Recovery phase"], answer: 1, explanation: "Polyuria follows the oliguric stage as nephrons recover."},
+        {question: "Which diet change is recommended for dogs with calcium oxalate urolithiasis?", options: ["Increase dietary calcium", "Increase urinary acidity", "Reduce oxalate and maintain neutral pH", "High-protein diet"], answer: 2, explanation: "Reducing dietary oxalate and maintaining neutral pH helps prevent stones."},
+        {question: "Which drug is used to stimulate erythropoiesis in anemic cats with chronic kidney disease?", options: ["Erythropoietin stimulating agent", "Prednisone", "Vitamin B12", "Iron dextran"], answer: 0, explanation: "ESAs promote red blood cell production."},
+        {question: "Renal secondary hyperparathyroidism leads to which bone disorder?", options: ["Pseudohyperparathyroidism", "Renal osteodystrophy", "Hypercalcemia of malignancy", "Paraneoplastic syndrome"], answer: 1, explanation: "Chronic kidney disease causes renal osteodystrophy."},
+        {question: "Which breed of dog is predisposed to familial renal amyloidosis?", options: ["Shar Pei", "Beagle", "Collie", "Pomeranian"], answer: 0, explanation: "Shar Peis can inherit amyloid deposition in the kidneys."}
     "Neurology": [
         {
             question: "Which breed is predisposed to intervertebral disc disease due to chondrodystrophy?",
@@ -138,6 +260,26 @@ const categories = {
             answer: 0,
             explanation: "Phenobarbital is widely used as an effective and affordable anticonvulsant in dogs." 
         }
+        {question: "Myasthenia gravis in dogs is characterized by antibodies against which receptor?", options: ["Dopamine receptor", "Acetylcholine receptor", "GABA receptor", "Serotonin receptor"], answer: 1, explanation: "Autoantibodies target acetylcholine receptors at the neuromuscular junction."},
+        {question: "Seizure initiation in dogs typically arises from which brain region?", options: ["Cerebellum", "Cerebral cortex", "Brainstem", "Hypothalamus"], answer: 1, explanation: "The cerebral cortex is the origin of most seizures."},
+        {question: "Which breed is predisposed to Chiari-like malformation causing syringomyelia?", options: ["Cavalier King Charles Spaniel", "Doberman", "Beagle", "Labrador Retriever"], answer: 0, explanation: "Cavalier King Charles Spaniels commonly develop this malformation."},
+        {question: "What is the first-line therapy for status epilepticus in cats?", options: ["Phenobarbital", "Diazepam IV", "Potassium bromide", "Levetiracetam"], answer: 1, explanation: "Intravenous diazepam is used for emergency seizure control."},
+        {question: "Intervertebral disc disease Hansen type I involves degeneration of which disc component?", options: ["Annulus fibrosus", "Nucleus pulposus", "Endplate cartilage", "Vertebral body"], answer: 1, explanation: "Type I herniation occurs when the nucleus pulposus extrudes."},
+        {question: "Which toxin commonly causes ascending flaccid paralysis in dogs after ingestion of carrion?", options: ["Tetanus toxin", "Botulinum toxin", "Strychnine", "Organophosphate"], answer: 1, explanation: "Botulism from Clostridium botulinum leads to paralysis."},
+        {question: "What is the hallmark sign of vestibular disease in cats?", options: ["Head tilt", "Blindness", "Seizures", "Hemiparesis"], answer: 0, explanation: "Vestibular dysfunction causes a persistent head tilt."},
+        {question: "In dogs, atlantoaxial instability is most common in which breeds?", options: ["Large breed puppies", "Toy breed dogs", "Sighthounds", "Herding breeds"], answer: 1, explanation: "Toy breeds like Chihuahuas often have congenital AA instability."},
+        {question: "A Schiff-Sherrington posture is usually associated with lesions in which spinal cord region?", options: ["C1-C5", "C6-T2", "T3-L3", "L4-S3"], answer: 2, explanation: "Thoracolumbar lesions cause rigid forelimbs and flaccid hindlimbs."},
+        {question: "Granulomatous meningoencephalomyelitis (GME) in dogs is thought to be caused by what?", options: ["Unknown immune-mediated process", "Distemper virus", "Toxoplasma gondii", "Neospora caninum"], answer: 0, explanation: "GME is considered an immune-mediated inflammatory disease."},
+        {question: "Idiopathic facial nerve paralysis in dogs typically results in what clinical sign?", options: ["Severe head tilt", "Trismus", "Inability to blink", "Seizures"], answer: 2, explanation: "Loss of palpebral reflex leads to inability to blink."},
+        {question: "Which diagnostic test is used to confirm myasthenia gravis in dogs?", options: ["Electromyography", "Edrophonium (Tensilon) test", "MRI", "CT"], answer: 1, explanation: "The Tensilon test evaluates neuromuscular transmission."},
+        {question: "Thiamine deficiency in cats is associated with which neurological sign?", options: ["Cervical ventroflexion", "Blindness", "Head pressing", "Intention tremor"], answer: 0, explanation: "Thiamine deficiency leads to ventroflexion of the neck."},
+        {question: "What is the treatment of choice for dogs with idiopathic epilepsy not controlled by phenobarbital alone?", options: ["Add potassium bromide", "Add prednisone", "Add furosemide", "Add amlodipine"], answer: 0, explanation: "Potassium bromide is a common adjunct therapy."},
+        {question: "Which breed is overrepresented in degenerative myelopathy?", options: ["German Shepherd", "Yorkshire Terrier", "Poodle", "Maltese"], answer: 0, explanation: "Degenerative myelopathy is prevalent in German Shepherds."},
+        {question: "A cat with a history of otitis media develops a head tilt and nystagmus. Which nerve is affected?", options: ["Optic nerve", "Facial nerve", "Vestibulocochlear nerve", "Hypoglossal nerve"], answer: 2, explanation: "The vestibulocochlear nerve controls balance and hearing."},
+        {question: "Which reflex is decreased with an L4-S3 spinal cord lesion in dogs?", options: ["Patellar reflex", "Forelimb withdrawal", "Cutaneous trunci", "Hopping"], answer: 0, explanation: "Lesions in this region diminish the patellar reflex."},
+        {question: "What is the main treatment for idiopathic vestibular disease in dogs?", options: ["Surgery", "Supportive care and time", "High-dose steroids", "Antibiotics"], answer: 1, explanation: "Most cases resolve with supportive care over several days."},
+        {question: "Which drug can be used to treat spasticity associated with spinal cord injury in dogs?", options: ["Baclofen", "Diazepam", "Phenobarbital", "Morphine"], answer: 0, explanation: "Baclofen acts as a muscle relaxant."},
+        {question: "A seizure that lasts more than five minutes is classified as what?", options: ["Cluster seizure", "Focal seizure", "Status epilepticus", "Petit mal seizure"], answer: 2, explanation: "Prolonged seizures are termed status epilepticus."}
     ],
     "Oncology": [
         {
@@ -159,295 +301,56 @@ const categories = {
             explanation: "Histopathology of a biopsy sample confirms lymphoma diagnosis and allows grading." 
         }
     ]
-, "Dermatology": [
-    {
-        question: "Which mite species causes canine scabies?",
-        options: ["Demodex canis", "Sarcoptes scabiei var. canis", "Otodectes cynotis", "Cheyletiella yasguri"],
-        answer: 1,
-        explanation: "Sarcoptes scabiei var. canis burrows into the skin causing intense pruritus."
-    },
-    {
-        question: "A common topical treatment for flea allergy dermatitis in dogs is:",
-        options: ["Topical antibiotic", "Corticosteroid spray", "Antifungal shampoo", "Vitamin E oil"],
-        answer: 1,
-        explanation: "Corticosteroid sprays reduce inflammation associated with flea allergy."
-    },
-    {
-        question: "Which diagnostic test confirms ringworm in cats?",
-        options: ["Skin cytology", "Wood's lamp", "Fungal culture", "Allergy testing"],
-        answer: 2,
-        explanation: "Fungal culture is considered the gold standard for diagnosing dermatophytosis."
-    },
-    {
-        question: "What is the typical first step in managing a dog with atopic dermatitis?",
-        options: ["Start systemic antibiotics", "Begin allergen-specific immunotherapy", "Identify and reduce exposure to allergens", "Administer antifungal medication"],
-        answer: 2,
-        explanation: "Avoiding or minimizing allergen exposure is key in initial management of atopic dermatitis."
-    }
-],
-"Musculoskeletal": [
-    {
-        question: "Which joint is most commonly affected by hip dysplasia in dogs?",
-        options: ["Elbow", "Stifle", "Coxofemoral", "Carpal"],
-        answer: 2,
-        explanation: "Hip dysplasia primarily affects the coxofemoral (hip) joint leading to laxity and arthritis."
-    },
-    {
-        question: "What is a typical first-line analgesic for osteoarthritis in dogs?",
-        options: ["Aspirin", "Carprofen", "Acetaminophen", "Ibuprofen"],
-        answer: 1,
-        explanation: "Carprofen is an NSAID commonly prescribed to manage canine osteoarthritis pain."
-    },
-    {
-        question: "Which supplement is often recommended for joint support in cats with arthritis?",
-        options: ["Glucosamine and chondroitin", "Vitamin K", "Iron", "Vitamin C"],
-        answer: 0,
-        explanation: "Glucosamine and chondroitin help maintain joint cartilage and are frequently used in arthritic cats."
-    },
-    {
-        question: "Cruciate ligament rupture in dogs typically results in instability of which joint?",
-        options: ["Hip", "Stifle", "Carpus", "Shoulder"],
-        answer: 1,
-        explanation: "The cranial cruciate ligament stabilizes the stifle; rupture leads to stifle instability."
-    }
-],
-"Ophthalmology": [
-    {
-        question: "Which test is used to assess tear production in dogs?",
-        options: ["Fluorescein staining", "Schirmer tear test", "Tonometry", "Ophthalmoscopy"],
-        answer: 1,
-        explanation: "The Schirmer tear test quantitatively measures tear production."
-    },
-    {
-        question: "What is the first-line treatment for conjunctivitis in cats due to Chlamydophila felis?",
-        options: ["Topical antifungals", "Topical antivirals", "Topical tetracycline", "Topical corticosteroids"],
-        answer: 2,
-        explanation: "Topical tetracycline is effective against Chlamydophila infections causing conjunctivitis."
-    },
-    {
-        question: "Which breed is predisposed to primary glaucoma in dogs?",
-        options: ["Poodle", "Cocker Spaniel", "Boxer", "Beagle"],
-        answer: 1,
-        explanation: "Cocker Spaniels are among the breeds commonly affected by primary glaucoma."
-    },
-    {
-        question: "Entropion refers to which ocular condition?",
-        options: ["Inward rolling of the eyelid", "Outward rolling of the eyelid", "Opacity of the lens", "Protrusion of the third eyelid"],
-        answer: 0,
-        explanation: "Entropion describes inward rolling of the eyelid margin, causing irritation."
-    }
-],
-"Reproductive": [
-    {
-        question: "Which hormone can be measured to confirm ovulation timing in dogs?",
-        options: ["Progesterone", "Estrogen", "LH", "Prolactin"],
-        answer: 0,
-        explanation: "Serum progesterone levels rise sharply following ovulation in dogs."
-    },
-    {
-        question: "Pyometra most commonly occurs during which phase of the canine estrous cycle?",
-        options: ["Proestrus", "Estrus", "Diestrus", "Anestrus"],
-        answer: 2,
-        explanation: "Diestrus is the phase when progesterone is high, predisposing to pyometra."
-    },
-    {
-        question: "Which diagnostic method is preferred for pregnancy detection in cats at 3-4 weeks gestation?",
-        options: ["Radiography", "Ultrasound", "Palpation", "Blood progesterone"],
-        answer: 1,
-        explanation: "Ultrasound can reliably detect feline pregnancy around 3 weeks."
-    },
-    {
-        question: "Cryptorchidism in dogs refers to failure of what?",
-        options: ["Testicular descent", "Penile development", "Sperm production", "Prostate enlargement"],
-        answer: 0,
-        explanation: "Cryptorchidism is the failure of one or both testes to descend into the scrotum."
-    }
-],
-"Behavior": [
-    {
-        question: "Which pheromone product is commonly used to reduce stress in cats?",
-        options: ["Adaptil", "Feliway", "Rescue Remedy", "Attractant"],
-        answer: 1,
-        explanation: "Feliway contains synthetic feline facial pheromones that help calm cats."
-    },
-    {
-        question: "Counter-conditioning is best described as:",
-        options: ["Punishment for undesirable behavior", "Introducing a new behavior to replace an unwanted one", "Allowing a behavior to extinguish by ignoring it", "Using medication to suppress a behavior"],
-        answer: 1,
-        explanation: "Counter-conditioning replaces an undesirable response with a desirable one via training."
-    },
-    {
-        question: "Separation anxiety in dogs commonly manifests as:",
-        options: ["Excessive sleeping", "Destructive behavior when left alone", "Aggression to strangers", "Loss of appetite"],
-        answer: 1,
-        explanation: "Dogs with separation anxiety often destroy items or vocalize when left alone."
-    },
-    {
-        question: "Which medication is often prescribed for long-term management of anxiety disorders in dogs?",
-        options: ["Prednisone", "Fluoxetine", "Amoxicillin", "Metoclopramide"],
-        answer: 1,
-        explanation: "Fluoxetine, an SSRI, is frequently used for canine anxiety issues."
-    }
-],
-"Nutrition": [
-    {
-        question: "Which nutrient is essential for cats because they cannot synthesize it in sufficient quantities?",
-        options: ["Taurine", "Vitamin C", "Carbohydrate", "Vitamin K"],
-        answer: 0,
-        explanation: "Cats require taurine in their diet to prevent cardiomyopathy and retinal degeneration."
-    },
-    {
-        question: "Obesity in dogs is best managed through:",
-        options: ["Free feeding high-calorie food", "Increasing dietary fiber and controlled portions", "Switching to raw food diet only", "Giving more treats"],
-        answer: 1,
-        explanation: "Higher fiber diets and portion control help reduce caloric intake for weight loss."
-    },
-    {
-        question: "Which life stage requires the highest protein percentage in canine diets?",
-        options: ["Puppy", "Adult", "Senior", "Geriatric"],
-        answer: 0,
-        explanation: "Growing puppies need higher protein to support growth and development."
-    },
-    {
-        question: "A deficiency of which vitamin can lead to ventral flexion of the neck in cats?",
-        options: ["Vitamin B1 (thiamine)", "Vitamin D", "Vitamin E", "Vitamin A"],
-        answer: 0,
-        explanation: "Thiamine deficiency can cause neurological signs including cervical ventroflexion."
-    }
-],
-"Emergency": [
-    {
-        question: "What is the recommended first step when treating a dog with suspected gastric dilatation-volvulus (GDV)?",
-        options: ["Provide food", "Take radiographs", "Stabilize with fluids and decompress the stomach", "Administer antibiotics"],
-        answer: 2,
-        explanation: "Rapid stabilization and gastric decompression are essential initial steps in GDV."
-    },
-    {
-        question: "Which sign is most indicative of shock in a cat?",
-        options: ["Bright pink gums", "Normal heart rate", "Cold extremities", "Lying in sternal recumbency"],
-        answer: 2,
-        explanation: "Poor perfusion from shock often leads to cold paws and extremities."
-    },
-    {
-        question: "In canine CPR, the recommended chest compression rate is approximately:",
-        options: ["60 compressions per minute", "100-120 compressions per minute", "150 compressions per minute", "30 compressions per minute"],
-        answer: 1,
-        explanation: "Current guidelines suggest 100-120 compressions per minute for effective CPR."
-    },
-    {
-        question: "What drug is typically administered first in cases of anaphylactic shock in dogs?",
-        options: ["Epinephrine", "Atropine", "Diazepam", "Lidocaine"],
-        answer: 0,
-        explanation: "Epinephrine is given to counteract severe allergic reactions."
-    }
-],
-"Pharmacology": [
-    {
-        question: "Which antibiotic class should be avoided in young growing dogs due to effects on cartilage?",
-        options: ["Cephalosporins", "Aminoglycosides", "Fluoroquinolones", "Macrolides"],
-        answer: 2,
-        explanation: "Fluoroquinolones can damage developing cartilage in young dogs."
-    },
-    {
-        question: "The antidote for acetaminophen toxicity in cats is:",
-        options: ["Vitamin K1", "Atropine", "N-acetylcysteine", "Activated charcoal"],
-        answer: 2,
-        explanation: "N-acetylcysteine replenishes glutathione and mitigates acetaminophen toxicity."
-    },
-    {
-        question: "Which drug is commonly used to induce vomiting in dogs?",
-        options: ["Apomorphine", "Hydrogen peroxide", "Xylazine", "Dexmedetomidine"],
-        answer: 0,
-        explanation: "Apomorphine is often used by veterinarians to induce emesis in dogs."
-    },
-    {
-        question: "Ketamine anesthesia should be used cautiously in cats with which condition?",
-        options: ["Kidney disease", "Hyperthyroidism", "Hypertrophic cardiomyopathy", "Otitis"],
-        answer: 2,
-        explanation: "Ketamine can increase heart rate and contractility, which may be risky in HCM cats."
-    }
-],
-"Diagnostic Imaging": [
-    {
-        question: "Which imaging modality is best for evaluating a cranial cruciate ligament rupture in dogs?",
-        options: ["Ultrasound", "Radiography", "MRI", "CT scan"],
-        answer: 2,
-        explanation: "MRI provides detailed images of soft tissue structures like ligaments."
-    },
-    {
-        question: "Barium contrast studies are most useful for diagnosing issues in which body system?",
-        options: ["Respiratory", "Urinary", "Gastrointestinal", "Endocrine"],
-        answer: 2,
-        explanation: "Barium contrast enhances radiographic evaluation of the gastrointestinal tract."
-    },
-    {
-        question: "Ultrasound-guided fine needle aspirate is commonly used to sample which organ in cats?",
-        options: ["Pancreas", "Brain", "Thyroid", "Urinary bladder"],
-        answer: 3,
-        explanation: "The urinary bladder is often sampled via ultrasound guidance for cytology or culture."
-    },
-    {
-        question: "What is the primary safety concern when performing radiography?",
-        options: ["Equipment cost", "Radiation exposure", "Time consumption", "Anesthesia"],
-        answer: 1,
-        explanation: "Proper precautions are needed to minimize radiation exposure to staff and patients."
-    }
-],
-"Surgery": [
-    {
-        question: "What is a common complication following canine spay surgery?",
-        options: ["Pyometra", "Incisional infection", "Prostatitis", "Mammary tumors"],
-        answer: 1,
-        explanation: "Incisional infections can occur post-operatively if the site is not kept clean."
-    },
-    {
-        question: "Which suture pattern is often used to close the linea alba in dogs?",
-        options: ["Horizontal mattress", "Simple interrupted", "Cruciate", "Ford interlocking"],
-        answer: 1,
-        explanation: "Simple interrupted sutures provide secure closure for the linea alba."
-    },
-    {
-        question: "What pre-surgical fasting period is generally recommended for adult dogs?",
-        options: ["No fasting", "2 hours", "8-12 hours", "24 hours"],
-        answer: 2,
-        explanation: "Fasting 8-12 hours reduces the risk of regurgitation during anesthesia."
-    },
-    {
-        question: "Which instrument is used to clamp small vessels during surgery?",
-        options: ["Allis forceps", "Doyen forceps", "Mosquito hemostats", "Babcock forceps"],
-        answer: 2,
-        explanation: "Mosquito hemostats are designed to clamp small blood vessels."
-    }
-],
-"Dentistry": [
-    {
-        question: "What is a common cause of feline odontoclastic resorptive lesions (FORLs)?",
-        options: ["High-carbohydrate diets", "Excess fluoride", "Unknown etiology", "Viral infection"],
-        answer: 2,
-        explanation: "The exact cause of FORLs is not fully understood, making prevention challenging."
-    },
-    {
-        question: "Which dental instrument removes calculus from tooth surfaces above the gumline?",
-        options: ["Scaler", "Curette", "Elevator", "Luxator"],
-        answer: 0,
-        explanation: "A scaler is used to remove tartar from the crown of the tooth."
-    },
-    {
-        question: "Retained deciduous teeth are most commonly seen in which breed type?",
-        options: ["Giant breeds", "Toy breeds", "Sporting breeds", "Sighthounds"],
-        answer: 1,
-        explanation: "Toy breeds frequently retain baby teeth which may require extraction."
-    },
-    {
-        question: "What is the purpose of dental radiographs during tooth extraction?",
-        options: ["Monitor anesthesia depth", "Visualize tooth roots", "Measure blood pressure", "Check body temperature"],
-        answer: 1,
-        explanation: "Radiographs confirm root removal and detect complications."
-    }
-]
+        {question: "Which tumor is the most common malignant skin tumor in dogs?", options: ["Mast cell tumor", "Melanoma", "Squamous cell carcinoma", "Fibrosarcoma"], answer: 0, explanation: "Mast cell tumors are the most frequent malignant skin tumors."},
+        {question: "Injection-site sarcomas in cats are most associated with which vaccine component?", options: ["Adjuvanted vaccines", "Live attenuated vaccines", "Intranasal vaccines", "Vector vaccines"], answer: 0, explanation: "Adjuvanted vaccines have been linked to sarcoma formation."},
+        {question: "Which agent in the CHOP protocol for canine lymphoma is associated with cumulative cardiotoxicity?", options: ["Vincristine", "Cyclophosphamide", "Doxorubicin", "L-asparaginase"], answer: 2, explanation: "Doxorubicin can cause dose-related cardiomyopathy."},
+        {question: "Which paraneoplastic syndrome is commonly associated with anal sac adenocarcinoma in dogs?", options: ["Hyperinsulinemia", "Hypercalcemia", "Polycythemia", "Hypoglycemia"], answer: 1, explanation: "Anal sac tumors often secrete PTHrP leading to hypercalcemia."},
+        {question: "Osteosarcoma in dogs typically arises in which location of the limbs?", options: ["Proximal humerus or distal radius", "Distal femur or proximal tibia", "Skull", "Digits"], answer: 0, explanation: "Osteosarcoma favors the metaphyses of long bones."},
+        {question: "Which diagnostic test best assesses surgical margins after tumor excision?", options: ["Fine needle aspirate", "Histopathology", "CT scan", "Ultrasound"], answer: 1, explanation: "Histopathology evaluates tissue margins for residual tumor."},
+        {question: "What is the primary toxicity concern with vincristine therapy in dogs?", options: ["Renal toxicity", "Neurotoxicity", "Myelosuppression", "Cardiotoxicity"], answer: 1, explanation: "Vincristine commonly causes peripheral neuropathy."},
+        {question: "Which tumor is the most common cause of splenic masses in dogs?", options: ["Hemangiosarcoma", "Osteosarcoma", "Fibrosarcoma", "Liposarcoma"], answer: 0, explanation: "Splenic masses are frequently hemangiosarcoma."},
+        {question: "What is the recommended treatment for feline nasal lymphoma?", options: ["Radiation therapy", "Surgery alone", "Metronidazole", "NSAIDs"], answer: 0, explanation: "Localized lymphoma responds well to radiation."},
+        {question: "Toceranib phosphate (Palladia) treats canine mast cell tumors via which mechanism?", options: ["Alkylates DNA", "Inhibits microtubules", "Blocks KIT signaling", "Intercalates RNA"], answer: 2, explanation: "Palladia inhibits KIT tyrosine kinase."},
+        {question: "Functional thyroid adenomas causing hyperthyroidism in cats are an example of which tumor type?", options: ["Carcinoma", "Benign adenoma", "Sarcoma", "Lymphoma"], answer: 1, explanation: "Most hyperthyroid cats have benign adenomas."},
+        {question: "Which tumor is most responsive to radiation therapy in dogs?", options: ["Meningioma", "Hemangiosarcoma", "Osteosarcoma", "Mast cell tumor"], answer: 3, explanation: "Mast cell tumors often shrink with radiation."},
+        {question: "Bence-Jones proteins in urine are associated with which neoplasm?", options: ["Mast cell tumor", "Multiple myeloma", "Hemangiopericytoma", "Insulinoma"], answer: 1, explanation: "Light chains in urine indicate multiple myeloma."},
+        {question: "Which vaccine has been strongly associated with injection-site sarcomas in cats?", options: ["Feline leukemia virus", "Chlamydia", "FIV", "Bordetella"], answer: 0, explanation: "FeLV vaccines carry a higher risk of sarcoma."},
+        {question: "Cutaneous epitheliotropic lymphoma in dogs often presents with which lesion?", options: ["Pruritic nodules", "Non-healing ulcers", "Hyperpigmented papules", "Dry, exfoliative dermatitis"], answer: 3, explanation: "This lymphoma appears as exfoliative dermatitis."},
+        {question: "Which chemotherapeutic regimen is standard for treating multicentric lymphoma in dogs?", options: ["Prednisone alone", "CHOP protocol", "Radiation only", "Metronomic chlorambucil"], answer: 1, explanation: "CHOP (cyclophosphamide, doxorubicin, vincristine, prednisone) is standard."},
+        {question: "Paraneoplastic hypoglycemia is most commonly associated with which tumor in dogs?", options: ["Insulinoma", "Lymphoma", "Osteosarcoma", "Mast cell tumor"], answer: 0, explanation: "Insulinoma secretes insulin causing hypoglycemia."},
+        {question: "Which tumor arises from the perianal glands of intact male dogs?", options: ["Perianal adenoma", "Melanoma", "Perianal adenocarcinoma", "Sebaceous adenoma"], answer: 0, explanation: "Hormone-dependent perianal adenomas develop in intact males."},
+        {question: "What is the preferred treatment for low-grade mast cell tumors in dogs?", options: ["Wide surgical excision", "Radiation therapy only", "Chemotherapy only", "No treatment"], answer: 0, explanation: "Surgery with wide margins can be curative."},
+        {question: "Which cytologic feature is typical of histiocytic sarcoma in dogs?", options: ["Epithelial cell clusters", "Spindle-shaped cells with collagen", "Large pleomorphic histiocytes", "Small lymphocytes"], answer: 2, explanation: "Histiocytic sarcoma shows large pleomorphic macrophage-like cells."}
+    ],
 
+n
+    "Dermatology": [
+        {question: "Which mite species causes canine scabies?", options: ["Demodex canis", "Sarcoptes scabiei var. canis", "Otodectes cynotis", "Cheyletiella yasguri"], answer: 1, explanation: "Sarcoptes scabiei var. canis burrows into the skin causing intense pruritus."},
+        {question: "A common topical treatment for flea allergy dermatitis in dogs is:", options: ["Topical antibiotic", "Corticosteroid spray", "Antifungal shampoo", "Vitamin E oil"], answer: 1, explanation: "Corticosteroid sprays reduce inflammation associated with flea allergy."},
+        {question: "Which diagnostic test confirms ringworm in cats?", options: ["Skin cytology", "Wood's lamp", "Fungal culture", "Allergy testing"], answer: 2, explanation: "Fungal culture is considered the gold standard for diagnosing dermatophytosis."},
+        {question: "What is the typical first step in managing a dog with atopic dermatitis?", options: ["Start systemic antibiotics", "Begin allergen-specific immunotherapy", "Identify and reduce exposure to allergens", "Administer antifungal medication"], answer: 2, explanation: "Avoiding or minimizing allergen exposure is key in initial management of atopic dermatitis."},
+        {question: "Which flea control medication is an oral adulticide given monthly to dogs?", options: ["Fipronil", "Imidacloprid", "Spinosad", "Selamectin"], answer: 2, explanation: "Spinosad is an oral flea adulticide."},
+        {question: "Feline acne typically involves which area of the body?", options: ["Dorsal neck", "Ventral abdomen", "Chin", "Flanks"], answer: 2, explanation: "Feline acne commonly affects the chin."},
+        {question: "Which yeast organism commonly causes otitis externa in dogs?", options: ["Candida albicans", "Malassezia pachydermatis", "Cryptococcus neoformans", "Blastomyces dermatitidis"], answer: 1, explanation: "Malassezia is a frequent cause of yeast otitis."},
+        {question: "Which autoimmune skin disease presents with depigmentation and crusting of the nasal planum in dogs?", options: ["Pemphigus vulgaris", "Discoid lupus erythematosus", "Cutaneous lymphoma", "Dermatophytosis"], answer: 1, explanation: "DLE affects the nose leading to depigmentation."},
+        {question: "Alopecia X is most commonly seen in which breed?", options: ["Pomeranian", "German Shepherd", "Beagle", "Bulldog"], answer: 0, explanation: "Pomeranians frequently develop alopecia X."},
+        {question: "Dermatophytosis in dogs can be treated topically with which medication?", options: ["Silver sulfadiazine", "Enilconazole rinses", "Hydrocortisone", "Mupirocin"], answer: 1, explanation: "Enilconazole is effective against dermatophytes."},
+        {question: "Which insect commonly causes feline miliary dermatitis due to hypersensitivity?", options: ["Mosquito", "Flea", "Tick", "Fly"], answer: 1, explanation: "Flea bites trigger miliary dermatitis."},
+        {question: "What is the recommended treatment for deep pyoderma in dogs?", options: ["Topical antiseptics alone", "Systemic antibiotics for 4-6 weeks", "Short course of steroids", "Antihistamines only"], answer: 1, explanation: "Deep infections require prolonged systemic antibiotics."},
+        {question: "Which breed is predisposed to color dilution alopecia?", options: ["Dachshund", "Doberman Pinscher", "Golden Retriever", "Lhasa Apso"], answer: 1, explanation: "Dobermans often suffer from color dilution alopecia."},
+        {question: "Puppy strangles is another name for which condition?", options: ["Juvenile cellulitis", "Demodicosis", "Scabies", "Dermatomyositis"], answer: 0, explanation: "Juvenile cellulitis is commonly called puppy strangles."},
+        {question: "Which skin mite is part of the normal fauna but can cause disease in immunocompromised dogs?", options: ["Sarcoptes scabiei", "Demodex canis", "Cheyletiella", "Otodectes cynotis"], answer: 1, explanation: "Demodex overgrows when immunity is impaired."},
+        {question: "Which antibiotic is often used to treat methicillin-resistant Staphylococcus pseudintermedius infections in dogs?", options: ["Amoxicillin", "Cephalexin", "Clindamycin", "Chloramphenicol"], answer: 3, explanation: "Chloramphenicol is reserved for resistant infections."},
+        {question: "Which lesion is characteristic of pemphigus foliaceus in cats?", options: ["Vesicles and erosions on ear pinnae", "Nodules on limbs", "Comedones on chin", "Diffuse scaling on flanks"], answer: 0, explanation: "Pustules and crusts form around the ears and face."},
+        {question: "What is the best diagnostic method to confirm atopic dermatitis in dogs?", options: ["Skin cytology", "Intradermal allergen testing", "Skin scraping", "Wood's lamp"], answer: 1, explanation: "Intradermal testing identifies specific allergens."},
+        {question: "Which systemic antifungal is often used for Malassezia dermatitis when topical therapy fails?", options: ["Itraconazole", "Griseofulvin", "Flucytosine", "Tolnaftate"], answer: 0, explanation: "Itraconazole is effective against Malassezia."},
+        {question: "Steroid therapy leading to calcium deposits in the skin of dogs is known as what?", options: ["Calcinosis cutis", "Acral lick dermatitis", "Sebaceous adenitis", "Panniculitis"], answer: 0, explanation: "Steroid use can cause calcinosis cutis."},
+        {question: "Which medication is used as an immunomodulator in cats with eosinophilic granuloma complex?", options: ["Cyclosporine", "Doxycycline", "Prednisone", "Azathioprine"], answer: 0, explanation: "Cyclosporine can control allergic inflammation."},
+        {question: "Which ear cleaning agent is contraindicated in dogs with a ruptured tympanic membrane?", options: ["Water-based cleanser", "Chlorhexidine", "Sterile saline", "Isopropyl alcohol-based cleanser"], answer: 3, explanation: "Alcohol can damage middle ear structures."},
+        {question: "Dermatophytosis typically fluoresces under a Wood's lamp due to which species?", options: ["Microsporum gypseum", "Microsporum canis", "Trichophyton mentagrophytes", "Trichophyton verrucosum"], answer: 1, explanation: "M. canis often fluoresces apple green."},
+        {question: "Which nutritional supplement is often recommended to improve skin barrier function in atopic dogs?", options: ["Omega-3 fatty acids", "Vitamin K", "Lysine", "Selenium"], answer: 0, explanation: "Omega-3 fatty acids help reduce inflammation and improve skin."}
+    ],
 };
-
 const categoryContainer = document.getElementById('categories');
 const quizContainer = document.getElementById('quiz');
 const questionEl = document.getElementById('question');
