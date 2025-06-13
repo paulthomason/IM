@@ -155,3 +155,21 @@ body {
     position: absolute;
     cursor: pointer;
 }
+
+#doctorScreen {
+    margin-top: 20px;
+}
+
+#doctorOptions button {
+    display: block;
+    margin: 8px 0;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fafafa;
+    cursor: pointer;
+}
+
+#doctorOptions button:hover {
+    background: #e0e0e0;
+}

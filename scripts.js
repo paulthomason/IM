@@ -400,6 +400,11 @@ const catZone = document.getElementById('catZone');
 const dogZone = document.getElementById('dogZone');
 const sortBack = document.getElementById('sortBack');
 const sortResultEl = document.getElementById('sortResult');
+const doctorModeBtn = document.getElementById('doctorMode');
+const doctorScreen = document.getElementById('doctorScreen');
+const doctorText = document.getElementById('doctorText');
+const doctorOptions = document.getElementById('doctorOptions');
+const doctorNext = document.getElementById('doctorNext');
 
 let currentQuestions = [];
 let currentIndex = 0;
@@ -413,6 +418,14 @@ let buzzActive = false;
 let typingInterval = null;
 let currentQuestion = null;
 let draggedItem = null;
+let doctorEvents = [];
+let doctorIndex = 0;
+const petDatabase = [
+    {name:'Buddy', species:'dog', breed:'Golden Retriever', age:8, sex:'neutered male', disease:'hip dysplasia'},
+    {name:'Luna', species:'cat', breed:'Siamese', age:4, sex:'spayed female', disease:'asthma'},
+    {name:'Max', species:'dog', breed:'Miniature Schnauzer', age:6, sex:'neutered male', disease:'diabetes mellitus'},
+    {name:'Molly', species:'cat', breed:'Persian', age:5, sex:'spayed female', disease:'polycystic kidney disease'}
+];
 
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -707,3 +720,98 @@ function startSortGame() {
         }
     });
 });
+
+doctorModeBtn.addEventListener('click', startDoctorMode);
+
+function startDoctorMode() {
+    categoryContainer.classList.add('hidden');
+    quizContainer.classList.add('hidden');
+    scoreboard.classList.add('hidden');
+    resultEl.classList.add('hidden');
+    hideAllGames();
+    doctorScreen.classList.remove('hidden');
+    doctorIndex = 0;
+    doctorEvents = [appointmentEvent(), messageEvent(), staffEvent()];
+    showDoctorEvent();
+}
+
+function appointmentEvent() {
+    const pet = petDatabase[Math.floor(Math.random() * petDatabase.length)];
+    const consult = Math.random() < 0.5 ? 'new consult' : 'recheck';
+    return function() {
+        doctorText.textContent = `Technician brings ${pet.name}, a ${pet.age}-year-old ${pet.sex} ${pet.breed} ${pet.species} for a ${consult} regarding ${pet.disease}. Vitals look good. What do you do next?`;
+        doctorOptions.innerHTML = '';
+        const options = ['Run blood work', 'Adjust medication', 'Schedule follow up', 'Send home'];
+        options.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.textContent = opt;
+            btn.addEventListener('click', () => {
+                doctorText.textContent = `${opt} noted. The owner thanks you. Feedback: great visit!`;
+                doctorOptions.innerHTML = '';
+                doctorNext.classList.remove('hidden');
+            });
+            doctorOptions.appendChild(btn);
+        });
+        doctorNext.classList.add('hidden');
+        doctorNext.textContent = 'Next Event';
+    };
+}
+
+function messageEvent() {
+    return function() {
+        doctorText.textContent = 'Message from Gorgina: "Client asks about refilling medication."';
+        doctorOptions.innerHTML = '';
+        ['Approve refill', 'Need exam first', 'Decline', 'Ask for more info'].forEach(opt => {
+            const btn = document.createElement('button');
+            btn.textContent = opt;
+            btn.addEventListener('click', () => {
+                doctorText.textContent = `You chose: ${opt}.`;
+                doctorOptions.innerHTML = '';
+                doctorNext.classList.remove('hidden');
+            });
+            doctorOptions.appendChild(btn);
+        });
+        doctorNext.classList.add('hidden');
+        doctorNext.textContent = 'Next Event';
+    };
+}
+
+function staffEvent() {
+    return function() {
+        doctorText.textContent = 'The staff invites you to play a quick game or doodle on the whiteboard.';
+        doctorOptions.innerHTML = '';
+        ['Play trivia', 'Draw a doodle', 'Chat', 'Go back to work'].forEach(opt => {
+            const btn = document.createElement('button');
+            btn.textContent = opt;
+            btn.addEventListener('click', () => {
+                doctorText.textContent = `You decide to ${opt.toLowerCase()}. Everyone has fun!`;
+                doctorOptions.innerHTML = '';
+                doctorNext.classList.remove('hidden');
+            });
+            doctorOptions.appendChild(btn);
+        });
+        doctorNext.classList.add('hidden');
+        doctorNext.textContent = 'Next Event';
+    };
+}
+
+function showDoctorEvent() {
+    if (doctorIndex >= doctorEvents.length) {
+        doctorText.textContent = 'Doctor mode complete. Great job!';
+        doctorOptions.innerHTML = '';
+        doctorNext.textContent = 'Quit';
+        doctorNext.classList.remove('hidden');
+        doctorNext.onclick = quitDoctorMode;
+        return;
+    }
+    doctorNext.onclick = () => {
+        doctorIndex++;
+        showDoctorEvent();
+    };
+    doctorEvents[doctorIndex]();
+}
+
+function quitDoctorMode() {
+    doctorScreen.classList.add('hidden');
+    categoryContainer.classList.remove('hidden');
+}
