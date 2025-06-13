@@ -5,7 +5,7 @@ const categories = {
             options: ["Canine parvovirus", "Canine distemper virus", "Canine coronavirus", "Rabies virus"],
             answer: 0,
             explanation: "Canine parvovirus targets rapidly dividing intestinal crypt cells leading to severe hemorrhagic diarrhea."
-        },,
+        },
         {
             question: "Feline leukemia virus (FeLV) is primarily transmitted through which route?",
             options: ["Fleas", "Saliva and close contact", "Fecal-oral", "In utero only"],
@@ -98,7 +98,6 @@ const categories = {
             answer: 0,
             explanation: "Metoclopramide enhances gastric emptying by acting as a dopamine antagonist." 
         },
-    ],
         {question: "Which parasite is a common cause of chronic diarrhea in kennelled dogs?", options: ["Giardia", "Hookworms", "Whipworms", "Tapeworms"], answer: 0, explanation: "Giardia infection can lead to chronic diarrhea."},
         {question: "A cat with vomiting and weight loss is diagnosed with megaesophagus. Which underlying disease should be ruled out?", options: ["Hyperthyroidism", "Diabetes mellitus", "Dysautonomia", "Chronic renal failure"], answer: 2, explanation: "Feline dysautonomia can cause megaesophagus."},
         {question: "Which antibiotic is recommended for small intestinal bacterial overgrowth in dogs?", options: ["Enrofloxacin", "Metronidazole", "Amoxicillin", "Doxycycline"], answer: 1, explanation: "Metronidazole is commonly used."},
@@ -138,8 +137,7 @@ const categories = {
             options: ["Hypertrophic cardiomyopathy", "Hyperthyroidism", "Chronic kidney disease", "Diabetes mellitus"],
             answer: 0,
             explanation: "Hypertrophic cardiomyopathy predisposes cats to thrombus formation in the heart, which can lodge in the aorta." 
-        }
-    ],
+        },
         {question: "Which medication is commonly used to treat pulmonary hypertension in dogs?", options: ["Sildenafil", "Propranolol", "Digoxin", "Amlodipine"], answer: 0, explanation: "Sildenafil acts as a pulmonary vasodilator."},
         {question: "Hypertrophic cardiomyopathy in cats is often associated with mutation in which gene?", options: ["Myosin binding protein C", "Collagen type II", "Ryanodine receptor", "Troponin I"], answer: 0, explanation: "Mutations in the MYBPC3 gene are implicated."},
         {question: "Which clinical sign is most suggestive of left-sided congestive heart failure in dogs?", options: ["Ascites", "Coughing", "Jugular distension", "Hepatomegaly"], answer: 1, explanation: "Pulmonary edema from left-sided failure often causes coughing."},
@@ -179,7 +177,7 @@ const categories = {
             options: ["Thoracic radiographs", "Bronchoscopy", "Fluoroscopy", "CT scan"],
             answer: 2,
             explanation: "Fluoroscopy allows dynamic visualization of tracheal collapse during respiration." 
-        }
+        },
         {question: "Which fungal organism most commonly causes nasal disease in cats in North America?", options: ["Cryptococcus neoformans", "Aspergillus fumigatus", "Blastomyces dermatitidis", "Histoplasma capsulatum"], answer: 0, explanation: "Cryptococcus is the leading cause of feline fungal rhinitis."},
         {question: "Bronchoalveolar lavage fluid from a dog with eosinophilic bronchopneumopathy will show predominance of which cell type?", options: ["Neutrophils", "Lymphocytes", "Eosinophils", "Mast cells"], answer: 2, explanation: "Eosinophils predominate in this condition."},
         {question: "Which thoracic radiographic pattern is typical of cardiogenic pulmonary edema?", options: ["Bronchial", "Alveolar", "Interstitial", "Nodular"], answer: 1, explanation: "Pulmonary edema creates an alveolar pattern."},
@@ -219,8 +217,7 @@ const categories = {
             options: ["High protein", "Low phosphorus", "Low fat", "High sodium"],
             answer: 1,
             explanation: "Reducing dietary phosphorus helps slow progression of chronic kidney disease." 
-        }
-    ],
+        },
         {question: "Which urine specific gravity value in dogs suggests isosthenuria?", options: ["1.002", "1.010", "1.030", "1.050"], answer: 1, explanation: "Isosthenuria occurs around 1.008-1.012."},
         {question: "Which drug is first-line for lowering systemic blood pressure in cats with chronic kidney disease?", options: ["Enalapril", "Amlodipine", "Benazepril", "Hydrochlorothiazide"], answer: 1, explanation: "Amlodipine effectively controls hypertension in cats."},
         {question: "Pyelonephritis is best diagnosed using which combination of tests?", options: ["Urine culture and ultrasound", "BUN/creatinine alone", "Radiographs alone", "CBC alone"], answer: 0, explanation: "Culture and imaging confirm infection of the kidneys."},
@@ -240,7 +237,8 @@ const categories = {
         {question: "Which diet change is recommended for dogs with calcium oxalate urolithiasis?", options: ["Increase dietary calcium", "Increase urinary acidity", "Reduce oxalate and maintain neutral pH", "High-protein diet"], answer: 2, explanation: "Reducing dietary oxalate and maintaining neutral pH helps prevent stones."},
         {question: "Which drug is used to stimulate erythropoiesis in anemic cats with chronic kidney disease?", options: ["Erythropoietin stimulating agent", "Prednisone", "Vitamin B12", "Iron dextran"], answer: 0, explanation: "ESAs promote red blood cell production."},
         {question: "Renal secondary hyperparathyroidism leads to which bone disorder?", options: ["Pseudohyperparathyroidism", "Renal osteodystrophy", "Hypercalcemia of malignancy", "Paraneoplastic syndrome"], answer: 1, explanation: "Chronic kidney disease causes renal osteodystrophy."},
-        {question: "Which breed of dog is predisposed to familial renal amyloidosis?", options: ["Shar Pei", "Beagle", "Collie", "Pomeranian"], answer: 0, explanation: "Shar Peis can inherit amyloid deposition in the kidneys."}
+        {question: "Which breed of dog is predisposed to familial renal amyloidosis?", options: ["Shar Pei", "Beagle", "Collie", "Pomeranian"], answer: 0, explanation: "Shar Peis can inherit amyloid deposition in the kidneys."},
+    ],
     "Neurology": [
         {
             question: "Which breed is predisposed to intervertebral disc disease due to chondrodystrophy?",
@@ -259,7 +257,7 @@ const categories = {
             options: ["Phenobarbital", "Levetiracetam", "Potassium bromide", "Diazepam"],
             answer: 0,
             explanation: "Phenobarbital is widely used as an effective and affordable anticonvulsant in dogs." 
-        }
+        },
         {question: "Myasthenia gravis in dogs is characterized by antibodies against which receptor?", options: ["Dopamine receptor", "Acetylcholine receptor", "GABA receptor", "Serotonin receptor"], answer: 1, explanation: "Autoantibodies target acetylcholine receptors at the neuromuscular junction."},
         {question: "Seizure initiation in dogs typically arises from which brain region?", options: ["Cerebellum", "Cerebral cortex", "Brainstem", "Hypothalamus"], answer: 1, explanation: "The cerebral cortex is the origin of most seizures."},
         {question: "Which breed is predisposed to Chiari-like malformation causing syringomyelia?", options: ["Cavalier King Charles Spaniel", "Doberman", "Beagle", "Labrador Retriever"], answer: 0, explanation: "Cavalier King Charles Spaniels commonly develop this malformation."},
@@ -299,8 +297,7 @@ const categories = {
             options: ["Fine needle aspirate", "Biopsy and histopathology", "Flow cytometry", "PCR for antigen receptor rearrangements"],
             answer: 1,
             explanation: "Histopathology of a biopsy sample confirms lymphoma diagnosis and allows grading." 
-        }
-    ]
+        },
         {question: "Which tumor is the most common malignant skin tumor in dogs?", options: ["Mast cell tumor", "Melanoma", "Squamous cell carcinoma", "Fibrosarcoma"], answer: 0, explanation: "Mast cell tumors are the most frequent malignant skin tumors."},
         {question: "Injection-site sarcomas in cats are most associated with which vaccine component?", options: ["Adjuvanted vaccines", "Live attenuated vaccines", "Intranasal vaccines", "Vector vaccines"], answer: 0, explanation: "Adjuvanted vaccines have been linked to sarcoma formation."},
         {question: "Which agent in the CHOP protocol for canine lymphoma is associated with cumulative cardiotoxicity?", options: ["Vincristine", "Cyclophosphamide", "Doxorubicin", "L-asparaginase"], answer: 2, explanation: "Doxorubicin can cause dose-related cardiomyopathy."},
@@ -323,7 +320,6 @@ const categories = {
         {question: "Which cytologic feature is typical of histiocytic sarcoma in dogs?", options: ["Epithelial cell clusters", "Spindle-shaped cells with collagen", "Large pleomorphic histiocytes", "Small lymphocytes"], answer: 2, explanation: "Histiocytic sarcoma shows large pleomorphic macrophage-like cells."}
     ],
 
-n
     "Dermatology": [
         {question: "Which mite species causes canine scabies?", options: ["Demodex canis", "Sarcoptes scabiei var. canis", "Otodectes cynotis", "Cheyletiella yasguri"], answer: 1, explanation: "Sarcoptes scabiei var. canis burrows into the skin causing intense pruritus."},
         {question: "A common topical treatment for flea allergy dermatitis in dogs is:", options: ["Topical antibiotic", "Corticosteroid spray", "Antifungal shampoo", "Vitamin E oil"], answer: 1, explanation: "Corticosteroid sprays reduce inflammation associated with flea allergy."},
