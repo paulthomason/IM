@@ -436,6 +436,8 @@ const drawThemeEl = document.getElementById('drawTheme');
 const whiteboardBack = document.getElementById('whiteboardBack');
 const whiteboardSave = document.getElementById('whiteboardSave');
 const eraserBtn = document.getElementById('eraserBtn');
+const clearBoardBtn = document.getElementById('clearBoard');
+const colorPicker = document.getElementById('colorPicker');
 const colorButtons = document.querySelectorAll('.color-choice');
 
 let currentQuestions = [];
@@ -1447,10 +1449,17 @@ colorButtons.forEach(btn => {
     });
 });
 
+colorPicker.addEventListener('input', () => {
+    currentColor = colorPicker.value;
+    ctx.lineWidth = 3;
+});
+
 eraserBtn.addEventListener('click', () => {
     currentColor = '#ffffff';
     ctx.lineWidth = 20;
 });
+
+clearBoardBtn.addEventListener('click', clearCanvas);
 
 whiteboardSave.addEventListener('click', () => {
     const link = document.createElement('a');
