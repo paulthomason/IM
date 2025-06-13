@@ -430,6 +430,11 @@ const petDatabase = [
         disease: 'hip dysplasia',
         medication: 'carprofen',
         examFindings: 'decreased range of motion and pain on hip extension',
+        labQuestion: {
+            q: 'Which radiograph view best evaluates the hips?',
+            options: ['Ventrodorsal extended', 'Lateral thorax', 'Abdominal DV', 'Skull VD'],
+            answer: 0
+        },
         question: {
             q: 'Which medication is commonly used to control hip dysplasia pain?',
             options: ['Carprofen', 'Enrofloxacin', 'Furosemide', 'Methimazole'],
@@ -450,6 +455,11 @@ const petDatabase = [
         disease: 'asthma',
         medication: 'fluticasone inhaler',
         examFindings: 'increased expiratory effort with wheezes on auscultation',
+        labQuestion: {
+            q: 'Which drug can be used as a rescue inhaler for asthma flare ups?',
+            options: ['Albuterol', 'Prednisone', 'Amlodipine', 'Cyclosporine'],
+            answer: 0
+        },
         question: {
             q: 'Which inhaled steroid is often prescribed for feline asthma?',
             options: ['Fluticasone', 'Prednisone', 'Albuterol', 'Amlodipine'],
@@ -470,6 +480,11 @@ const petDatabase = [
         disease: 'diabetes mellitus',
         medication: 'NPH insulin',
         examFindings: 'cataracts noted and mildly underweight',
+        labQuestion: {
+            q: 'Which test best monitors long term glycemic control?',
+            options: ['Fructosamine', 'Blood urea nitrogen', 'PCV', 'Urine culture'],
+            answer: 0
+        },
         question: {
             q: 'Which insulin type is commonly used in diabetic dogs?',
             options: ['NPH', 'Regular', 'Glargine', 'Glipizide'],
@@ -490,6 +505,11 @@ const petDatabase = [
         disease: 'polycystic kidney disease',
         medication: 'renal diet',
         examFindings: 'kidneys enlarged and irregular on palpation',
+        labQuestion: {
+            q: 'Which value is most useful to monitor kidney function?',
+            options: ['Creatinine', 'ALT', 'Amylase', 'Glucose'],
+            answer: 0
+        },
         question: {
             q: 'Which test best monitors progression of polycystic kidney disease?',
             options: ['Abdominal ultrasound', 'Thoracic radiographs', 'Urinalysis', 'Blood pressure'],
@@ -510,6 +530,11 @@ const petDatabase = [
         disease: 'intervertebral disc disease',
         medication: 'gabapentin',
         examFindings: 'pain on palpation of the thoracolumbar spine',
+        labQuestion: {
+            q: 'Which imaging modality most accurately confirms disc herniation?',
+            options: ['MRI', 'CT', 'Ultrasound', 'Plain radiographs'],
+            answer: 0
+        },
         question: {
             q: 'Which medication provides neuropathic pain relief for IVDD?',
             options: ['Gabapentin', 'Furosemide', 'Prednisone', 'Amoxicillin'],
@@ -530,6 +555,11 @@ const petDatabase = [
         disease: 'hypertrophic cardiomyopathy',
         medication: 'atenolol',
         examFindings: 'grade 3/6 systolic murmur with gallop rhythm',
+        labQuestion: {
+            q: 'Which diagnostic test helps assess cardiac muscle thickness?',
+            options: ['Echocardiogram', 'Abdominal ultrasound', 'Thoracic CT', 'Electrocardiogram'],
+            answer: 0
+        },
         question: {
             q: 'Which drug is commonly used to slow heart rate in cats with HCM?',
             options: ['Atenolol', 'Furosemide', 'Lidocaine', 'Enalapril'],
@@ -538,6 +568,56 @@ const petDatabase = [
         conversation: {
             q: 'Owner asks about follow-up echocardiogram timing.',
             options: ['6 months', '5 years', 'Never', 'Every week'],
+            answer: 0
+        }
+    },
+    {
+        name: 'Bella',
+        species: 'dog',
+        breed: 'Yorkshire Terrier',
+        age: 7,
+        sex: 'spayed female',
+        disease: 'tracheal collapse',
+        medication: 'cough suppressant',
+        examFindings: 'pronounced honking cough when excited',
+        labQuestion: {
+            q: 'Which medication helps reduce airway inflammation?',
+            options: ['Prednisone', 'Furosemide', 'Clindamycin', 'Famotidine'],
+            answer: 0
+        },
+        question: {
+            q: 'Which diagnostic test best confirms tracheal collapse?',
+            options: ['Fluoroscopy', 'Abdominal ultrasound', 'MRI', 'CT of spine'],
+            answer: 0
+        },
+        conversation: {
+            q: 'Owner asks if using a harness is helpful.',
+            options: ['Yes, avoid neck collars', 'No, stick with collar', 'Only for large dogs', 'It makes no difference'],
+            answer: 0
+        }
+    },
+    {
+        name: 'Charlie',
+        species: 'cat',
+        breed: 'Domestic Shorthair',
+        age: 12,
+        sex: 'neutered male',
+        disease: 'hyperthyroidism',
+        medication: 'methimazole',
+        examFindings: 'palpable thyroid nodule and weight loss',
+        labQuestion: {
+            q: 'Which blood test should be rechecked to monitor therapy?',
+            options: ['Total T4', 'BUN', 'Glucose', 'Sodium'],
+            answer: 0
+        },
+        question: {
+            q: 'Which medication is used to control feline hyperthyroidism?',
+            options: ['Methimazole', 'Insulin', 'Enalapril', 'Itraconazole'],
+            answer: 0
+        },
+        conversation: {
+            q: 'Owner wonders when to repeat thyroid testing.',
+            options: ['In one month', 'In five years', 'Never', 'Every week'],
             answer: 0
         }
     }
@@ -895,10 +975,16 @@ function appointmentEvent() {
         } else if (step === 1) {
             doctorText.textContent = `Physical exam findings: ${pet.examFindings}.`;
             const btn = document.createElement('button');
-            btn.textContent = 'Talk to owner';
+            btn.textContent = 'Dictate findings';
             btn.onclick = () => { step++; run(); };
             doctorOptions.appendChild(btn);
         } else if (step === 2) {
+            doctorText.textContent = 'You record your findings into the medical software.';
+            const btn = document.createElement('button');
+            btn.textContent = 'Talk to owner';
+            btn.onclick = () => { step++; run(); };
+            doctorOptions.appendChild(btn);
+        } else if (step === 3) {
             doctorText.textContent = pet.conversation.q;
             pet.conversation.options.forEach((opt, idx) => {
                 const btn = document.createElement('button');
@@ -910,7 +996,7 @@ function appointmentEvent() {
                 };
                 doctorOptions.appendChild(btn);
             });
-        } else if (step === 3) {
+        } else if (step === 4) {
             doctorText.textContent = pet.question.q;
             pet.question.options.forEach((opt, idx) => {
                 const btn = document.createElement('button');
@@ -922,7 +1008,19 @@ function appointmentEvent() {
                 };
                 doctorOptions.appendChild(btn);
             });
-        } else if (step === 4) {
+        } else if (step === 5) {
+            doctorText.textContent = pet.labQuestion.q;
+            pet.labQuestion.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.textContent = opt;
+                btn.onclick = () => {
+                    doctorText.textContent = idx === pet.labQuestion.answer ? 'Correct!' : 'Not quite the best choice.';
+                    step++;
+                    setTimeout(run, 600);
+                };
+                doctorOptions.appendChild(btn);
+            });
+        } else if (step === 6) {
             doctorText.textContent = 'What do you recommend to the owner?';
             ['Run blood work', 'Adjust medication', 'Schedule recheck', 'Finish appointment'].forEach(opt => {
                 const btn = document.createElement('button');
@@ -935,7 +1033,8 @@ function appointmentEvent() {
                 doctorOptions.appendChild(btn);
             });
         } else {
-            doctorText.textContent = 'Feedback card from client: "Thanks for taking care of my pet!"';
+            const feedback = ['Thanks for taking care of my pet!', 'Great explanation today!', 'I appreciate your patience.', 'Helpful visit overall!'];
+            doctorText.textContent = `Feedback card from client: "${feedback[Math.floor(Math.random()*feedback.length)]}"`;
             doctorNext.classList.remove('hidden');
         }
     }
@@ -952,6 +1051,14 @@ function messageEvent() {
         {
             q: () => `Message from Gorgina: "${pet.name} seemed lethargic today. Any advice for the owner?"`,
             options: ['Schedule exam', 'Increase medication', 'Wait and monitor', 'Go to emergency clinic']
+        },
+        {
+            q: () => `Message from Gorgina: "${pet.name}'s lab results are back. Owner wants to know if values look okay."`,
+            options: ['Everything looks good', 'Need to discuss in appointment', 'Adjust medication', 'Repeat labs']
+        },
+        {
+            q: () => `Message from Gorgina: "When should ${pet.name} come in for the next recheck?"`,
+            options: ['In 1 month', 'In 6 months', 'Only if symptoms recur', 'Next week']
         }
     ];
     const msg = templates[Math.floor(Math.random() * templates.length)];
