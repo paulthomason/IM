@@ -358,10 +358,22 @@ const optionsEl = document.getElementById('options');
 const explanationEl = document.getElementById('explanation');
 const nextBtn = document.getElementById('next');
 const resultEl = document.getElementById('result');
+const twoPlayerBtn = document.getElementById('twoPlayer');
+const scoreboard = document.getElementById('scoreboard');
+const p1El = document.getElementById('p1');
+const p2El = document.getElementById('p2');
 
 let currentQuestions = [];
 let currentIndex = 0;
 let score = 0;
+let twoPlayer = false;
+let player1 = 'Player 1';
+let player2 = 'Player 2';
+let scores = [0, 0];
+let activePlayer = null;
+let buzzActive = false;
+let typingInterval = null;
+let currentQuestion = null;
 
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -380,12 +392,52 @@ function loadCategories() {
     });
 }
 
+twoPlayerBtn.addEventListener('click', () => {
+    twoPlayer = true;
+    player1 = prompt('Enter name for Player One:') || 'Player 1';
+    player2 = prompt('Enter name for Player Two:') || 'Player 2';
+    p1El.textContent = `${player1}: 0`;
+    p2El.textContent = `${player2}: 0`;
+    scoreboard.classList.remove('hidden');
+});
+
+document.addEventListener('keydown', (e) => {
+    if (!twoPlayer || !buzzActive || activePlayer !== null) return;
+    const key = e.key.toLowerCase();
+    if (key === 'a') {
+        setActivePlayer(0);
+    } else if (key === 'l') {
+        setActivePlayer(1);
+    }
+});
+
+function setActivePlayer(num) {
+    activePlayer = num;
+    buzzActive = false;
+    p1El.classList.toggle('active-player', num === 0);
+    p2El.classList.toggle('active-player', num === 1);
+    if (typingInterval) {
+        clearInterval(typingInterval);
+        questionEl.textContent = `Question ${currentIndex + 1}: ${currentQuestion.question}`;
+        revealOptions();
+    }
+    Array.from(optionsEl.children).forEach(btn => btn.disabled = false);
+}
+
 function startQuiz(category) {
     categoryContainer.classList.add('hidden');
     quizContainer.classList.remove('hidden');
     currentQuestions = shuffle([...categories[category]]).slice(0, 10);
     currentIndex = 0;
     score = 0;
+    scores = [0, 0];
+    if (twoPlayer) {
+        p1El.textContent = `${player1}: 0`;
+        p2El.textContent = `${player2}: 0`;
+        scoreboard.classList.remove('hidden');
+    } else {
+        scoreboard.classList.add('hidden');
+    }
     nextBtn.textContent = 'Next Question';
     nextBtn.classList.add('hidden');
     explanationEl.classList.add('hidden');
@@ -394,12 +446,30 @@ function startQuiz(category) {
 }
 
 function showQuestion() {
-    const q = currentQuestions[currentIndex];
-    questionEl.textContent = `Question ${currentIndex + 1}: ${q.question}`;
+    currentQuestion = currentQuestions[currentIndex];
+    const text = `Question ${currentIndex + 1}: ${currentQuestion.question}`;
+    questionEl.textContent = '';
     optionsEl.innerHTML = '';
-    q.options.forEach((opt, idx) => {
+    activePlayer = null;
+    buzzActive = twoPlayer;
+    p1El.classList.remove('active-player');
+    p2El.classList.remove('active-player');
+    let i = 0;
+    typingInterval = setInterval(() => {
+        questionEl.textContent += text[i++];
+        if (i >= text.length) {
+            clearInterval(typingInterval);
+            revealOptions();
+        }
+    }, 40);
+}
+
+function revealOptions() {
+    optionsEl.innerHTML = '';
+    currentQuestion.options.forEach((opt, idx) => {
         const btn = document.createElement('button');
         btn.textContent = opt;
+        btn.disabled = twoPlayer && activePlayer === null;
         btn.addEventListener('click', () => selectAnswer(idx));
         optionsEl.appendChild(btn);
     });
@@ -416,8 +486,15 @@ function selectAnswer(selected) {
             btn.style.borderColor = 'red';
         }
     });
+    buzzActive = false;
     if (selected === q.answer) {
-        score++;
+        if (twoPlayer && activePlayer !== null) {
+            scores[activePlayer]++;
+            const el = activePlayer === 0 ? p1El : p2El;
+            el.textContent = `${activePlayer === 0 ? player1 : player2}: ${scores[activePlayer]}`;
+        } else {
+            score++;
+        }
         explanationEl.textContent = 'Correct! ' + q.explanation;
     } else {
         explanationEl.textContent = `Incorrect. The correct answer was "${q.options[q.answer]}". ` + q.explanation;
@@ -438,7 +515,13 @@ nextBtn.addEventListener('click', () => {
     } else {
         quizContainer.classList.add('hidden');
         resultEl.classList.remove('hidden');
-        resultEl.textContent = `You scored ${score} out of ${currentQuestions.length}.`;
+        if (twoPlayer) {
+            const winner = scores[0] === scores[1] ? 'It\'s a tie!' :
+                (scores[0] > scores[1] ? `${player1} wins!` : `${player2} wins!`);
+            resultEl.textContent = `${player1}: ${scores[0]} | ${player2}: ${scores[1]} - ${winner}`;
+        } else {
+            resultEl.textContent = `You scored ${score} out of ${currentQuestions.length}.`;
+        }
         categoryContainer.classList.remove('hidden');
     }
 });
