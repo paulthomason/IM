@@ -346,6 +346,30 @@ const categories = {
         {question: "Dermatophytosis typically fluoresces under a Wood's lamp due to which species?", options: ["Microsporum gypseum", "Microsporum canis", "Trichophyton mentagrophytes", "Trichophyton verrucosum"], answer: 1, explanation: "M. canis often fluoresces apple green."},
         {question: "Which nutritional supplement is often recommended to improve skin barrier function in atopic dogs?", options: ["Omega-3 fatty acids", "Vitamin K", "Lysine", "Selenium"], answer: 0, explanation: "Omega-3 fatty acids help reduce inflammation and improve skin."}
     ],
+    "Hepatic": [
+        {question: "Which diagnostic test is most specific for confirming chronic hepatitis in dogs?", options: ["Liver biopsy", "Serum ALT", "Bile acids", "Abdominal radiographs"], answer: 0, explanation: "Histopathology of a biopsy confirms chronic hepatitis."},
+        {question: "Copper storage hepatopathy is most common in which breed?", options: ["Dalmatian", "Bedlington Terrier", "Great Dane", "Poodle"], answer: 1, explanation: "Bedlington Terriers commonly inherit copper-associated hepatitis."},
+        {question: "Hepatic lipidosis in cats is often triggered by:", options: ["Rapid weight loss or anorexia", "Excess carbohydrates", "High-protein diet", "Parasite infection"], answer: 0, explanation: "Prolonged anorexia or stress can lead to hepatic lipidosis."},
+        {question: "Which enzyme is most liver-specific in dogs?", options: ["ALT", "ALP", "CK", "AST"], answer: 0, explanation: "Alanine aminotransferase is primarily produced in hepatocytes."},
+        {question: "Portosystemic shunts in small breed dogs are typically:", options: ["Extrahepatic", "Intrahepatic", "Acquired", "Not surgically correctable"], answer: 0, explanation: "Congenital shunts in small breeds are often extrahepatic."},
+        {question: "What is the recommended treatment for gallbladder mucocele in dogs?", options: ["Medical management only", "Cholecystectomy", "Antibiotic therapy", "Percutaneous drainage"], answer: 1, explanation: "Surgical removal of the gallbladder is often required."},
+        {question: "Which substance is measured to evaluate hepatic synthetic function?", options: ["Bilirubin", "Albumin", "ALT", "GGT"], answer: 1, explanation: "Albumin production reflects hepatic synthetic capacity."},
+        {question: "A common sign of hepatic encephalopathy in dogs is:", options: ["Seizures", "Pruritus", "Tachycardia", "Increased appetite"], answer: 0, explanation: "Toxin accumulation can cause seizures and neurologic signs."},
+        {question: "Which drug is used to bind ammonia and treat hepatic encephalopathy?", options: ["Lactulose", "Metronidazole", "Prednisone", "Furosemide"], answer: 0, explanation: "Lactulose acidifies the colon and traps ammonia."},
+        {question: "Cholangitis/cholangiohepatitis complex is most commonly seen in which species?", options: ["Dogs", "Cats", "Horses", "Ferrets"], answer: 1, explanation: "Cats frequently develop inflammatory diseases of the biliary system."}
+    ],
+    "Immune-Mediated": [
+        {question: "Which drug is considered first-line therapy for immune-mediated hemolytic anemia in dogs?", options: ["Prednisone", "Cyclosporine", "Azathioprine", "Vincristine"], answer: 0, explanation: "High-dose corticosteroids are the initial treatment."},
+        {question: "Immune-mediated thrombocytopenia often presents with:", options: ["Petechiae and ecchymoses", "Polyuria", "Ataxia", "Cough"], answer: 0, explanation: "Severe low platelet counts cause petechial hemorrhages."},
+        {question: "Which diagnostic test can confirm autoimmune hemolytic anemia?", options: ["Coombs test", "ANA test", "Bile acids", "ACTH stimulation"], answer: 0, explanation: "The Coombs test detects antibodies on red blood cells."},
+        {question: "Lupus erythematosus complex in dogs often requires which medication for management?", options: ["Glucocorticoids", "Antibiotics", "Antifungals", "Anthelmintics"], answer: 0, explanation: "Immunosuppression with steroids is commonly required."},
+        {question: "What is a common side effect of long-term corticosteroid therapy?", options: ["PU/PD and polyphagia", "Decreased appetite", "Hypothermia", "Bradycardia"], answer: 0, explanation: "Steroids increase thirst, urination, and appetite."},
+        {question: "Immune-mediated polyarthritis is best diagnosed via:", options: ["Joint cytology", "MRI", "Urine culture", "Endoscopy"], answer: 0, explanation: "Arthrocentesis with cytology confirms immune-mediated inflammation."},
+        {question: "Which breed has a predisposition for primary immune-mediated polyarthritis?", options: ["Beagle", "German Shepherd", "Shar Pei", "Toy Poodle"], answer: 2, explanation: "Shar Peis commonly develop this condition."},
+        {question: "Cyclosporine exerts its immunosuppressive effect by inhibiting:", options: ["T-lymphocyte activation", "Bacterial protein synthesis", "DNA replication", "Collagen formation"], answer: 0, explanation: "Cyclosporine blocks T-cell activation pathways."},
+        {question: "Immune-mediated hemolytic anemia typically causes which type of anemia?", options: ["Regenerative anemia", "Non-regenerative anemia", "Iron deficiency anemia", "Aplastic anemia"], answer: 0, explanation: "The destruction of red cells stimulates strong regeneration."},
+        {question: "What adjunct therapy can reduce clot risk in dogs with IMHA?", options: ["Low-dose aspirin", "Vitamin K", "Iron supplementation", "Thyroxine"], answer: 0, explanation: "Antithrombotic drugs such as aspirin may decrease thrombosis."}
+    ],
 };
 const categoryContainer = document.getElementById('categories');
 const quizContainer = document.getElementById('quiz');
