@@ -455,6 +455,11 @@ const petDatabase = [
         disease: 'hip dysplasia',
         medication: 'carprofen',
         examFindings: 'decreased range of motion and pain on hip extension',
+        doseQuestion: {
+            q: 'What is a typical carprofen dose for dogs?',
+            options: ['2 mg/kg BID', '5 mg/kg BID', '0.5 mg/kg SID', '20 mg/kg SID'],
+            answer: 0
+        },
         labQuestion: {
             q: 'Which radiograph view best evaluates the hips?',
             options: ['Ventrodorsal extended', 'Lateral thorax', 'Abdominal DV', 'Skull VD'],
@@ -480,6 +485,11 @@ const petDatabase = [
         disease: 'asthma',
         medication: 'fluticasone inhaler',
         examFindings: 'increased expiratory effort with wheezes on auscultation',
+        doseQuestion: {
+            q: 'How many puffs per dose should be given with the fluticasone inhaler?',
+            options: ['1-2 puffs', '5 puffs', '10 puffs', 'As many as needed'],
+            answer: 0
+        },
         labQuestion: {
             q: 'Which drug can be used as a rescue inhaler for asthma flare ups?',
             options: ['Albuterol', 'Prednisone', 'Amlodipine', 'Cyclosporine'],
@@ -505,6 +515,11 @@ const petDatabase = [
         disease: 'diabetes mellitus',
         medication: 'NPH insulin',
         examFindings: 'cataracts noted and mildly underweight',
+        doseQuestion: {
+            q: 'What is a typical starting dose of NPH insulin in dogs?',
+            options: ['0.5 U/kg BID', '5 U/kg BID', '10 U/kg SID', '0.1 U/kg SID'],
+            answer: 0
+        },
         labQuestion: {
             q: 'Which test best monitors long term glycemic control?',
             options: ['Fructosamine', 'Blood urea nitrogen', 'PCV', 'Urine culture'],
@@ -530,6 +545,11 @@ const petDatabase = [
         disease: 'polycystic kidney disease',
         medication: 'renal diet',
         examFindings: 'kidneys enlarged and irregular on palpation',
+        doseQuestion: {
+            q: 'Approximate daily fluid requirement for stable CKD cats?',
+            options: ['40-60 ml/kg/day', '5-10 ml/kg/day', '100-120 ml/kg/day', 'No fluids needed'],
+            answer: 0
+        },
         labQuestion: {
             q: 'Which value is most useful to monitor kidney function?',
             options: ['Creatinine', 'ALT', 'Amylase', 'Glucose'],
@@ -555,6 +575,11 @@ const petDatabase = [
         disease: 'intervertebral disc disease',
         medication: 'gabapentin',
         examFindings: 'pain on palpation of the thoracolumbar spine',
+        doseQuestion: {
+            q: 'What gabapentin dose is commonly used for IVDD pain?',
+            options: ['10 mg/kg TID', '1 mg/kg BID', '50 mg/kg QID', '0.1 mg/kg SID'],
+            answer: 0
+        },
         labQuestion: {
             q: 'Which imaging modality most accurately confirms disc herniation?',
             options: ['MRI', 'CT', 'Ultrasound', 'Plain radiographs'],
@@ -580,6 +605,11 @@ const petDatabase = [
         disease: 'hypertrophic cardiomyopathy',
         medication: 'atenolol',
         examFindings: 'grade 3/6 systolic murmur with gallop rhythm',
+        doseQuestion: {
+            q: 'What atenolol dose is typically used in cats with HCM?',
+            options: ['6.25 mg BID', '50 mg once', '0.5 mg/kg TID', '100 mg SID'],
+            answer: 0
+        },
         labQuestion: {
             q: 'Which diagnostic test helps assess cardiac muscle thickness?',
             options: ['Echocardiogram', 'Abdominal ultrasound', 'Thoracic CT', 'Electrocardiogram'],
@@ -605,6 +635,11 @@ const petDatabase = [
         disease: 'tracheal collapse',
         medication: 'cough suppressant',
         examFindings: 'pronounced honking cough when excited',
+        doseQuestion: {
+            q: 'What hydrocodone dose is often used for small dogs?',
+            options: ['0.25 mg/kg q8-12h', '2 mg/kg BID', '10 mg/kg q4h', 'No dose needed'],
+            answer: 0
+        },
         labQuestion: {
             q: 'Which medication helps reduce airway inflammation?',
             options: ['Prednisone', 'Furosemide', 'Clindamycin', 'Famotidine'],
@@ -630,6 +665,11 @@ const petDatabase = [
         disease: 'hyperthyroidism',
         medication: 'methimazole',
         examFindings: 'palpable thyroid nodule and weight loss',
+        doseQuestion: {
+            q: 'What starting dose of methimazole is typical for cats?',
+            options: ['2.5 mg BID', '10 mg BID', '0.5 mg BID', '20 mg SID'],
+            answer: 0
+        },
         labQuestion: {
             q: 'Which blood test should be rechecked to monitor therapy?',
             options: ['Total T4', 'BUN', 'Glucose', 'Sodium'],
@@ -1228,6 +1268,18 @@ function appointmentEvent() {
                 doctorOptions.appendChild(btn);
             });
         } else if (step === 5) {
+            doctorText.textContent = pet.doseQuestion.q;
+            pet.doseQuestion.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.textContent = opt;
+                btn.onclick = () => {
+                    doctorText.textContent = idx === pet.doseQuestion.answer ? 'Correct!' : 'Not quite the best choice.';
+                    step++;
+                    setTimeout(run, 600);
+                };
+                doctorOptions.appendChild(btn);
+            });
+        } else if (step === 6) {
             doctorText.textContent = pet.labQuestion.q;
             pet.labQuestion.options.forEach((opt, idx) => {
                 const btn = document.createElement('button');
@@ -1239,7 +1291,7 @@ function appointmentEvent() {
                 };
                 doctorOptions.appendChild(btn);
             });
-        } else if (step === 6) {
+        } else if (step === 7) {
             doctorText.textContent = 'What do you recommend to the owner?';
             ['Run blood work', 'Adjust medication', 'Schedule recheck', 'Finish appointment'].forEach(opt => {
                 const btn = document.createElement('button');
