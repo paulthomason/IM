@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Veterinary Internal Medicine Quiz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -91,7 +94,17 @@
         </div>
         <div id="whiteboardGame" class="hidden">
             <p id="drawTheme"></p>
-            <canvas id="whiteboardCanvas" width="600" height="400"></canvas>
+            <div class="board-area">
+                <canvas id="whiteboardCanvas" width="600" height="400"></canvas>
+                <div id="apptList">
+                    <p><strong>8:30 Luna</strong></p>
+                    <p class="lab">CBC, Chemistry</p>
+                    <p><strong>9:15 Max</strong></p>
+                    <p class="lab">Heartworm test</p>
+                    <p><strong>10:00 Daisy</strong></p>
+                    <p class="lab">Thyroid panel</p>
+                </div>
+            </div>
             <div class="board-tools">
                 <div id="colorPalette">
                     <button class="color-choice" data-color="#000000" style="background:#000000;"></button>
