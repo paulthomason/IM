@@ -237,7 +237,16 @@ body.dark button:hover {
     width: 30px;
     height: 30px;
     padding: 0;
-    border: none;
+    border: 1px solid #666;
+    border-radius: 4px;
     margin-left: 5px;
     background: none;
+    cursor: pointer;
+}
+
+.picker-label {
+    margin-left: 6px;
+    margin-right: 2px;
+    font-size: 0.9rem;
+    vertical-align: middle;
 }
