@@ -10,6 +10,7 @@
     <div class="container">
         <button id="miniGames" class="two-player-btn" style="right:180px;">Mini Games</button>
         <button id="doctorMode" class="two-player-btn" style="right:310px;">Doctor Mode</button>
+        <button id="whiteboardBtn" class="two-player-btn" style="right:440px;">Draw on Whiteboard</button>
         <button id="themeToggle" class="two-player-btn" style="right:50px;">Toggle Theme</button>
         <h1>Welcome, Pablo! What would you like to learn about today?</h1>
         <div id="categories" class="categories"></div>
@@ -87,6 +88,22 @@
             <div id="riddleOptions"></div>
             <p id="riddleResult"></p>
             <button id="riddleBack">Back to Menu</button>
+        </div>
+        <div id="whiteboardGame" class="hidden">
+            <p id="drawTheme"></p>
+            <canvas id="whiteboardCanvas" width="600" height="400"></canvas>
+            <div class="board-tools">
+                <div id="colorPalette">
+                    <button class="color-choice" data-color="#000000" style="background:#000000;"></button>
+                    <button class="color-choice" data-color="#ff0000" style="background:#ff0000;"></button>
+                    <button class="color-choice" data-color="#00ff00" style="background:#00ff00;"></button>
+                    <button class="color-choice" data-color="#0000ff" style="background:#0000ff;"></button>
+                    <button class="color-choice" data-color="#ffff00" style="background:#ffff00;"></button>
+                </div>
+                <button id="eraserBtn">Eraser</button>
+                <button id="whiteboardSave">Save</button>
+                <button id="whiteboardBack">Back</button>
+            </div>
         </div>
         <div id="doctorScreen" class="hidden">
             <p id="doctorText"></p>
