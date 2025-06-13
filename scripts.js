@@ -408,6 +408,7 @@ let twoPlayer = false;
 let player1 = 'Player 1';
 let player2 = 'Player 2';
 let scores = [0, 0];
+let wagers = [0, 0];
 let activePlayer = null;
 let buzzActive = false;
 let typingInterval = null;
@@ -441,6 +442,15 @@ function loadCategories() {
         btn.addEventListener('click', () => startQuiz(cat));
         categoryContainer.appendChild(btn);
     });
+}
+
+function promptWagers() {
+    wagers[0] = parseInt(prompt(`${player1}, you have ${scores[0]} points. How many would you like to wager? (0-${scores[0]})`), 10);
+    if (isNaN(wagers[0]) || wagers[0] < 0) wagers[0] = 0;
+    if (wagers[0] > scores[0]) wagers[0] = scores[0];
+    wagers[1] = parseInt(prompt(`${player2}, you have ${scores[1]} points. How many would you like to wager? (0-${scores[1]})`), 10);
+    if (isNaN(wagers[1]) || wagers[1] < 0) wagers[1] = 0;
+    if (wagers[1] > scores[1]) wagers[1] = scores[1];
 }
 
 twoPlayerBtn.addEventListener('click', () => {
@@ -540,7 +550,11 @@ function selectAnswer(selected) {
     buzzActive = false;
     if (selected === q.answer) {
         if (twoPlayer && activePlayer !== null) {
-            scores[activePlayer]++;
+            if (currentIndex === currentQuestions.length - 1) {
+                scores[activePlayer] += wagers[activePlayer];
+            } else {
+                scores[activePlayer]++;
+            }
             const el = activePlayer === 0 ? p1El : p2El;
             el.textContent = `${activePlayer === 0 ? player1 : player2}: ${scores[activePlayer]}`;
         } else {
@@ -548,6 +562,11 @@ function selectAnswer(selected) {
         }
         explanationEl.textContent = 'Correct! ' + q.explanation;
     } else {
+        if (twoPlayer && activePlayer !== null && currentIndex === currentQuestions.length - 1) {
+            scores[activePlayer] -= wagers[activePlayer];
+            const el = activePlayer === 0 ? p1El : p2El;
+            el.textContent = `${activePlayer === 0 ? player1 : player2}: ${scores[activePlayer]}`;
+        }
         explanationEl.textContent = `Incorrect. The correct answer was "${q.options[q.answer]}". ` + q.explanation;
     }
     explanationEl.classList.remove('hidden');
@@ -562,6 +581,9 @@ nextBtn.addEventListener('click', () => {
     if (currentIndex < currentQuestions.length) {
         explanationEl.classList.add('hidden');
         nextBtn.classList.add('hidden');
+        if (twoPlayer && currentIndex === currentQuestions.length - 1) {
+            promptWagers();
+        }
         showQuestion();
     } else {
         quizContainer.classList.add('hidden');
