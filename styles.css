@@ -250,3 +250,25 @@ body.dark button:hover {
     font-size: 0.9rem;
     vertical-align: middle;
 }
+
+.board-area {
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+#apptList {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.4rem;
+    line-height: 1.2;
+    pointer-events: none;
+}
+
+#apptList .lab {
+    margin-left: 20px;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
