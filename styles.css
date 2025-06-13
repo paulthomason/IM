@@ -173,3 +173,17 @@ body {
 #doctorOptions button:hover {
     background: #e0e0e0;
 }
+
+#doctorNext, #doctorQuit {
+    margin-top: 10px;
+    padding: 6px 12px;
+    border: none;
+    background-color: #1565c0;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#doctorNext:hover, #doctorQuit:hover {
+    background-color: #0d47a1;
+}
