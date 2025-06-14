@@ -439,6 +439,7 @@ const eraserBtn = document.getElementById('eraserBtn');
 const clearBoardBtn = document.getElementById('clearBoard');
 const colorPicker = document.getElementById('colorPicker');
 const colorButtons = document.querySelectorAll('.color-choice');
+const apptListEl = document.getElementById('apptList');
 
 let currentQuestions = [];
 let currentIndex = 0;
@@ -1404,8 +1405,27 @@ function startWhiteboardGame() {
     hideAllGames();
     whiteboardGame.classList.remove('hidden');
     clearCanvas();
+    populateAppointments();
     const themes = ['Muppets', 'Nature', 'Favorite Foods', 'Outer Space', 'Underwater', 'Superheroes'];
     drawThemeEl.textContent = 'Theme: ' + themes[Math.floor(Math.random() * themes.length)];
+}
+
+function populateAppointments() {
+    const times = ['8:30', '9:15', '10:00'];
+    const labs = ['CBC, Chemistry', 'Heartworm test', 'Thyroid panel', 'Urinalysis', 'Radiographs', 'Fecal exam'];
+    const pets = shuffle([...petDatabase]).slice(0, times.length);
+    apptListEl.innerHTML = '';
+    times.forEach((time, idx) => {
+        const pet = pets[idx].name;
+        const lab = labs[Math.floor(Math.random() * labs.length)];
+        const p1 = document.createElement('p');
+        p1.innerHTML = `<strong>${time} ${pet}</strong>`;
+        const p2 = document.createElement('p');
+        p2.className = 'lab';
+        p2.textContent = lab;
+        apptListEl.appendChild(p1);
+        apptListEl.appendChild(p2);
+    });
 }
 
 function clearCanvas() {
