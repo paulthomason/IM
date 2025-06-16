@@ -65,6 +65,43 @@ function initSurgeryScene(){
   }
   scene.add(table);
 
+  // Simple patient model on the table
+  const patient = new THREE.Group();
+  const patientBody = new THREE.Mesh(new THREE.CylinderGeometry(0.25,0.25,1.2,16), new THREE.MeshPhongMaterial({color:0xd2b48c}));
+  patientBody.rotation.z = Math.PI/2;
+  patient.add(patientBody);
+  const patientHead = new THREE.Mesh(new THREE.SphereGeometry(0.2,16,12), new THREE.MeshPhongMaterial({color:0xd2b48c}));
+  patientHead.position.set(0.6,0,0);
+  patient.add(patientHead);
+  patient.position.set(0,1.25,0);
+  scene.add(patient);
+
+  // Simple surgeon model beside the table
+  const surgeon = new THREE.Group();
+  const torso = new THREE.Mesh(new THREE.BoxGeometry(0.4,0.8,0.2), new THREE.MeshPhongMaterial({color:0x0080ff}));
+  torso.position.y = 1.4;
+  surgeon.add(torso);
+  const head = new THREE.Mesh(new THREE.SphereGeometry(0.2,16,12), new THREE.MeshPhongMaterial({color:0xffcc99}));
+  head.position.y = 1.9;
+  surgeon.add(head);
+  const legGeo = new THREE.CylinderGeometry(0.1,0.1,0.6,8);
+  const leftLeg = new THREE.Mesh(legGeo, new THREE.MeshPhongMaterial({color:0x0080ff}));
+  leftLeg.position.set(-0.1,0.3,0);
+  surgeon.add(leftLeg);
+  const rightLeg = leftLeg.clone();
+  rightLeg.position.x = 0.1;
+  surgeon.add(rightLeg);
+  const armGeo = new THREE.CylinderGeometry(0.05,0.05,0.5,8);
+  const leftArm = new THREE.Mesh(armGeo, new THREE.MeshPhongMaterial({color:0x0080ff}));
+  leftArm.rotation.z = Math.PI/2;
+  leftArm.position.set(-0.35,1.55,0);
+  surgeon.add(leftArm);
+  const rightArm = leftArm.clone();
+  rightArm.position.x = 0.35;
+  surgeon.add(rightArm);
+  surgeon.position.set(1.5,0,0);
+  scene.add(surgeon);
+
   // Crash cart station
   const cart = new THREE.Group();
   const cartBody = new THREE.Mesh(new THREE.BoxGeometry(1,1.2,0.6), new THREE.MeshPhongMaterial({color:0xff0000}));
