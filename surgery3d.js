@@ -4,6 +4,17 @@ let currentStation = null;
 let nearStation = null;
 const keys = {};
 
+function createZone(pos, radius = 1.5){
+  const geom = new THREE.CircleGeometry(radius, 32);
+  const mat = new THREE.MeshBasicMaterial({color:0xffff00, opacity:0.3, transparent:true});
+  const circle = new THREE.Mesh(geom, mat);
+  circle.rotation.x = -Math.PI/2;
+  circle.position.set(pos.x, 0.01, pos.z);
+  circle.userData.radius = radius;
+  scene.add(circle);
+  return circle;
+}
+
 function initSurgeryScene(){
   const canvas = document.getElementById('surgeryCanvas');
   renderer = new THREE.WebGLRenderer({canvas, antialias: true});
@@ -176,8 +187,10 @@ function initSurgeryScene(){
   }
   cart.position.set(4,0,-4);
   scene.add(cart);
+  const cartZone = createZone(cart.position);
   stations.cart = {
     mesh: cart,
+    zone: cartZone,
     index: 0,
     questions: [
       {question: 'Which drug is recommended at 0.01 mg/kg IV during CPR in dogs?', options:['Epinephrine','Atropine','Lidocaine','Diazepam'], answer:0},
@@ -202,8 +215,10 @@ function initSurgeryScene(){
       });
       obj.position.set(-1.5,0,0);
       scene.add(obj);
+      const anesthesiaZone = createZone(obj.position);
       stations.anesthesia = {
         mesh: obj,
+        zone: anesthesiaZone,
         index: 0,
         questions: [
           {question: 'Normal end tidal CO2 in anesthetized dogs is:', options:['20-30 mmHg','35-45 mmHg','50-60 mmHg','70-80 mmHg'], answer:1},
@@ -242,8 +257,10 @@ function initSurgeryScene(){
   }
   instr.position.set(0,0,4);
   scene.add(instr);
+  const instrZone = createZone(instr.position);
   stations.instrument = {
     mesh: instr,
+    zone: instrZone,
     index: 0,
     questions: [
       {question:'Which instrument is used to clamp small vessels?', options:['Halsted mosquito hemostat','Kelly forceps','Scalpel handle','Needle driver'], answer:0},
@@ -332,11 +349,14 @@ function showIntro(){
 
 function checkStations(){
   if(currentStation) return;
-  const pos = camera.position;
+  const camPos2D = new THREE.Vector2(camera.position.x, camera.position.z);
   let found = false;
   for(const key in stations){
     const st = stations[key];
-    if(pos.distanceTo(st.mesh.position) < 1.5 && st.index < st.questions.length){
+    if(!st.zone || st.index >= st.questions.length) continue;
+    const zonePos = new THREE.Vector2(st.zone.position.x, st.zone.position.z);
+    const dist = camPos2D.distanceTo(zonePos);
+    if(dist < st.zone.userData.radius){
       nearStation = st;
       found = true;
       const promptEl = document.getElementById('interactPrompt');
