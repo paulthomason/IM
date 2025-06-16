@@ -66,84 +66,32 @@ function initSurgeryScene(){
   rightWall.position.set(-10,2.5,0);
   scene.add(rightWall);
 
-  const table = new THREE.Group();
-  const tableTop = new THREE.Mesh(new THREE.BoxGeometry(3,0.2,2), new THREE.MeshPhongMaterial({color:0x8e44ad}));
-  tableTop.position.y = 1;
-  tableTop.castShadow = true;
-  tableTop.receiveShadow = true;
-  table.add(tableTop);
-  const legGeom = new THREE.CylinderGeometry(0.1,0.1,1,6);
-  for(let x=-1.3;x<=1.3;x+=2.6){
-    for(let z=-0.8;z<=0.8;z+=1.6){
-      const leg = new THREE.Mesh(legGeom,new THREE.MeshPhongMaterial({color:0x555555}));
-      leg.position.set(x,0.5,z);
-      leg.castShadow = true;
-      leg.receiveShadow = true;
-      table.add(leg);
-    }
-  }
-  scene.add(table);
+  let bed, surgeonObj, spot;
 
-  // Simple patient model on the table
-  const patient = new THREE.Group();
-  const patientBody = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.25, 0.25, 1.2, 16),
-    new THREE.MeshPhongMaterial({ color: 0xd2b48c })
-  );
-  patientBody.rotation.z = Math.PI / 2;
-  patientBody.castShadow = true;
-  patientBody.receiveShadow = true;
-  patient.add(patientBody);
-
-  const patientHead = new THREE.Mesh(
-    new THREE.SphereGeometry(0.2, 16, 12),
-    new THREE.MeshPhongMaterial({ color: 0xd2b48c })
-  );
-  patientHead.position.set(0.6, 0, 0);
-  patientHead.castShadow = true;
-  patientHead.receiveShadow = true;
-  patient.add(patientHead);
-
-  // ears
-  const earGeom = new THREE.ConeGeometry(0.05, 0.15, 8);
-  const leftEar = new THREE.Mesh(earGeom, new THREE.MeshPhongMaterial({ color: 0xd2b48c }));
-  leftEar.position.set(0.65, 0.1, 0.08);
-  leftEar.rotation.z = Math.PI / 12;
-  patient.add(leftEar);
-  const rightEar = leftEar.clone();
-  rightEar.position.set(0.65, 0.1, -0.08);
-  rightEar.rotation.z = -Math.PI / 12;
-  patient.add(rightEar);
-
-  // nose
-  const nose = new THREE.Mesh(
-    new THREE.SphereGeometry(0.05, 8, 6),
-    new THREE.MeshPhongMaterial({ color: 0x664422 })
-  );
-  nose.position.set(0.75, 0, 0);
-  patient.add(nose);
-
-  // legs
-  const pLegGeom = new THREE.CylinderGeometry(0.05, 0.05, 0.3, 8);
-  for (let i = -1; i <= 1; i += 2) {
-    for (let j = -1; j <= 1; j += 2) {
-      const leg = new THREE.Mesh(pLegGeom, new THREE.MeshPhongMaterial({ color: 0xd2b48c }));
-      leg.position.set(i * 0.4, -0.15, j * 0.15);
-      patient.add(leg);
-    }
-  }
-
-  // tail
-  const tail = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.04, 0.02, 0.3, 8),
-    new THREE.MeshPhongMaterial({ color: 0xd2b48c })
-  );
-  tail.position.set(-0.65, 0, 0);
-  tail.rotation.z = -Math.PI / 4;
-  patient.add(tail);
-
-  patient.position.set(0, 1.25, 0);
-  scene.add(patient);
+  // Load hospital bed model
+  const bedMtl = new THREE.MTLLoader();
+  bedMtl.setPath('surgery_models/Hospital Bed/');
+  bedMtl.load('Hospital Bed.mtl', mtl => {
+    mtl.preload();
+    const bedLoader = new THREE.OBJLoader();
+    bedLoader.setMaterials(mtl);
+    bedLoader.setPath('surgery_models/Hospital Bed/');
+    bedLoader.load('Hospital Bed.obj', obj => {
+      obj.traverse(c => {
+        if(c.isMesh){
+          c.castShadow = true;
+          c.receiveShadow = true;
+        }
+      });
+      obj.scale.set(0.1,0.1,0.1);
+      obj.position.set(0,0.63,0);
+      obj.rotation.y = Math.PI/2;
+      bed = obj;
+      scene.add(obj);
+      if(surgeonObj) surgeonObj.lookAt(obj.position);
+      if(spot) spot.target = obj;
+    });
+  });
 
   // Surgeon model loaded from file with materials
   const mtlLoader = new THREE.MTLLoader();
@@ -153,7 +101,7 @@ function initSurgeryScene(){
     const objLoader = new THREE.OBJLoader();
     objLoader.setMaterials(materials);
     objLoader.setPath('surgery_models/Surgeon/');
-    objLoader.load('Surgeon_pose.obj', obj => {
+    objLoader.load('Surgeon.obj', obj => {
       obj.traverse(child => {
         if(child.isMesh){
           child.castShadow = true;
@@ -162,7 +110,8 @@ function initSurgeryScene(){
       });
       obj.scale.set(0.01, 0.01, 0.01);
       obj.position.set(1.5, 0, 0);
-      obj.rotation.y = Math.PI / 2; // face table
+      surgeonObj = obj;
+      if(bed) obj.lookAt(bed.position);
       scene.add(obj);
     });
   });
@@ -181,14 +130,14 @@ function initSurgeryScene(){
   );
   lampHead.position.y = 3;
   lamp.add(lampHead);
-  const spot = new THREE.SpotLight(0xffffff,1.2);
+  spot = new THREE.SpotLight(0xffffff,1.2);
   spot.position.set(0,3,0);
   spot.angle = Math.PI/6;
   spot.penumbra = 0.2;
   spot.castShadow = true;
-  spot.target = table;
+  if(bed) spot.target = bed;
   lamp.add(spot);
-  lamp.add(spot.target);
+  if(spot.target) lamp.add(spot.target);
   scene.add(lamp);
 
   // Crash cart station
@@ -237,43 +186,32 @@ function initSurgeryScene(){
   };
 
   // Anesthesia machine station
-  const machine = new THREE.Group();
-  const base = new THREE.Mesh(new THREE.BoxGeometry(1,0.2,1), new THREE.MeshPhongMaterial({color:0x00ff00}));
-  base.position.y = 0.1;
-  machine.add(base);
-  const stand = new THREE.Mesh(new THREE.CylinderGeometry(0.1,0.1,1.2,8), new THREE.MeshPhongMaterial({color:0x00ff00}));
-  stand.position.y = 0.7;
-  machine.add(stand);
-  const top = new THREE.Mesh(new THREE.BoxGeometry(1,0.2,0.8), new THREE.MeshPhongMaterial({color:0x00ff00}));
-  top.position.y = 1.3;
-  machine.add(top);
-  const screen = new THREE.Mesh(new THREE.PlaneGeometry(0.6,0.4), new THREE.MeshPhongMaterial({color:0x333333}));
-  screen.position.set(0,1.5,0.41);
-  machine.add(screen);
-  const hose = new THREE.Mesh(new THREE.TorusGeometry(0.3,0.02,8,16), new THREE.MeshPhongMaterial({color:0xaaaaaa}));
-  hose.rotation.x = Math.PI/2;
-  hose.position.set(0.3,1.1,0);
-  machine.add(hose);
-  const tankGeom = new THREE.CylinderGeometry(0.1,0.1,0.8,16);
-  const tank1 = new THREE.Mesh(tankGeom, new THREE.MeshPhongMaterial({color:0x007700}));
-  tank1.position.set(-0.4,0.6,-0.3);
-  machine.add(tank1);
-  const tank2 = tank1.clone();
-  tank2.position.set(-0.2,0.6,-0.3);
-  machine.add(tank2);
-  const bag = new THREE.Mesh(new THREE.SphereGeometry(0.12,12,8), new THREE.MeshPhongMaterial({color:0x0000ff}));
-  bag.position.set(0.5,1.1,0.3);
-  machine.add(bag);
-  machine.position.set(-4,0,-4);
-  scene.add(machine);
-  stations.anesthesia = {
-    mesh: machine,
-    index: 0,
-    questions: [
-      {question: 'Normal end tidal CO2 in anesthetized dogs is:', options:['20-30 mmHg','35-45 mmHg','50-60 mmHg','70-80 mmHg'], answer:1},
-      {question: 'Recommended oxygen flow rate for mask induction in small animals?', options:['1-2 L/min','5-10 mL/kg/min','100 mL/kg/hr','20 L/min'], answer:0}
-    ]
-  };
+  const machineMtl = new THREE.MTLLoader();
+  machineMtl.setPath('surgery_models/Anesthesia Machine/');
+  machineMtl.load('Anesthesia Machine.mtl', mats => {
+    mats.preload();
+    const machineLoader = new THREE.OBJLoader();
+    machineLoader.setMaterials(mats);
+    machineLoader.setPath('surgery_models/Anesthesia Machine/');
+    machineLoader.load('Anesthesia Machine.obj', obj => {
+      obj.traverse(c => {
+        if(c.isMesh){
+          c.castShadow = true;
+          c.receiveShadow = true;
+        }
+      });
+      obj.position.set(-1.5,0,0);
+      scene.add(obj);
+      stations.anesthesia = {
+        mesh: obj,
+        index: 0,
+        questions: [
+          {question: 'Normal end tidal CO2 in anesthetized dogs is:', options:['20-30 mmHg','35-45 mmHg','50-60 mmHg','70-80 mmHg'], answer:1},
+          {question: 'Recommended oxygen flow rate for mask induction in small animals?', options:['1-2 L/min','5-10 mL/kg/min','100 mL/kg/hr','20 L/min'], answer:0}
+        ]
+      };
+    });
+  });
 
   // Instrument table station
   const instr = new THREE.Group();
