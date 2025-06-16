@@ -262,12 +262,14 @@ function onKeyUp(e){ keys[e.code] = false; }
 
 function setupJoystick(el){
   const stick = el.querySelector('.stick');
-  let startX = 0, startY = 0;
+  let startX = 0, startY = 0, startScroll = 0;
+  const optDiv = document.getElementById('surgeryOptions');
   const threshold = 20;
   el.addEventListener('touchstart', e=>{
     const t = e.touches[0];
     startX = t.clientX;
     startY = t.clientY;
+    if(optDiv) startScroll = optDiv.scrollTop;
     stick.style.transform = 'translate(0,0)';
     e.preventDefault();
   });
@@ -278,10 +280,14 @@ function setupJoystick(el){
     const angle = Math.atan2(dy, dx);
     const dist = Math.min(40, Math.hypot(dx, dy));
     stick.style.transform = `translate(${dist*Math.cos(angle)}px,${dist*Math.sin(angle)}px)`;
-    keys['ArrowLeft'] = dx < -threshold;
-    keys['ArrowRight'] = dx > threshold;
-    keys['ArrowUp'] = dy < -threshold;
-    keys['ArrowDown'] = dy > threshold;
+    if(currentStation && optDiv && optDiv.scrollHeight > optDiv.clientHeight){
+      optDiv.scrollTop = startScroll - dy;
+    }else{
+      keys['ArrowLeft'] = dx < -threshold;
+      keys['ArrowRight'] = dx > threshold;
+      keys['ArrowUp'] = dy < -threshold;
+      keys['ArrowDown'] = dy > threshold;
+    }
     e.preventDefault();
   });
   el.addEventListener('touchend', () => {
@@ -328,6 +334,8 @@ function showIntro(){
   document.getElementById('surgeryNext').classList.add('hidden');
   const promptEl = document.getElementById('interactPrompt');
   if(promptEl) promptEl.classList.add('hidden');
+  const instrEl = document.querySelector('#surgeryUI .instructions');
+  if(instrEl) instrEl.classList.add('hidden');
 }
 
 function checkStations(){

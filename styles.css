@@ -308,6 +308,10 @@ body.dark button:hover {
 #surgeryOptions button {
     margin: 4px;
 }
+#surgeryOptions {
+    max-height: 40vh;
+    overflow-y: auto;
+}
 #surgeryNext, #surgeryExit {
     margin-top: 8px;
     padding: 6px 10px;
