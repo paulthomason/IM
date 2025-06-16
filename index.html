@@ -120,7 +120,7 @@
             <canvas id="surgeryCanvas"></canvas>
             <div id="joystick" class="hidden"><div class="stick"></div></div>
             <div id="surgeryUI">
-                <p class="instructions">Use arrow keys or the on-screen joystick to move around the room. Approach a station to start questions.</p>
+                <p class="instructions">Click the canvas to lock the cursor. Use WASD or the on-screen joystick to move, and drag the mouse to look around. Approach a station to start questions.</p>
                 <p id="surgeryQuestion"></p>
                 <div id="surgeryOptions"></div>
                 <button id="surgeryNext" class="hidden">Next</button>
@@ -131,6 +131,7 @@
     <script src="scripts.js" defer></script>
     <script src="https://unpkg.com/three@0.130.1/build/three.min.js"></script>
     <script src="https://unpkg.com/three@0.130.1/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://unpkg.com/three@0.130.1/examples/js/controls/PointerLockControls.js"></script>
     <script src="surgery3d.js" defer></script>
 </body>
 </html>
