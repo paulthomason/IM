@@ -10,7 +10,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 1
-map_Kd /Users/a1234/Desktop/TOP100/anesthesia machine/OT Anesthesia Machine Diff.jpg
+map_Kd OT Anesthesia Machine Diff.jpg
 
 newmtl OP_Glass
 Ns 347.797530
@@ -31,7 +31,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 1
-map_Kd /Users/a1234/Desktop/TOP100/anesthesia machine/OT Anesthesia Machine Diff.jpg
+map_Kd OT Anesthesia Machine Diff.jpg
 
 newmtl OP_Plastic
 Ns 97.322712
@@ -42,7 +42,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 1
-map_Kd /Users/a1234/Desktop/TOP100/anesthesia machine/OT Anesthesia Machine Diff.jpg
+map_Kd OT Anesthesia Machine Diff.jpg
 
 newmtl OP_Rubber
 Ns 0.000000
@@ -53,7 +53,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 1
-map_Kd /Users/a1234/Desktop/TOP100/anesthesia machine/OT Anesthesia Machine Diff.jpg
+map_Kd OT Anesthesia Machine Diff.jpg
 
 newmtl OP_Wheel
 Ns 0.000000
@@ -64,4 +64,4 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 1
-map_Kd /Users/a1234/Desktop/TOP100/anesthesia machine/OT Anesthesia Machine Diff.jpg
+map_Kd OT Anesthesia Machine Diff.jpg
