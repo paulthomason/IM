@@ -38,6 +38,9 @@ const categories = {
         {question: "What organism causes 'cat scratch disease' in humans?", options: ["Bartonella henselae", "Pasteurella multocida", "Capnocytophaga canimorsus", "Yersinia pestis"], answer: 0, explanation: "Bartonella henselae is transmitted by cats."},
         {question: "The definitive host for Toxoplasma gondii is which species?", options: ["Dog", "Cat", "Sheep", "Pig"], answer: 1, explanation: "Cats are the definitive host for Toxoplasma."},
         {question: "What is the main route of transmission for canine influenza virus?", options: ["Fecal-oral", "Aerosol respiratory droplets", "Vector-borne", "Venereal"], answer: 1, explanation: "Canine influenza spreads through respiratory droplets."},
+        {question: "Which diagnostic test differentiates feline coronavirus from feline infectious peritonitis?", options: ["PCR of effusion", "ELISA antibody titer", "Virus isolation", "Fecal culture"], answer: 0, explanation: "PCR of effusive fluid can identify mutated FIP virus."},
+        {question: "Which antibiotic is preferred for treating Mycoplasma hemofelis in cats?", options: ["Enrofloxacin", "Azithromycin", "Amoxicillin", "Clindamycin"], answer: 1, explanation: "Azithromycin is commonly used for hemotropic Mycoplasma."},
+        {question: "A positive Coombs test in a dog with fever and anemia most likely indicates which infectious disease?", options: ["Babesiosis", "Borreliosis", "Giardiasis", "Feline leukemia"], answer: 0, explanation: "Babesia infection can trigger immune-mediated hemolysis."},
     ],
     "Endocrine": [
         {
@@ -77,7 +80,10 @@ const categories = {
         {question: "Which breed is predisposed to congenital hypothyroidism?", options: ["Giant Schnauzer", "Beagle", "Basenji", "Chihuahua"], answer: 0, explanation: "Giant Schnauzers can have inherited hypothyroidism."},
         {question: "Which therapy offers a permanent cure for most cats with hyperthyroidism?", options: ["Methimazole", "Iodine-restricted diet", "Radioiodine treatment", "Surgical parathyroidectomy"], answer: 2, explanation: "Radioiodine ablates hyperactive thyroid tissue."},
         {question: "Which medication is used to treat hypoadrenocorticism in dogs by replacing mineralocorticoids?", options: ["DOCP", "Fludrocortisone", "Pergolide", "Desoxycorticosterone"], answer: 0, explanation: "Desoxycorticosterone pivalate (DOCP) provides mineralocorticoid replacement."},
-        {question: "Acromegaly in cats typically results in which insulin response?", options: ["Low insulin needs", "Severe insulin resistance", "Normal insulin sensitivity", "No effect on insulin"], answer: 1, explanation: "Excess growth hormone causes marked insulin resistance."}
+        {question: "Acromegaly in cats typically results in which insulin response?", options: ["Low insulin needs", "Severe insulin resistance", "Normal insulin sensitivity", "No effect on insulin"], answer: 1, explanation: "Excess growth hormone causes marked insulin resistance."},
+        {question: "What is the preferred screening test for canine hypothyroidism?", options: ["Total T4", "Free T4 by dialysis", "TSH", "ACTH stimulation"], answer: 1, explanation: "Free T4 by equilibrium dialysis is less affected by non-thyroidal illness."},
+        {question: "Which medication inhibits cortisol synthesis and is used for medical management of Cushing's disease?", options: ["Mitotane", "Trilostane", "Pergolide", "Selegiline"], answer: 1, explanation: "Trilostane blocks adrenal steroid production."},
+        {question: "Persistent hypoglycemia with high insulin levels suggests what pancreatic tumor?", options: ["Gastrinoma", "Insulinoma", "Glucagonoma", "Somatostatinoma"], answer: 1, explanation: "Insulin-secreting tumors cause marked hypoglycemia."}
     ],
     "Gastrointestinal": [
         {
@@ -117,7 +123,10 @@ const categories = {
         {question: "What is the preferred imaging modality to diagnose bile duct obstruction in dogs?", options: ["Abdominal radiographs", "Abdominal ultrasound", "CT scan", "MRI"], answer: 1, explanation: "Ultrasound visualizes the biliary tree well."},
         {question: "Tylosin-responsive diarrhea is particularly observed in which breed?", options: ["German Shepherd", "Beagle", "Golden Retriever", "Pug"], answer: 0, explanation: "German Shepherds often respond to tylosin for chronic diarrhea."},
         {question: "Pancreatic nodular hyperplasia in older dogs is usually considered what?", options: ["Malignant", "An incidental finding", "A cause of severe pancreatitis", "Metastatic disease"], answer: 1, explanation: "It is typically an incidental finding."},
-        {question: "Which infectious agent causes hemorrhagic colitis in young cats and is diagnosed by PCR of feces?", options: ["Salmonella", "Tritrichomonas foetus", "Campylobacter jejuni", "Clostridium perfringens"], answer: 1, explanation: "Tritrichomonas foetus is a protozoal cause of colitis."}
+        {question: "Which infectious agent causes hemorrhagic colitis in young cats and is diagnosed by PCR of feces?", options: ["Salmonella", "Tritrichomonas foetus", "Campylobacter jejuni", "Clostridium perfringens"], answer: 1, explanation: "Tritrichomonas foetus is a protozoal cause of colitis."},
+        {question: "Which serum enzyme is most specific for hepatic injury in cats?", options: ["ALT", "ALP", "CK", "LDH"], answer: 0, explanation: "ALT is a liver-specific enzyme in small animals."},
+        {question: "What deficiency results in taurine-responsive dilated cardiomyopathy in cats?", options: ["Arginine", "Carnitine", "Taurine", "Vitamin E"], answer: 2, explanation: "Low taurine intake can cause reversible DCM."},
+        {question: "Which drug is commonly used for appetite stimulation in cats with chronic kidney disease?", options: ["Mirtazapine", "Metoclopramide", "Prednisone", "Maropitant"], answer: 0, explanation: "Mirtazapine is often prescribed to boost appetite."}
     ],
     "Cardiovascular": [
         {
@@ -157,7 +166,10 @@ const categories = {
         {question: "What is the most sensitive method for detecting arrhythmias in dogs with suspected syncope?", options: ["Standard ECG", "Holter monitoring", "Pulse oximetry", "Blood pressure"], answer: 1, explanation: "Holter monitors record arrhythmias over 24 hours."},
         {question: "Chagas disease in dogs is caused by which parasite?", options: ["Trypanosoma cruzi", "Leishmania infantum", "Toxoplasma gondii", "Babesia canis"], answer: 0, explanation: "T. cruzi infection leads to myocarditis."},
         {question: "Pulmonic stenosis primarily causes hypertrophy of which cardiac chamber?", options: ["Left ventricle", "Right ventricle", "Left atrium", "Right atrium"], answer: 1, explanation: "Right ventricular outflow obstruction results in RV hypertrophy."},
-        {question: "Which cardiomyopathy in cats often responds to beta-blocker therapy to slow heart rate?", options: ["Restrictive", "Hypertrophic", "Dilated", "Arrhythmogenic right ventricular"], answer: 1, explanation: "Beta-blockers are used in HCM cats."}
+        {question: "Which cardiomyopathy in cats often responds to beta-blocker therapy to slow heart rate?", options: ["Restrictive", "Hypertrophic", "Dilated", "Arrhythmogenic right ventricular"], answer: 1, explanation: "Beta-blockers are used in HCM cats."},
+        {question: "Which antiarrhythmic is preferred for treating atrial fibrillation in large breed dogs?", options: ["Atenolol", "Lidocaine", "Diltiazem", "Sotalol"], answer: 3, explanation: "Sotalol helps control ventricular rate in atrial fibrillation."},
+        {question: "Echocardiographic detection of diastolic dysfunction with concentric hypertrophy suggests which feline disease?", options: ["Dilated cardiomyopathy", "Hypertrophic cardiomyopathy", "Restrictive cardiomyopathy", "Unclassified cardiomyopathy"], answer: 1, explanation: "HCM leads to concentric hypertrophy and diastolic failure."},
+        {question: "Which medication is often administered to dogs with patent ductus arteriosus before surgery to manage heart failure?", options: ["Enalapril", "Digoxin", "Amlodipine", "Furosemide"], answer: 0, explanation: "ACE inhibitors reduce volume overload prior to surgery."}
     ],
     "Respiratory": [
         {
@@ -198,6 +210,9 @@ const categories = {
         {question: "Pulmonary hypertension can be estimated on echocardiography by measuring what parameter?", options: ["Aortic velocity", "Tricuspid regurgitation velocity", "Mitral valve area", "Right atrial size"], answer: 1, explanation: "TR velocity helps estimate pulmonary artery pressure."},
         {question: "Which sedative is often used for thoracic radiographs in cats due to minimal respiratory effects?", options: ["Dexmedetomidine", "Acepromazine", "Ketamine", "Midazolam"], answer: 3, explanation: "Midazolam provides mild sedation with minimal respiratory depression."},
         {question: "Which lungworm infects dogs via ingestion of gastropods?", options: ["Filaroides hirthi", "Angiostrongylus vasorum", "Aelurostrongylus abstrusus", "Capillaria aerophila"], answer: 1, explanation: "Dogs acquire Angiostrongylus vasorum from snails and slugs."}
+        ,{question: "Which diagnostic modality best evaluates the bronchi in cases of chronic cough?", options: ["Bronchoscopy", "Thoracic ultrasound", "MRI", "CT angiography"], answer: 0, explanation: "Bronchoscopy allows direct visualization and sampling of the airways."}
+        ,{question: "What is the most appropriate emergency treatment for tension pneumothorax in a dog?", options: ["Thoracocentesis", "Bronchodilator", "Antibiotics", "Oxygen only"], answer: 0, explanation: "Immediate decompression via thoracocentesis relieves pressure."}
+        ,{question: "Chronic nasal discharge unresponsive to antibiotics in older cats is most commonly due to what?", options: ["Nasal tumor", "Herpesvirus", "Foreign body", "Dental disease"], answer: 0, explanation: "Neoplasia is a frequent cause of persistent unilateral discharge."}
     ],
     "Renal": [
         {
@@ -238,6 +253,9 @@ const categories = {
         {question: "Which drug is used to stimulate erythropoiesis in anemic cats with chronic kidney disease?", options: ["Erythropoietin stimulating agent", "Prednisone", "Vitamin B12", "Iron dextran"], answer: 0, explanation: "ESAs promote red blood cell production."},
         {question: "Renal secondary hyperparathyroidism leads to which bone disorder?", options: ["Pseudohyperparathyroidism", "Renal osteodystrophy", "Hypercalcemia of malignancy", "Paraneoplastic syndrome"], answer: 1, explanation: "Chronic kidney disease causes renal osteodystrophy."},
         {question: "Which breed of dog is predisposed to familial renal amyloidosis?", options: ["Shar Pei", "Beagle", "Collie", "Pomeranian"], answer: 0, explanation: "Shar Peis can inherit amyloid deposition in the kidneys."},
+        {question: "Which medication reduces intraglomerular pressure by inhibiting angiotensin II?", options: ["Furosemide", "Enalapril", "Hydrochlorothiazide", "Atenolol"], answer: 1, explanation: "ACE inhibitors like enalapril lower glomerular capillary pressure."},
+        {question: "Renal biopsies are ideally obtained using which technique to minimize hemorrhage?", options: ["Open surgical wedge", "Percutaneous ultrasound-guided", "Laparoscopic cup biopsy", "Fine needle aspirate"], answer: 1, explanation: "Ultrasound-guided tru-cut biopsies reduce complications."},
+        {question: "Which uremic toxin contributes to nausea in chronic kidney disease and is targeted by antiemetic therapy?", options: ["Ammonia", "Urea", "Creatinine", "Phosphate"], answer: 1, explanation: "Urea accumulation stimulates the chemoreceptor trigger zone leading to nausea."}
     ],
     "Neurology": [
         {
@@ -278,6 +296,9 @@ const categories = {
         {question: "What is the main treatment for idiopathic vestibular disease in dogs?", options: ["Surgery", "Supportive care and time", "High-dose steroids", "Antibiotics"], answer: 1, explanation: "Most cases resolve with supportive care over several days."},
         {question: "Which drug can be used to treat spasticity associated with spinal cord injury in dogs?", options: ["Baclofen", "Diazepam", "Phenobarbital", "Morphine"], answer: 0, explanation: "Baclofen acts as a muscle relaxant."},
         {question: "A seizure that lasts more than five minutes is classified as what?", options: ["Cluster seizure", "Focal seizure", "Status epilepticus", "Petit mal seizure"], answer: 2, explanation: "Prolonged seizures are termed status epilepticus."}
+        ,{question: "Which breed commonly suffers from inherited deafness linked to merle coloring?", options: ["Dalmatian", "Australian Shepherd", "Collie", "Beagle"], answer: 1, explanation: "Merle gene carriers like Australian Shepherds can be deaf."}
+        ,{question: "Cerebellar hypoplasia in kittens is caused by in utero infection with which virus?", options: ["Feline leukemia", "Feline panleukopenia", "Rabies", "FIP"], answer: 1, explanation: "Feline panleukopenia virus damages the cerebellum of developing kittens."}
+        ,{question: "Which drug is often chosen to manage neuropathic pain in dogs with intervertebral disc disease?", options: ["Carprofen", "Gabapentin", "Prednisone", "Morphine"], answer: 1, explanation: "Gabapentin is effective for controlling neuropathic pain."}
     ],
     "Oncology": [
         {
@@ -317,7 +338,10 @@ const categories = {
         {question: "Paraneoplastic hypoglycemia is most commonly associated with which tumor in dogs?", options: ["Insulinoma", "Lymphoma", "Osteosarcoma", "Mast cell tumor"], answer: 0, explanation: "Insulinoma secretes insulin causing hypoglycemia."},
         {question: "Which tumor arises from the perianal glands of intact male dogs?", options: ["Perianal adenoma", "Melanoma", "Perianal adenocarcinoma", "Sebaceous adenoma"], answer: 0, explanation: "Hormone-dependent perianal adenomas develop in intact males."},
         {question: "What is the preferred treatment for low-grade mast cell tumors in dogs?", options: ["Wide surgical excision", "Radiation therapy only", "Chemotherapy only", "No treatment"], answer: 0, explanation: "Surgery with wide margins can be curative."},
-        {question: "Which cytologic feature is typical of histiocytic sarcoma in dogs?", options: ["Epithelial cell clusters", "Spindle-shaped cells with collagen", "Large pleomorphic histiocytes", "Small lymphocytes"], answer: 2, explanation: "Histiocytic sarcoma shows large pleomorphic macrophage-like cells."}
+        {question: "Which cytologic feature is typical of histiocytic sarcoma in dogs?", options: ["Epithelial cell clusters", "Spindle-shaped cells with collagen", "Large pleomorphic histiocytes", "Small lymphocytes"], answer: 2, explanation: "Histiocytic sarcoma shows large pleomorphic macrophage-like cells."},
+        {question: "For chemotherapy safety, what equipment is essential when preparing cytotoxic drugs?", options: ["Gloves only", "Biological safety cabinet", "Surgical mask", "Lead apron"], answer: 1, explanation: "A biological safety cabinet prevents exposure when handling chemo agents."},
+        {question: "Which tumor is known for causing hypertrophic osteopathy in dogs?", options: ["Pulmonary carcinoma", "Mammary adenocarcinoma", "Osteosarcoma", "Melanoma"], answer: 0, explanation: "Primary or metastatic lung tumors trigger periosteal proliferation."},
+        {question: "When staging lymphoma, which diagnostic procedure assesses bone marrow involvement?", options: ["Thoracic radiographs", "Abdominal ultrasound", "Bone marrow aspirate", "Serum biochemistry"], answer: 2, explanation: "Bone marrow aspirate determines if neoplastic lymphocytes are present."}
     ],
 
     "Dermatology": [
@@ -345,6 +369,9 @@ const categories = {
         {question: "Which ear cleaning agent is contraindicated in dogs with a ruptured tympanic membrane?", options: ["Water-based cleanser", "Chlorhexidine", "Sterile saline", "Isopropyl alcohol-based cleanser"], answer: 3, explanation: "Alcohol can damage middle ear structures."},
         {question: "Dermatophytosis typically fluoresces under a Wood's lamp due to which species?", options: ["Microsporum gypseum", "Microsporum canis", "Trichophyton mentagrophytes", "Trichophyton verrucosum"], answer: 1, explanation: "M. canis often fluoresces apple green."},
         {question: "Which nutritional supplement is often recommended to improve skin barrier function in atopic dogs?", options: ["Omega-3 fatty acids", "Vitamin K", "Lysine", "Selenium"], answer: 0, explanation: "Omega-3 fatty acids help reduce inflammation and improve skin."}
+        ,{question: "What diagnostic technique is used to confirm dermatophytosis when Wood's lamp results are negative?", options: ["Skin scrape", "Fungal culture", "PCR for dermatophytes", "CT scan"], answer: 1, explanation: "Fungal culture remains the gold standard when fluorescence is absent."}
+        ,{question: "Pemphigus foliaceus lesions histologically contain which cell type predominance?", options: ["Neutrophils", "Eosinophils", "Basophils", "Mast cells"], answer: 0, explanation: "Acantholytic keratinocytes with neutrophils are typical."}
+        ,{question: "Which topical agent is best for treating Malassezia otitis in dogs?", options: ["Clotrimazole", "Miconazole", "Betadine", "Silver sulfadiazine"], answer: 1, explanation: "Miconazole formulations effectively reduce yeast counts."}
     ],
     "Hepatic": [
         {question: "Which diagnostic test is most specific for confirming chronic hepatitis in dogs?", options: ["Liver biopsy", "Serum ALT", "Bile acids", "Abdominal radiographs"], answer: 0, explanation: "Histopathology of a biopsy confirms chronic hepatitis."},
@@ -357,6 +384,9 @@ const categories = {
         {question: "A common sign of hepatic encephalopathy in dogs is:", options: ["Seizures", "Pruritus", "Tachycardia", "Increased appetite"], answer: 0, explanation: "Toxin accumulation can cause seizures and neurologic signs."},
         {question: "Which drug is used to bind ammonia and treat hepatic encephalopathy?", options: ["Lactulose", "Metronidazole", "Prednisone", "Furosemide"], answer: 0, explanation: "Lactulose acidifies the colon and traps ammonia."},
         {question: "Cholangitis/cholangiohepatitis complex is most commonly seen in which species?", options: ["Dogs", "Cats", "Horses", "Ferrets"], answer: 1, explanation: "Cats frequently develop inflammatory diseases of the biliary system."}
+        ,{question: "Which bile acid sequestrant can reduce pruritus associated with cholestasis?", options: ["Lactulose", "Cholestyramine", "Metronidazole", "Ranitidine"], answer: 1, explanation: "Cholestyramine binds bile acids in the gut to decrease pruritus."}
+        ,{question: "Deficiency of which nutrient can exacerbate hepatic lipidosis in cats?", options: ["Taurine", "Carnitine", "Thiamine", "Cobalamin"], answer: 1, explanation: "Carnitine deficiency may worsen fatty liver accumulation."}
+        ,{question: "Which imaging modality provides the most detail for planning portosystemic shunt surgery?", options: ["Ultrasound", "CT angiography", "Plain radiographs", "MRI"], answer: 1, explanation: "CT angiography clearly delineates anomalous vessels."}
     ],
     "Immune-Mediated": [
         {question: "Which drug is considered first-line therapy for immune-mediated hemolytic anemia in dogs?", options: ["Prednisone", "Cyclosporine", "Azathioprine", "Vincristine"], answer: 0, explanation: "High-dose corticosteroids are the initial treatment."},
@@ -369,8 +399,11 @@ const categories = {
         {question: "Cyclosporine exerts its immunosuppressive effect by inhibiting:", options: ["T-lymphocyte activation", "Bacterial protein synthesis", "DNA replication", "Collagen formation"], answer: 0, explanation: "Cyclosporine blocks T-cell activation pathways."},
         {question: "Immune-mediated hemolytic anemia typically causes which type of anemia?", options: ["Regenerative anemia", "Non-regenerative anemia", "Iron deficiency anemia", "Aplastic anemia"], answer: 0, explanation: "The destruction of red cells stimulates strong regeneration."},
         {question: "What adjunct therapy can reduce clot risk in dogs with IMHA?", options: ["Low-dose aspirin", "Vitamin K", "Iron supplementation", "Thyroxine"], answer: 0, explanation: "Antithrombotic drugs such as aspirin may decrease thrombosis."}
+        ,{question: "Which immunosuppressive medication inhibits calcineurin signaling in T cells?", options: ["Azathioprine", "Prednisone", "Cyclosporine", "Mycophenolate"], answer: 2, explanation: "Cyclosporine blocks calcineurin to prevent T-cell activation."}
+        ,{question: "What type of transfusion is recommended for dogs with severe IMHA and autoagglutination?", options: ["Whole blood", "Packed RBCs crossmatched", "Plasma only", "Platelets"], answer: 1, explanation: "Crossmatched packed RBCs minimize reactions while providing oxygen carrying capacity."}
+        ,{question: "Which test differentiates primary from secondary immune-mediated thrombocytopenia?", options: ["Bone marrow biopsy", "Coombs test", "Tick-borne disease panel", "BMBT"], answer: 2, explanation: "Infectious disease screening helps identify secondary IMTP."}
     ],
-};
+}; 
 const categoryContainer = document.getElementById('categories');
 const quizContainer = document.getElementById('quiz');
 const questionEl = document.getElementById('question');
@@ -392,23 +425,16 @@ const fleaGame = document.getElementById('fleaGame');
 const fleaContainer = fleaGame.querySelector('.flea-container');
 const memoryGame = document.getElementById('memoryGame');
 const sortGame = document.getElementById('sortGame');
-const reactionGame = document.getElementById('reactionGame');
-const reactionMsg = document.getElementById('reactionMsg');
-const reactionStartBtn = document.getElementById('reactionStart');
-const reactionBack = document.getElementById('reactionBack');
-const coinGame = document.getElementById('coinGame');
-const coinResult = document.getElementById('coinResult');
-const coinBack = document.getElementById('coinBack');
-const coinHeads = document.getElementById('coinHeads');
-const coinTails = document.getElementById('coinTails');
-const guessGame = document.getElementById('guessGame');
-const guessButtons = document.getElementById('guessButtons');
-const guessResult = document.getElementById('guessResult');
-const guessBack = document.getElementById('guessBack');
-const clickGame = document.getElementById('clickGame');
-const clickBtn = document.getElementById('clickBtn');
-const clickScoreEl = document.getElementById('clickScore');
-const clickBack = document.getElementById('clickBack');
+const labGame = document.getElementById('labGame');
+const labQuestionEl = document.getElementById('labQuestion');
+const labOptionsEl = document.getElementById('labOptions');
+const labResultEl = document.getElementById('labResult');
+const labBack = document.getElementById('labBack');
+const doseGame = document.getElementById('doseGame');
+const doseQuestionEl = document.getElementById('doseQuestion');
+const doseOptionsEl = document.getElementById('doseOptions');
+const doseResultEl = document.getElementById('doseResult');
+const doseBack = document.getElementById('doseBack');
 const riddleGame = document.getElementById('riddleGame');
 const riddleQuestion = document.getElementById('riddleQuestion');
 const riddleOptions = document.getElementById('riddleOptions');
@@ -712,10 +738,8 @@ function hideAllGames() {
     fleaGame.classList.add('hidden');
     memoryGame.classList.add('hidden');
     sortGame.classList.add('hidden');
-    reactionGame.classList.add('hidden');
-    coinGame.classList.add('hidden');
-    guessGame.classList.add('hidden');
-    clickGame.classList.add('hidden');
+    labGame.classList.add('hidden');
+    doseGame.classList.add('hidden');
     riddleGame.classList.add('hidden');
     whiteboardGame.classList.add('hidden');
 }
@@ -969,19 +993,15 @@ miniGamesBtn.addEventListener('click', () => {
 fleaBack.addEventListener('click', showMenu);
 memoryBack.addEventListener('click', showMenu);
 sortBack.addEventListener('click', showMenu);
-reactionBack.addEventListener('click', showMenu);
-coinBack.addEventListener('click', showMenu);
-guessBack.addEventListener('click', showMenu);
-clickBack.addEventListener('click', showMenu);
+labBack.addEventListener('click', showMenu);
+doseBack.addEventListener('click', showMenu);
 riddleBack.addEventListener('click', showMenu);
 
 startFleaBtn.addEventListener('click', startFleaGame);
 startMemoryBtn.addEventListener('click', startMemoryGame);
 startSortBtn.addEventListener('click', startSortGame);
-document.getElementById('startReaction').addEventListener('click', startReactionGame);
-document.getElementById('startCoin').addEventListener('click', startCoinGame);
-document.getElementById('startGuess').addEventListener('click', startGuessGame);
-document.getElementById('startClick').addEventListener('click', startClickGame);
+document.getElementById('startLab').addEventListener('click', startLabGame);
+document.getElementById('startDose').addEventListener('click', startDoseGame);
 document.getElementById('startRiddle').addEventListener('click', startRiddleGame);
 
 // Flea Flicker
@@ -1097,93 +1117,80 @@ function startSortGame() {
     });
 });
 
-// Reaction Test
-let reactionStartTime = null;
-function startReactionGame() {
-    hideAllGames();
-    reactionGame.classList.remove('hidden');
-    reactionMsg.textContent = 'Press start to begin';
-    reactionStartBtn.textContent = 'Start';
-    reactionStartTime = null;
-    reactionStartBtn.disabled = false;
-}
-
-reactionStartBtn.addEventListener('click', () => {
-    if (reactionStartTime) {
-        const diff = Date.now() - reactionStartTime;
-        reactionMsg.textContent = `Your reaction time: ${diff} ms`;
-        reactionStartBtn.textContent = 'Start Again';
-        reactionStartTime = null;
-    } else {
-        reactionStartBtn.disabled = true;
-        reactionMsg.textContent = 'Wait for it...';
-        setTimeout(() => {
-            reactionMsg.textContent = 'Click!';
-            reactionStartBtn.disabled = false;
-            reactionStartTime = Date.now();
-        }, Math.random() * 2000 + 1000);
+// Lab Challenge Game
+const labCases = [
+    {
+        labs: 'Anemia, neutrophilia, left shift, positive saline agglutination',
+        options: ['IMHA', 'Hypothyroidism', 'Pancreatitis', 'Addison\'s disease'],
+        answer: 0
+    },
+    {
+        labs: 'Marked hyperkalemia, hyponatremia, Na:K ratio <27',
+        options: ['Cushing\'s disease', 'Addison\'s disease', 'Diabetes mellitus', 'Hyperthyroidism'],
+        answer: 1
+    },
+    {
+        labs: 'Severe neutropenia and fever after chemotherapy',
+        options: ['Parvovirus', 'Sepsis secondary to myelosuppression', 'FIP', 'IMTP'],
+        answer: 1
     }
-});
+];
 
-// Coin Flip
-function startCoinGame() {
+function startLabGame() {
     hideAllGames();
-    coinGame.classList.remove('hidden');
-    coinResult.textContent = '';
-}
-
-function flipCoin(choice) {
-    const result = Math.random() < 0.5 ? 'Heads' : 'Tails';
-    coinResult.textContent = result === choice ? `Correct! It was ${result}.` : `It was ${result}.`;
-}
-
-coinHeads.addEventListener('click', () => flipCoin('Heads'));
-coinTails.addEventListener('click', () => flipCoin('Tails'));
-
-// Number Guess
-let guessTarget = 0;
-function startGuessGame() {
-    hideAllGames();
-    guessGame.classList.remove('hidden');
-    guessResult.textContent = '';
-    guessButtons.innerHTML = '';
-    guessTarget = Math.floor(Math.random() * 5) + 1;
-    for (let i = 1; i <= 5; i++) {
+    labGame.classList.remove('hidden');
+    const c = labCases[Math.floor(Math.random() * labCases.length)];
+    labQuestionEl.textContent = c.labs;
+    labOptionsEl.innerHTML = '';
+    labResultEl.textContent = '';
+    c.options.forEach((opt, idx) => {
         const b = document.createElement('button');
-        b.textContent = i;
-        b.onclick = () => checkGuess(i);
-        guessButtons.appendChild(b);
-    }
+        b.textContent = opt;
+        b.onclick = () => {
+            labResultEl.textContent = idx === c.answer ? 'Correct!' : 'Incorrect!';
+        };
+        labOptionsEl.appendChild(b);
+    });
 }
 
-function checkGuess(num) {
-    if (num === guessTarget) {
-        guessResult.textContent = 'Correct!';
-    } else {
-        guessResult.textContent = `Nope, it was ${guessTarget}`;
+// Dose Calculator Game
+const doseCases = [
+    {
+        weight: 5,
+        drug: 'Prednisone 1 mg/kg',
+        options: ['2.5 mg', '5 mg', '10 mg', '15 mg'],
+        answer: 1
+    },
+    {
+        weight: 20,
+        drug: 'Cerenia 1 mg/kg',
+        options: ['20 mg', '40 mg', '10 mg', '5 mg'],
+        answer: 0
+    },
+    {
+        weight: 3,
+        drug: 'Methimazole 5 mg/kg',
+        options: ['5 mg', '10 mg', '15 mg', '20 mg'],
+        answer: 2
     }
-}
+];
 
-// Rapid Click
-let clickCount = 0;
-let clickTimer;
-function startClickGame() {
+function startDoseGame() {
     hideAllGames();
-    clickGame.classList.remove('hidden');
-    clickScoreEl.textContent = 'Score: 0';
-    clickCount = 0;
-    clickBtn.disabled = false;
-    clearTimeout(clickTimer);
-    clickTimer = setTimeout(() => {
-        clickBtn.disabled = true;
-        alert('Time up! You clicked ' + clickCount + ' times.');
-    }, 5000);
+    doseGame.classList.remove('hidden');
+    const d = doseCases[Math.floor(Math.random() * doseCases.length)];
+    doseQuestionEl.textContent = `Dose for ${d.weight}kg patient using ${d.drug}?`;
+    doseOptionsEl.innerHTML = '';
+    doseResultEl.textContent = '';
+    d.options.forEach((opt, idx) => {
+        const b = document.createElement('button');
+        b.textContent = opt;
+        b.onclick = () => {
+            doseResultEl.textContent = idx === d.answer ? 'Correct!' : 'Incorrect!';
+        };
+        doseOptionsEl.appendChild(b);
+    });
 }
-
-clickBtn.addEventListener('click', () => {
-    clickCount++;
-    clickScoreEl.textContent = 'Score: ' + clickCount;
-});
 
 // Riddle Game
 const riddles = [{
