@@ -153,7 +153,7 @@ function initSurgeryScene(){
     const objLoader = new THREE.OBJLoader();
     objLoader.setMaterials(materials);
     objLoader.setPath('surgery_models/Surgeon/');
-    objLoader.load('Surgeon.obj', obj => {
+    objLoader.load('Surgeon_pose.obj', obj => {
       obj.traverse(child => {
         if(child.isMesh){
           child.castShadow = true;
@@ -162,6 +162,7 @@ function initSurgeryScene(){
       });
       obj.scale.set(0.01, 0.01, 0.01);
       obj.position.set(1.5, 0, 0);
+      obj.rotation.y = Math.PI / 2; // face table
       scene.add(obj);
     });
   });
