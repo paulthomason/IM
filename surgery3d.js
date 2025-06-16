@@ -1,6 +1,7 @@
 let scene, camera, renderer, animationId, controls;
 const stations = {};
 let currentStation = null;
+let nearStation = null;
 const keys = {};
 
 function initSurgeryScene(){
@@ -422,21 +423,41 @@ function animate(){
 
 function showIntro(){
   const qEl = document.getElementById('surgeryQuestion');
-  qEl.textContent = "Click the canvas to lock the cursor. Use WASD or the on-screen joystick to move, and drag the mouse to look around. Approach a station for questions.";
+  qEl.textContent = "Click the canvas to lock the cursor. Use WASD or the on-screen joystick to move, and drag the mouse to look around. Approach a station and press E to start questions.";
   document.getElementById('surgeryOptions').innerHTML = '';
   document.getElementById('surgeryNext').classList.add('hidden');
+  const promptEl = document.getElementById('interactPrompt');
+  if(promptEl) promptEl.classList.add('hidden');
 }
 
 function checkStations(){
   if(currentStation) return;
   const pos = camera.position;
+  let found = false;
   for(const key in stations){
     const st = stations[key];
     if(pos.distanceTo(st.mesh.position) < 1.5 && st.index < st.questions.length){
-      currentStation = st;
-      loadQuestion();
+      nearStation = st;
+      found = true;
+      const promptEl = document.getElementById('interactPrompt');
+      if(promptEl){
+        promptEl.textContent = 'Press E to start quiz';
+        promptEl.classList.remove('hidden');
+      }
+      if(keys['KeyE']){
+        keys['KeyE'] = false;
+        currentStation = st;
+        nearStation = null;
+        if(promptEl) promptEl.classList.add('hidden');
+        loadQuestion();
+      }
       break;
     }
+  }
+  if(!found && nearStation){
+    nearStation = null;
+    const promptEl = document.getElementById('interactPrompt');
+    if(promptEl) promptEl.classList.add('hidden');
   }
 }
 

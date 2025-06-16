@@ -317,6 +317,10 @@ body.dark button:hover {
     border-radius: 4px;
     cursor: pointer;
 }
+#interactPrompt {
+    margin-top: 8px;
+    font-weight: bold;
+}
 #surgeryNext:hover, #surgeryExit:hover {
     background-color: #0d47a1;
 }
