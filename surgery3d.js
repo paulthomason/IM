@@ -353,6 +353,39 @@ function initSurgeryScene(){
 function onKeyDown(e){ keys[e.code] = true; }
 function onKeyUp(e){ keys[e.code] = false; }
 
+function setupJoystick(el){
+  const stick = el.querySelector('.stick');
+  let startX = 0, startY = 0;
+  const threshold = 20;
+  el.addEventListener('touchstart', e=>{
+    const t = e.touches[0];
+    startX = t.clientX;
+    startY = t.clientY;
+    stick.style.transform = 'translate(0,0)';
+    e.preventDefault();
+  });
+  el.addEventListener('touchmove', e=>{
+    const t = e.touches[0];
+    const dx = t.clientX - startX;
+    const dy = t.clientY - startY;
+    const angle = Math.atan2(dy, dx);
+    const dist = Math.min(40, Math.hypot(dx, dy));
+    stick.style.transform = `translate(${dist*Math.cos(angle)}px,${dist*Math.sin(angle)}px)`;
+    keys['ArrowLeft'] = dx < -threshold;
+    keys['ArrowRight'] = dx > threshold;
+    keys['ArrowUp'] = dy < -threshold;
+    keys['ArrowDown'] = dy > threshold;
+    e.preventDefault();
+  });
+  el.addEventListener('touchend', () => {
+    keys['ArrowLeft'] = false;
+    keys['ArrowRight'] = false;
+    keys['ArrowUp'] = false;
+    keys['ArrowDown'] = false;
+    stick.style.transform = 'translate(0,0)';
+  });
+}
+
 function moveCamera(){
   const moveSpeed = 0.1;
   const rotSpeed = 0.03;
@@ -376,7 +409,7 @@ function animate(){
 
 function showIntro(){
   const qEl = document.getElementById('surgeryQuestion');
-  qEl.textContent = 'Use arrow keys to move and drag with the mouse to look around. Approach a station for questions.';
+  qEl.textContent = 'Use arrow keys or the on-screen joystick to move and drag to look around. Approach a station for questions.';
   document.getElementById('surgeryOptions').innerHTML = '';
   document.getElementById('surgeryNext').classList.add('hidden');
 }
@@ -457,6 +490,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   const startBtn = document.getElementById('surgery3DBtn');
   const nextBtn = document.getElementById('surgeryNext');
   const exitBtn = document.getElementById('surgeryExit');
+  const joystickEl = document.getElementById('joystick');
 
   if(startBtn && startBtn.tagName.toLowerCase() === 'button'){
     startBtn.addEventListener('click', ()=>{
@@ -480,5 +514,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
   }
   if(exitBtn){
     exitBtn.addEventListener('click', exitSurgery);
+  }
+
+  if(joystickEl && 'ontouchstart' in window){
+    joystickEl.classList.remove('hidden');
+    setupJoystick(joystickEl);
   }
 });
