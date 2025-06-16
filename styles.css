@@ -320,3 +320,26 @@ body.dark button:hover {
 #surgeryNext:hover, #surgeryExit:hover {
     background-color: #0d47a1;
 }
+
+#joystick {
+    position: absolute;
+    bottom: 100px;
+    left: 30px;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    touch-action: none;
+}
+#joystick .stick {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    margin-left: -20px;
+    margin-top: -20px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 50%;
+}
