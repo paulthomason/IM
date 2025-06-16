@@ -145,21 +145,25 @@ function initSurgeryScene(){
   patient.position.set(0, 1.25, 0);
   scene.add(patient);
 
-  // Surgeon model loaded from file
-  const objLoader = new THREE.OBJLoader();
-  objLoader.load('surgery_models/Surgeon.obj', obj => {
-    obj.traverse(child => {
-      if(child.isMesh){
-        child.castShadow = true;
-        child.receiveShadow = true;
-        if(!child.material){
-          child.material = new THREE.MeshPhongMaterial({color:0x0080ff});
+  // Surgeon model loaded from file with materials
+  const mtlLoader = new THREE.MTLLoader();
+  mtlLoader.setPath('surgery_models/Surgeon/');
+  mtlLoader.load('Surgeon.mtl', materials => {
+    materials.preload();
+    const objLoader = new THREE.OBJLoader();
+    objLoader.setMaterials(materials);
+    objLoader.setPath('surgery_models/Surgeon/');
+    objLoader.load('Surgeon.obj', obj => {
+      obj.traverse(child => {
+        if(child.isMesh){
+          child.castShadow = true;
+          child.receiveShadow = true;
         }
-      }
+      });
+      obj.scale.set(0.01, 0.01, 0.01);
+      obj.position.set(1.5, 0, 0);
+      scene.add(obj);
     });
-    obj.scale.set(0.01, 0.01, 0.01);
-    obj.position.set(1.5, 0, 0);
-    scene.add(obj);
   });
 
   // Overhead surgical light
