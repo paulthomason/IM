@@ -78,17 +78,42 @@ function nextQuestion(){
 }
 function exitSurgery(){
   cancelAnimationFrame(animationId);
-  document.getElementById('surgery3DContainer').classList.add('hidden');
-  document.querySelector('.container').classList.remove('hidden');
-}
-document.getElementById('surgery3DBtn').addEventListener('click', ()=>{
-  document.querySelector('.container').classList.add('hidden');
-  document.getElementById('surgery3DContainer').classList.remove('hidden');
-  if(!scene){
-    initSurgeryScene();
+  const container = document.querySelector('.container');
+  const s3dContainer = document.getElementById('surgery3DContainer');
+  if(container && s3dContainer){
+    s3dContainer.classList.add('hidden');
+    container.classList.remove('hidden');
   }else{
-    loadQuestion();
+    window.location.href = 'index.html';
+  }
+}
+document.addEventListener('DOMContentLoaded', ()=>{
+  const startBtn = document.getElementById('surgery3DBtn');
+  const nextBtn = document.getElementById('surgeryNext');
+  const exitBtn = document.getElementById('surgeryExit');
+
+  if(startBtn && startBtn.tagName.toLowerCase() === 'button'){
+    startBtn.addEventListener('click', (e)=>{
+      const container = document.querySelector('.container');
+      if(container){
+        container.classList.add('hidden');
+      }
+      document.getElementById('surgery3DContainer').classList.remove('hidden');
+      if(!scene){
+        initSurgeryScene();
+      }else{
+        loadQuestion();
+      }
+    });
+  }else{
+    // Standalone page
+    initSurgeryScene();
+  }
+
+  if(nextBtn){
+    nextBtn.addEventListener('click', nextQuestion);
+  }
+  if(exitBtn){
+    exitBtn.addEventListener('click', exitSurgery);
   }
 });
-document.getElementById('surgeryNext').addEventListener('click', nextQuestion);
-document.getElementById('surgeryExit').addEventListener('click', exitSurgery);
