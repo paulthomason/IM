@@ -145,65 +145,22 @@ function initSurgeryScene(){
   patient.position.set(0, 1.25, 0);
   scene.add(patient);
 
-  // Simple surgeon model beside the table
-  const surgeon = new THREE.Group();
-  const torso = new THREE.Mesh(new THREE.BoxGeometry(0.4,0.8,0.2), new THREE.MeshPhongMaterial({color:0x0080ff}));
-  torso.position.y = 1.4;
-  torso.castShadow = true;
-  torso.receiveShadow = true;
-  surgeon.add(torso);
-  const head = new THREE.Mesh(
-    new THREE.SphereGeometry(0.2, 16, 12),
-    new THREE.MeshPhongMaterial({ color: 0xffcc99 })
-  );
-  head.position.y = 1.9;
-  head.castShadow = true;
-  head.receiveShadow = true;
-  surgeon.add(head);
-
-  // surgeon hat
-  const hat = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.22, 0.22, 0.15, 12),
-    new THREE.MeshPhongMaterial({ color: 0x0080ff })
-  );
-  hat.position.y = 2.05;
-  surgeon.add(hat);
-
-  // face mask
-  const mask = new THREE.Mesh(
-    new THREE.BoxGeometry(0.3, 0.15, 0.05),
-    new THREE.MeshPhongMaterial({ color: 0x00aaff })
-  );
-  mask.position.set(0, 1.9, 0.18);
-  surgeon.add(mask);
-  const eyeGeom = new THREE.SphereGeometry(0.04, 8, 6);
-  const leftEye = new THREE.Mesh(eyeGeom, new THREE.MeshPhongMaterial({ color: 0x000000 }));
-  leftEye.position.set(-0.05, 1.93, 0.2);
-  const rightEye = leftEye.clone();
-  rightEye.position.x = 0.05;
-  surgeon.add(leftEye);
-  surgeon.add(rightEye);
-  const legGeo = new THREE.CylinderGeometry(0.1,0.1,0.6,8);
-  const leftLeg = new THREE.Mesh(legGeo, new THREE.MeshPhongMaterial({color:0x0080ff}));
-  leftLeg.position.set(-0.1,0.3,0);
-  leftLeg.castShadow = true;
-  leftLeg.receiveShadow = true;
-  surgeon.add(leftLeg);
-  const rightLeg = leftLeg.clone();
-  rightLeg.position.x = 0.1;
-  surgeon.add(rightLeg);
-  const armGeo = new THREE.CylinderGeometry(0.05,0.05,0.5,8);
-  const leftArm = new THREE.Mesh(armGeo, new THREE.MeshPhongMaterial({color:0x0080ff}));
-  leftArm.rotation.z = Math.PI/2;
-  leftArm.position.set(-0.35,1.55,0);
-  leftArm.castShadow = true;
-  leftArm.receiveShadow = true;
-  surgeon.add(leftArm);
-  const rightArm = leftArm.clone();
-  rightArm.position.x = 0.35;
-  surgeon.add(rightArm);
-  surgeon.position.set(1.5,0,0);
-  scene.add(surgeon);
+  // Surgeon model loaded from file
+  const objLoader = new THREE.OBJLoader();
+  objLoader.load('surgery_models/Surgeon.obj', obj => {
+    obj.traverse(child => {
+      if(child.isMesh){
+        child.castShadow = true;
+        child.receiveShadow = true;
+        if(!child.material){
+          child.material = new THREE.MeshPhongMaterial({color:0x0080ff});
+        }
+      }
+    });
+    obj.scale.set(0.01, 0.01, 0.01);
+    obj.position.set(1.5, 0, 0);
+    scene.add(obj);
+  });
 
   // Overhead surgical light
   const lamp = new THREE.Group();
