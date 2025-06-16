@@ -38,6 +38,7 @@ const categories = {
         {question: "What organism causes 'cat scratch disease' in humans?", options: ["Bartonella henselae", "Pasteurella multocida", "Capnocytophaga canimorsus", "Yersinia pestis"], answer: 0, explanation: "Bartonella henselae is transmitted by cats."},
         {question: "The definitive host for Toxoplasma gondii is which species?", options: ["Dog", "Cat", "Sheep", "Pig"], answer: 1, explanation: "Cats are the definitive host for Toxoplasma."},
         {question: "What is the main route of transmission for canine influenza virus?", options: ["Fecal-oral", "Aerosol respiratory droplets", "Vector-borne", "Venereal"], answer: 1, explanation: "Canine influenza spreads through respiratory droplets."},
+        {question: "Which pathogen causes feline infectious anemia?", options: ["Mycoplasma haemofelis", "Bartonella henselae", "Anaplasma platys", "Ehrlichia ewingii"], answer: 0, explanation: "Mycoplasma haemofelis parasitizes red blood cells causing anemia."},
     ],
     "Endocrine": [
         {
@@ -77,7 +78,8 @@ const categories = {
         {question: "Which breed is predisposed to congenital hypothyroidism?", options: ["Giant Schnauzer", "Beagle", "Basenji", "Chihuahua"], answer: 0, explanation: "Giant Schnauzers can have inherited hypothyroidism."},
         {question: "Which therapy offers a permanent cure for most cats with hyperthyroidism?", options: ["Methimazole", "Iodine-restricted diet", "Radioiodine treatment", "Surgical parathyroidectomy"], answer: 2, explanation: "Radioiodine ablates hyperactive thyroid tissue."},
         {question: "Which medication is used to treat hypoadrenocorticism in dogs by replacing mineralocorticoids?", options: ["DOCP", "Fludrocortisone", "Pergolide", "Desoxycorticosterone"], answer: 0, explanation: "Desoxycorticosterone pivalate (DOCP) provides mineralocorticoid replacement."},
-        {question: "Acromegaly in cats typically results in which insulin response?", options: ["Low insulin needs", "Severe insulin resistance", "Normal insulin sensitivity", "No effect on insulin"], answer: 1, explanation: "Excess growth hormone causes marked insulin resistance."}
+        {question: "Acromegaly in cats typically results in which insulin response?", options: ["Low insulin needs", "Severe insulin resistance", "Normal insulin sensitivity", "No effect on insulin"], answer: 1, explanation: "Excess growth hormone causes marked insulin resistance."},
+        {question: "What condition results from adrenal overproduction of progesterone in ferrets?", options: ["Cushing's disease", "Insulinoma", "Adrenal-associated endocrinopathy", "Hyperthyroidism"], answer: 2, explanation: "Adrenal disease leads to excess sex steroid production."}
     ],
     "Gastrointestinal": [
         {
@@ -117,7 +119,8 @@ const categories = {
         {question: "What is the preferred imaging modality to diagnose bile duct obstruction in dogs?", options: ["Abdominal radiographs", "Abdominal ultrasound", "CT scan", "MRI"], answer: 1, explanation: "Ultrasound visualizes the biliary tree well."},
         {question: "Tylosin-responsive diarrhea is particularly observed in which breed?", options: ["German Shepherd", "Beagle", "Golden Retriever", "Pug"], answer: 0, explanation: "German Shepherds often respond to tylosin for chronic diarrhea."},
         {question: "Pancreatic nodular hyperplasia in older dogs is usually considered what?", options: ["Malignant", "An incidental finding", "A cause of severe pancreatitis", "Metastatic disease"], answer: 1, explanation: "It is typically an incidental finding."},
-        {question: "Which infectious agent causes hemorrhagic colitis in young cats and is diagnosed by PCR of feces?", options: ["Salmonella", "Tritrichomonas foetus", "Campylobacter jejuni", "Clostridium perfringens"], answer: 1, explanation: "Tritrichomonas foetus is a protozoal cause of colitis."}
+        {question: "Which infectious agent causes hemorrhagic colitis in young cats and is diagnosed by PCR of feces?", options: ["Salmonella", "Tritrichomonas foetus", "Campylobacter jejuni", "Clostridium perfringens"], answer: 1, explanation: "Tritrichomonas foetus is a protozoal cause of colitis."},
+        {question: "Which vitamin deficiency can mimic exocrine pancreatic insufficiency in cats?", options: ["Vitamin D", "Cobalamin", "Vitamin K", "Niacin"], answer: 1, explanation: "Cobalamin deficiency may cause signs similar to EPI."}
     ],
     "Cardiovascular": [
         {
@@ -158,6 +161,7 @@ const categories = {
         {question: "Chagas disease in dogs is caused by which parasite?", options: ["Trypanosoma cruzi", "Leishmania infantum", "Toxoplasma gondii", "Babesia canis"], answer: 0, explanation: "T. cruzi infection leads to myocarditis."},
         {question: "Pulmonic stenosis primarily causes hypertrophy of which cardiac chamber?", options: ["Left ventricle", "Right ventricle", "Left atrium", "Right atrium"], answer: 1, explanation: "Right ventricular outflow obstruction results in RV hypertrophy."},
         {question: "Which cardiomyopathy in cats often responds to beta-blocker therapy to slow heart rate?", options: ["Restrictive", "Hypertrophic", "Dilated", "Arrhythmogenic right ventricular"], answer: 1, explanation: "Beta-blockers are used in HCM cats."}
+        {question: "Which drug is commonly administered to dogs with atrial fibrillation to control rate?", options: ["Diltiazem", "Lidocaine", "Digoxin", "Enalapril"], answer: 0, explanation: "Diltiazem slows AV conduction."},
     ],
     "Respiratory": [
         {
@@ -198,6 +202,7 @@ const categories = {
         {question: "Pulmonary hypertension can be estimated on echocardiography by measuring what parameter?", options: ["Aortic velocity", "Tricuspid regurgitation velocity", "Mitral valve area", "Right atrial size"], answer: 1, explanation: "TR velocity helps estimate pulmonary artery pressure."},
         {question: "Which sedative is often used for thoracic radiographs in cats due to minimal respiratory effects?", options: ["Dexmedetomidine", "Acepromazine", "Ketamine", "Midazolam"], answer: 3, explanation: "Midazolam provides mild sedation with minimal respiratory depression."},
         {question: "Which lungworm infects dogs via ingestion of gastropods?", options: ["Filaroides hirthi", "Angiostrongylus vasorum", "Aelurostrongylus abstrusus", "Capillaria aerophila"], answer: 1, explanation: "Dogs acquire Angiostrongylus vasorum from snails and slugs."}
+        {question: "Brachycephalic obstructive airway syndrome primarily affects which breeds?", options: ["Greyhound", "Bulldog", "Border Collie", "Labrador"], answer: 1, explanation: "Bulldogs and other brachycephalics commonly develop airway obstruction."},
     ],
     "Renal": [
         {
@@ -238,6 +243,7 @@ const categories = {
         {question: "Which drug is used to stimulate erythropoiesis in anemic cats with chronic kidney disease?", options: ["Erythropoietin stimulating agent", "Prednisone", "Vitamin B12", "Iron dextran"], answer: 0, explanation: "ESAs promote red blood cell production."},
         {question: "Renal secondary hyperparathyroidism leads to which bone disorder?", options: ["Pseudohyperparathyroidism", "Renal osteodystrophy", "Hypercalcemia of malignancy", "Paraneoplastic syndrome"], answer: 1, explanation: "Chronic kidney disease causes renal osteodystrophy."},
         {question: "Which breed of dog is predisposed to familial renal amyloidosis?", options: ["Shar Pei", "Beagle", "Collie", "Pomeranian"], answer: 0, explanation: "Shar Peis can inherit amyloid deposition in the kidneys."},
+        {question: "What is the most common cause of acute kidney injury in hospitalized cats?", options: ["Pyelonephritis", "Hypotension during anesthesia", "Congenital disease", "Renal lymphoma"], answer: 1, explanation: "Anesthetic hypotension is a frequent trigger for acute kidney injury."},
     ],
     "Neurology": [
         {
@@ -278,6 +284,7 @@ const categories = {
         {question: "What is the main treatment for idiopathic vestibular disease in dogs?", options: ["Surgery", "Supportive care and time", "High-dose steroids", "Antibiotics"], answer: 1, explanation: "Most cases resolve with supportive care over several days."},
         {question: "Which drug can be used to treat spasticity associated with spinal cord injury in dogs?", options: ["Baclofen", "Diazepam", "Phenobarbital", "Morphine"], answer: 0, explanation: "Baclofen acts as a muscle relaxant."},
         {question: "A seizure that lasts more than five minutes is classified as what?", options: ["Cluster seizure", "Focal seizure", "Status epilepticus", "Petit mal seizure"], answer: 2, explanation: "Prolonged seizures are termed status epilepticus."}
+        {question: "Which breed commonly develops idiopathic epilepsy between 1 and 3 years of age?", options: ["Border Collie", "Boxer", "Beagle", "Irish Wolfhound"], answer: 2, explanation: "Beagles frequently present with idiopathic epilepsy early in life."},
     ],
     "Oncology": [
         {
@@ -318,6 +325,7 @@ const categories = {
         {question: "Which tumor arises from the perianal glands of intact male dogs?", options: ["Perianal adenoma", "Melanoma", "Perianal adenocarcinoma", "Sebaceous adenoma"], answer: 0, explanation: "Hormone-dependent perianal adenomas develop in intact males."},
         {question: "What is the preferred treatment for low-grade mast cell tumors in dogs?", options: ["Wide surgical excision", "Radiation therapy only", "Chemotherapy only", "No treatment"], answer: 0, explanation: "Surgery with wide margins can be curative."},
         {question: "Which cytologic feature is typical of histiocytic sarcoma in dogs?", options: ["Epithelial cell clusters", "Spindle-shaped cells with collagen", "Large pleomorphic histiocytes", "Small lymphocytes"], answer: 2, explanation: "Histiocytic sarcoma shows large pleomorphic macrophage-like cells."}
+        {question: "Which tumor often causes hyperestrogenism in intact female dogs?", options: ["Granulosa cell tumor", "Mammary carcinoma", "Melanoma", "Lymphoma"], answer: 0, explanation: "Ovarian granulosa cell tumors can secrete estrogens."},
     ],
 
     "Dermatology": [
@@ -345,6 +353,7 @@ const categories = {
         {question: "Which ear cleaning agent is contraindicated in dogs with a ruptured tympanic membrane?", options: ["Water-based cleanser", "Chlorhexidine", "Sterile saline", "Isopropyl alcohol-based cleanser"], answer: 3, explanation: "Alcohol can damage middle ear structures."},
         {question: "Dermatophytosis typically fluoresces under a Wood's lamp due to which species?", options: ["Microsporum gypseum", "Microsporum canis", "Trichophyton mentagrophytes", "Trichophyton verrucosum"], answer: 1, explanation: "M. canis often fluoresces apple green."},
         {question: "Which nutritional supplement is often recommended to improve skin barrier function in atopic dogs?", options: ["Omega-3 fatty acids", "Vitamin K", "Lysine", "Selenium"], answer: 0, explanation: "Omega-3 fatty acids help reduce inflammation and improve skin."}
+        {question: "Which skin condition in dogs is associated with Malassezia overgrowth and greasy seborrhea?", options: ["Sebaceous adenitis", "Malassezia dermatitis", "Demodicosis", "Pemphigus foliaceus"], answer: 1, explanation: "Malassezia dermatitis presents with oily skin and pruritus."},
     ],
     "Hepatic": [
         {question: "Which diagnostic test is most specific for confirming chronic hepatitis in dogs?", options: ["Liver biopsy", "Serum ALT", "Bile acids", "Abdominal radiographs"], answer: 0, explanation: "Histopathology of a biopsy confirms chronic hepatitis."},
@@ -357,6 +366,7 @@ const categories = {
         {question: "A common sign of hepatic encephalopathy in dogs is:", options: ["Seizures", "Pruritus", "Tachycardia", "Increased appetite"], answer: 0, explanation: "Toxin accumulation can cause seizures and neurologic signs."},
         {question: "Which drug is used to bind ammonia and treat hepatic encephalopathy?", options: ["Lactulose", "Metronidazole", "Prednisone", "Furosemide"], answer: 0, explanation: "Lactulose acidifies the colon and traps ammonia."},
         {question: "Cholangitis/cholangiohepatitis complex is most commonly seen in which species?", options: ["Dogs", "Cats", "Horses", "Ferrets"], answer: 1, explanation: "Cats frequently develop inflammatory diseases of the biliary system."}
+        {question: "Which medication acts as a copper chelator for treating copper-associated hepatitis?", options: ["Cyclosporine", "Penicillamine", "Azathioprine", "Ketoconazole"], answer: 1, explanation: "Penicillamine binds copper allowing excretion."},
     ],
     "Immune-Mediated": [
         {question: "Which drug is considered first-line therapy for immune-mediated hemolytic anemia in dogs?", options: ["Prednisone", "Cyclosporine", "Azathioprine", "Vincristine"], answer: 0, explanation: "High-dose corticosteroids are the initial treatment."},
@@ -369,6 +379,7 @@ const categories = {
         {question: "Cyclosporine exerts its immunosuppressive effect by inhibiting:", options: ["T-lymphocyte activation", "Bacterial protein synthesis", "DNA replication", "Collagen formation"], answer: 0, explanation: "Cyclosporine blocks T-cell activation pathways."},
         {question: "Immune-mediated hemolytic anemia typically causes which type of anemia?", options: ["Regenerative anemia", "Non-regenerative anemia", "Iron deficiency anemia", "Aplastic anemia"], answer: 0, explanation: "The destruction of red cells stimulates strong regeneration."},
         {question: "What adjunct therapy can reduce clot risk in dogs with IMHA?", options: ["Low-dose aspirin", "Vitamin K", "Iron supplementation", "Thyroxine"], answer: 0, explanation: "Antithrombotic drugs such as aspirin may decrease thrombosis."}
+        {question: "Immune-mediated polyarthritis is often accompanied by which systemic sign?", options: ["Hyperthermia", "Hypotension", "Severe bradycardia", "Icterus"], answer: 0, explanation: "Fever commonly occurs with immune-mediated polyarthritis."}
     ],
 };
 const categoryContainer = document.getElementById('categories');

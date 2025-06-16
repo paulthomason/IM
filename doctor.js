@@ -1,5 +1,6 @@
 const themeToggle = document.getElementById('themeToggle');
 const homeBtn = document.getElementById('homeBtn');
+const chartsBtn = document.getElementById('chartsBtn');
 const doctorScreen = document.getElementById('doctorScreen');
 const doctorText = document.getElementById('doctorText');
 const doctorOptions = document.getElementById('doctorOptions');
@@ -15,6 +16,11 @@ if (themeToggle) {
 if (homeBtn) {
     homeBtn.addEventListener('click', () => {
         window.location.href = 'index.html';
+    });
+}
+if (chartsBtn) {
+    chartsBtn.addEventListener('click', () => {
+        window.open('charts.html', '_blank');
     });
 }
 if (doctorQuit) {
@@ -287,10 +293,66 @@ function staffEvent() {
     };
 }
 
+function emergencyCaseEvent() {
+    let step = 0;
+    const q1 = {
+        q: 'A dog is rushed in after being hit by a car. What is your first priority?',
+        options: ['Assess airway and breathing', 'Check fractures', 'Run bloodwork', 'Give vaccines'],
+        answer: 0
+    };
+    const q2 = {
+        q: 'Which analgesic is appropriate for initial stabilization?',
+        options: ['Morphine', 'Carprofen', 'Prednisone', 'Acetaminophen'],
+        answer: 0
+    };
+    return function run() {
+        doctorOptions.innerHTML = '';
+        doctorNext.classList.add('hidden');
+        if (step === 0) {
+            doctorText.textContent = 'Emergency case arriving!';
+            const b = document.createElement('button');
+            b.textContent = 'Begin Triage';
+            b.onclick = () => { step++; run(); };
+            doctorOptions.appendChild(b);
+        } else if (step === 1) {
+            doctorText.textContent = q1.q;
+            q1.options.forEach((opt, idx) => {
+                const b = document.createElement('button');
+                b.textContent = opt;
+                b.onclick = () => {
+                    const correct = idx === q1.answer;
+                    doctorText.textContent = correct ? 'Correct approach.' : 'Consider the airway first.';
+                    maybePoorOutcome(correct);
+                    step++;
+                    setTimeout(run, 600);
+                };
+                doctorOptions.appendChild(b);
+            });
+        } else if (step === 2) {
+            doctorText.textContent = q2.q;
+            q2.options.forEach((opt, idx) => {
+                const b = document.createElement('button');
+                b.textContent = opt;
+                b.onclick = () => {
+                    const correct = idx === q2.answer;
+                    doctorText.textContent = correct ? 'Pain managed.' : 'That may not be ideal now.';
+                    maybePoorOutcome(correct);
+                    step++;
+                    setTimeout(run, 600);
+                };
+                doctorOptions.appendChild(b);
+            });
+        } else {
+            doctorText.textContent = 'You stabilize the patient for further care.';
+            doctorNext.classList.remove('hidden');
+        }
+    };
+}
+
 function showDoctorEvent() {
     doctorNext.onclick = showDoctorEvent;
     doctorNext.textContent = 'Next Event';
-    const events = [complexCaseEvent, messageEvent, staffEvent];
+    const events = [complexCaseEvent, messageEvent, staffEvent, emergencyCaseEvent];
     const handler = events[Math.floor(Math.random() * events.length)]();
     handler();
 }
