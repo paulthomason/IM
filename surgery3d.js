@@ -44,12 +44,9 @@ function initSurgeryScene(){
   scene.add(dirLight);
 
   const texLoader = new THREE.TextureLoader();
-  const floorTex = texLoader.load('https://threejs.org/examples/textures/hardwood2_diffuse.jpg');
+  const floorTex = texLoader.load('https://threejs.org/examples/textures/floors/FloorsCheckerboard_S_Diffuse.jpg');
   floorTex.wrapS = floorTex.wrapT = THREE.RepeatWrapping;
   floorTex.repeat.set(4,4);
-  const wallTex = texLoader.load('https://threejs.org/examples/textures/brick_diffuse.jpg');
-  wallTex.wrapS = wallTex.wrapT = THREE.RepeatWrapping;
-  wallTex.repeat.set(2,1);
 
   const floor = new THREE.Mesh(
     new THREE.PlaneGeometry(20,20),
@@ -59,7 +56,7 @@ function initSurgeryScene(){
   floor.receiveShadow = true;
   scene.add(floor);
 
-  const wallMat = new THREE.MeshPhongMaterial({map: wallTex, side:THREE.DoubleSide});
+  const wallMat = new THREE.MeshPhongMaterial({color: 0xffffff, side: THREE.DoubleSide});
   const wallGeom = new THREE.PlaneGeometry(20,5);
   const backWall = new THREE.Mesh(wallGeom, wallMat);
   backWall.position.set(0,2.5,-10);
