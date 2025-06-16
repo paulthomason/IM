@@ -1209,7 +1209,11 @@ function startRiddleGame() {
     });
 }
 
-doctorModeBtn.addEventListener('click', startDoctorMode);
+if (doctorModeBtn) {
+    doctorModeBtn.addEventListener('click', () => {
+        window.location.href = 'doctor.html';
+    });
+}
 
 function startDoctorMode() {
     categoryContainer.classList.add('hidden');
