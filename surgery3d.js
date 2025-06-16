@@ -1,21 +1,28 @@
-let scene, camera, renderer, animationId;
+let scene, camera, renderer, animationId, controls;
 const stations = {};
 let currentStation = null;
 const keys = {};
 
 function initSurgeryScene(){
   const canvas = document.getElementById('surgeryCanvas');
-  renderer = new THREE.WebGLRenderer({canvas});
+  renderer = new THREE.WebGLRenderer({canvas, antialias: true});
   renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.shadowMap.enabled = true;
+  window.addEventListener('resize', onWindowResize);
   scene = new THREE.Scene();
   scene.background = new THREE.Color(0x222222);
   camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
   camera.position.set(0,1.6,5);
+  controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.enablePan = false;
+  controls.target.set(0,1,0);
+  controls.update();
 
   const light = new THREE.AmbientLight(0xffffff,0.6);
   scene.add(light);
   const dirLight = new THREE.DirectionalLight(0xffffff,0.6);
   dirLight.position.set(5,10,7);
+  dirLight.castShadow = true;
   scene.add(dirLight);
 
   const texLoader = new THREE.TextureLoader();
@@ -31,6 +38,7 @@ function initSurgeryScene(){
     new THREE.MeshPhongMaterial({map: floorTex})
   );
   floor.rotation.x = -Math.PI/2;
+  floor.receiveShadow = true;
   scene.add(floor);
 
   const wallMat = new THREE.MeshPhongMaterial({map: wallTex, side:THREE.DoubleSide});
@@ -54,12 +62,16 @@ function initSurgeryScene(){
   const table = new THREE.Group();
   const tableTop = new THREE.Mesh(new THREE.BoxGeometry(3,0.2,2), new THREE.MeshPhongMaterial({color:0x8e44ad}));
   tableTop.position.y = 1;
+  tableTop.castShadow = true;
+  tableTop.receiveShadow = true;
   table.add(tableTop);
   const legGeom = new THREE.CylinderGeometry(0.1,0.1,1,6);
   for(let x=-1.3;x<=1.3;x+=2.6){
     for(let z=-0.8;z<=0.8;z+=1.6){
       const leg = new THREE.Mesh(legGeom,new THREE.MeshPhongMaterial({color:0x555555}));
       leg.position.set(x,0.5,z);
+      leg.castShadow = true;
+      leg.receiveShadow = true;
       table.add(leg);
     }
   }
@@ -69,9 +81,13 @@ function initSurgeryScene(){
   const patient = new THREE.Group();
   const patientBody = new THREE.Mesh(new THREE.CylinderGeometry(0.25,0.25,1.2,16), new THREE.MeshPhongMaterial({color:0xd2b48c}));
   patientBody.rotation.z = Math.PI/2;
+  patientBody.castShadow = true;
+  patientBody.receiveShadow = true;
   patient.add(patientBody);
   const patientHead = new THREE.Mesh(new THREE.SphereGeometry(0.2,16,12), new THREE.MeshPhongMaterial({color:0xd2b48c}));
   patientHead.position.set(0.6,0,0);
+  patientHead.castShadow = true;
+  patientHead.receiveShadow = true;
   patient.add(patientHead);
   patient.position.set(0,1.25,0);
   scene.add(patient);
@@ -80,13 +96,19 @@ function initSurgeryScene(){
   const surgeon = new THREE.Group();
   const torso = new THREE.Mesh(new THREE.BoxGeometry(0.4,0.8,0.2), new THREE.MeshPhongMaterial({color:0x0080ff}));
   torso.position.y = 1.4;
+  torso.castShadow = true;
+  torso.receiveShadow = true;
   surgeon.add(torso);
   const head = new THREE.Mesh(new THREE.SphereGeometry(0.2,16,12), new THREE.MeshPhongMaterial({color:0xffcc99}));
   head.position.y = 1.9;
+  head.castShadow = true;
+  head.receiveShadow = true;
   surgeon.add(head);
   const legGeo = new THREE.CylinderGeometry(0.1,0.1,0.6,8);
   const leftLeg = new THREE.Mesh(legGeo, new THREE.MeshPhongMaterial({color:0x0080ff}));
   leftLeg.position.set(-0.1,0.3,0);
+  leftLeg.castShadow = true;
+  leftLeg.receiveShadow = true;
   surgeon.add(leftLeg);
   const rightLeg = leftLeg.clone();
   rightLeg.position.x = 0.1;
@@ -95,12 +117,38 @@ function initSurgeryScene(){
   const leftArm = new THREE.Mesh(armGeo, new THREE.MeshPhongMaterial({color:0x0080ff}));
   leftArm.rotation.z = Math.PI/2;
   leftArm.position.set(-0.35,1.55,0);
+  leftArm.castShadow = true;
+  leftArm.receiveShadow = true;
   surgeon.add(leftArm);
   const rightArm = leftArm.clone();
   rightArm.position.x = 0.35;
   surgeon.add(rightArm);
   surgeon.position.set(1.5,0,0);
   scene.add(surgeon);
+
+  // Overhead surgical light
+  const lamp = new THREE.Group();
+  const lampPole = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.05,0.05,3,8),
+    new THREE.MeshPhongMaterial({color:0xaaaaaa})
+  );
+  lampPole.position.y = 1.5;
+  lamp.add(lampPole);
+  const lampHead = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.3,0.3,0.2,16),
+    new THREE.MeshPhongMaterial({color:0xcccccc})
+  );
+  lampHead.position.y = 3;
+  lamp.add(lampHead);
+  const spot = new THREE.SpotLight(0xffffff,1.2);
+  spot.position.set(0,3,0);
+  spot.angle = Math.PI/6;
+  spot.penumbra = 0.2;
+  spot.castShadow = true;
+  spot.target = table;
+  lamp.add(spot);
+  lamp.add(spot.target);
+  scene.add(lamp);
 
   // Crash cart station
   const cart = new THREE.Group();
@@ -249,13 +297,14 @@ function moveCamera(){
 function animate(){
   animationId = requestAnimationFrame(animate);
   moveCamera();
+  controls.update();
   renderer.render(scene,camera);
   checkStations();
 }
 
 function showIntro(){
   const qEl = document.getElementById('surgeryQuestion');
-  qEl.textContent = 'Use arrow keys to move around the room. Approach a station for questions.';
+  qEl.textContent = 'Use arrow keys to move and drag with the mouse to look around. Approach a station for questions.';
   document.getElementById('surgeryOptions').innerHTML = '';
   document.getElementById('surgeryNext').classList.add('hidden');
 }
@@ -310,6 +359,12 @@ function nextQuestion(){
     currentStation = null;
     document.getElementById('surgeryNext').classList.add('hidden');
   }
+}
+
+function onWindowResize(){
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
 function exitSurgery(){
