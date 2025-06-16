@@ -74,7 +74,19 @@ function initSurgeryScene(){
     const drawer = new THREE.Mesh(new THREE.BoxGeometry(0.9,0.25,0.55), new THREE.MeshPhongMaterial({color:0xcc0000}));
     drawer.position.set(0,0.3 + i*0.35,0);
     cart.add(drawer);
+    const dHandle = new THREE.Mesh(new THREE.BoxGeometry(0.5,0.05,0.05), new THREE.MeshPhongMaterial({color:0xaaaaaa}));
+    dHandle.position.set(0,0.3 + i*0.35,0.28);
+    cart.add(dHandle);
   }
+  const shelf = new THREE.Mesh(new THREE.BoxGeometry(1,0.1,0.6), new THREE.MeshPhongMaterial({color:0xff6666}));
+  shelf.position.y = 1.25;
+  cart.add(shelf);
+  const defib = new THREE.Mesh(new THREE.BoxGeometry(0.5,0.2,0.3), new THREE.MeshPhongMaterial({color:0x222222}));
+  defib.position.set(0,1.35,0);
+  cart.add(defib);
+  const defibScreen = new THREE.Mesh(new THREE.PlaneGeometry(0.3,0.15), new THREE.MeshPhongMaterial({color:0x00ff00}));
+  defibScreen.position.set(0,1.38,0.16);
+  cart.add(defibScreen);
   const handle = new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.02,0.8,8), new THREE.MeshPhongMaterial({color:0xaaaaaa}));
   handle.rotation.z = Math.PI/2;
   handle.position.set(0.55,0.9,0);
@@ -116,6 +128,16 @@ function initSurgeryScene(){
   hose.rotation.x = Math.PI/2;
   hose.position.set(0.3,1.1,0);
   machine.add(hose);
+  const tankGeom = new THREE.CylinderGeometry(0.1,0.1,0.8,16);
+  const tank1 = new THREE.Mesh(tankGeom, new THREE.MeshPhongMaterial({color:0x007700}));
+  tank1.position.set(-0.4,0.6,-0.3);
+  machine.add(tank1);
+  const tank2 = tank1.clone();
+  tank2.position.set(-0.2,0.6,-0.3);
+  machine.add(tank2);
+  const bag = new THREE.Mesh(new THREE.SphereGeometry(0.12,12,8), new THREE.MeshPhongMaterial({color:0x0000ff}));
+  bag.position.set(0.5,1.1,0.3);
+  machine.add(bag);
   machine.position.set(-4,0,-4);
   scene.add(machine);
   stations.anesthesia = {
@@ -132,6 +154,20 @@ function initSurgeryScene(){
   const instrTop = new THREE.Mesh(new THREE.BoxGeometry(1.5,0.1,1), new THREE.MeshPhongMaterial({color:0x0000ff}));
   instrTop.position.y = 1;
   instr.add(instrTop);
+  const scalpelHandle = new THREE.Mesh(new THREE.BoxGeometry(0.4,0.02,0.05), new THREE.MeshPhongMaterial({color:0xaaaaaa}));
+  scalpelHandle.position.set(-0.3,1.06,0);
+  instr.add(scalpelHandle);
+  const scalpelBlade = new THREE.Mesh(new THREE.BoxGeometry(0.2,0.01,0.02), new THREE.MeshPhongMaterial({color:0xdddddd}));
+  scalpelBlade.position.set(-0.1,1.065,0);
+  instr.add(scalpelBlade);
+  const forceps1 = new THREE.Mesh(new THREE.CylinderGeometry(0.01,0.01,0.4,8), new THREE.MeshPhongMaterial({color:0x888888}));
+  forceps1.rotation.z = Math.PI/8;
+  forceps1.position.set(0.3,1.06,0.1);
+  instr.add(forceps1);
+  const forceps2 = forceps1.clone();
+  forceps2.rotation.z = -Math.PI/8;
+  forceps2.position.set(0.34,1.06,-0.1);
+  instr.add(forceps2);
   const iLegGeom = new THREE.CylinderGeometry(0.05,0.05,1,8);
   for(let x=-0.65;x<=0.65;x+=1.3){
     for(let z=-0.45;z<=0.45;z+=0.9){
