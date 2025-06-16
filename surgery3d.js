@@ -79,17 +79,63 @@ function initSurgeryScene(){
 
   // Simple patient model on the table
   const patient = new THREE.Group();
-  const patientBody = new THREE.Mesh(new THREE.CylinderGeometry(0.25,0.25,1.2,16), new THREE.MeshPhongMaterial({color:0xd2b48c}));
-  patientBody.rotation.z = Math.PI/2;
+  const patientBody = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.25, 0.25, 1.2, 16),
+    new THREE.MeshPhongMaterial({ color: 0xd2b48c })
+  );
+  patientBody.rotation.z = Math.PI / 2;
   patientBody.castShadow = true;
   patientBody.receiveShadow = true;
   patient.add(patientBody);
-  const patientHead = new THREE.Mesh(new THREE.SphereGeometry(0.2,16,12), new THREE.MeshPhongMaterial({color:0xd2b48c}));
-  patientHead.position.set(0.6,0,0);
+
+  const patientHead = new THREE.Mesh(
+    new THREE.SphereGeometry(0.2, 16, 12),
+    new THREE.MeshPhongMaterial({ color: 0xd2b48c })
+  );
+  patientHead.position.set(0.6, 0, 0);
   patientHead.castShadow = true;
   patientHead.receiveShadow = true;
   patient.add(patientHead);
-  patient.position.set(0,1.25,0);
+
+  // ears
+  const earGeom = new THREE.ConeGeometry(0.05, 0.15, 8);
+  const leftEar = new THREE.Mesh(earGeom, new THREE.MeshPhongMaterial({ color: 0xd2b48c }));
+  leftEar.position.set(0.65, 0.1, 0.08);
+  leftEar.rotation.z = Math.PI / 12;
+  patient.add(leftEar);
+  const rightEar = leftEar.clone();
+  rightEar.position.set(0.65, 0.1, -0.08);
+  rightEar.rotation.z = -Math.PI / 12;
+  patient.add(rightEar);
+
+  // nose
+  const nose = new THREE.Mesh(
+    new THREE.SphereGeometry(0.05, 8, 6),
+    new THREE.MeshPhongMaterial({ color: 0x664422 })
+  );
+  nose.position.set(0.75, 0, 0);
+  patient.add(nose);
+
+  // legs
+  const pLegGeom = new THREE.CylinderGeometry(0.05, 0.05, 0.3, 8);
+  for (let i = -1; i <= 1; i += 2) {
+    for (let j = -1; j <= 1; j += 2) {
+      const leg = new THREE.Mesh(pLegGeom, new THREE.MeshPhongMaterial({ color: 0xd2b48c }));
+      leg.position.set(i * 0.4, -0.15, j * 0.15);
+      patient.add(leg);
+    }
+  }
+
+  // tail
+  const tail = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.04, 0.02, 0.3, 8),
+    new THREE.MeshPhongMaterial({ color: 0xd2b48c })
+  );
+  tail.position.set(-0.65, 0, 0);
+  tail.rotation.z = -Math.PI / 4;
+  patient.add(tail);
+
+  patient.position.set(0, 1.25, 0);
   scene.add(patient);
 
   // Simple surgeon model beside the table
@@ -99,11 +145,37 @@ function initSurgeryScene(){
   torso.castShadow = true;
   torso.receiveShadow = true;
   surgeon.add(torso);
-  const head = new THREE.Mesh(new THREE.SphereGeometry(0.2,16,12), new THREE.MeshPhongMaterial({color:0xffcc99}));
+  const head = new THREE.Mesh(
+    new THREE.SphereGeometry(0.2, 16, 12),
+    new THREE.MeshPhongMaterial({ color: 0xffcc99 })
+  );
   head.position.y = 1.9;
   head.castShadow = true;
   head.receiveShadow = true;
   surgeon.add(head);
+
+  // surgeon hat
+  const hat = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.22, 0.22, 0.15, 12),
+    new THREE.MeshPhongMaterial({ color: 0x0080ff })
+  );
+  hat.position.y = 2.05;
+  surgeon.add(hat);
+
+  // face mask
+  const mask = new THREE.Mesh(
+    new THREE.BoxGeometry(0.3, 0.15, 0.05),
+    new THREE.MeshPhongMaterial({ color: 0x00aaff })
+  );
+  mask.position.set(0, 1.9, 0.18);
+  surgeon.add(mask);
+  const eyeGeom = new THREE.SphereGeometry(0.04, 8, 6);
+  const leftEye = new THREE.Mesh(eyeGeom, new THREE.MeshPhongMaterial({ color: 0x000000 }));
+  leftEye.position.set(-0.05, 1.93, 0.2);
+  const rightEye = leftEye.clone();
+  rightEye.position.x = 0.05;
+  surgeon.add(leftEye);
+  surgeon.add(rightEye);
   const legGeo = new THREE.CylinderGeometry(0.1,0.1,0.6,8);
   const leftLeg = new THREE.Mesh(legGeo, new THREE.MeshPhongMaterial({color:0x0080ff}));
   leftLeg.position.set(-0.1,0.3,0);
