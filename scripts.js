@@ -160,7 +160,7 @@ const categories = {
         {question: "What is the most sensitive method for detecting arrhythmias in dogs with suspected syncope?", options: ["Standard ECG", "Holter monitoring", "Pulse oximetry", "Blood pressure"], answer: 1, explanation: "Holter monitors record arrhythmias over 24 hours."},
         {question: "Chagas disease in dogs is caused by which parasite?", options: ["Trypanosoma cruzi", "Leishmania infantum", "Toxoplasma gondii", "Babesia canis"], answer: 0, explanation: "T. cruzi infection leads to myocarditis."},
         {question: "Pulmonic stenosis primarily causes hypertrophy of which cardiac chamber?", options: ["Left ventricle", "Right ventricle", "Left atrium", "Right atrium"], answer: 1, explanation: "Right ventricular outflow obstruction results in RV hypertrophy."},
-        {question: "Which cardiomyopathy in cats often responds to beta-blocker therapy to slow heart rate?", options: ["Restrictive", "Hypertrophic", "Dilated", "Arrhythmogenic right ventricular"], answer: 1, explanation: "Beta-blockers are used in HCM cats."}
+        {question: "Which cardiomyopathy in cats often responds to beta-blocker therapy to slow heart rate?", options: ["Restrictive", "Hypertrophic", "Dilated", "Arrhythmogenic right ventricular"], answer: 1, explanation: "Beta-blockers are used in HCM cats."},
         {question: "Which drug is commonly administered to dogs with atrial fibrillation to control rate?", options: ["Diltiazem", "Lidocaine", "Digoxin", "Enalapril"], answer: 0, explanation: "Diltiazem slows AV conduction."},
     ],
     "Respiratory": [
@@ -201,7 +201,7 @@ const categories = {
         {question: "Which imaging technique is best for evaluating masses within the nasal cavity of dogs?", options: ["Radiographs", "CT scan", "Ultrasound", "Endoscopy"], answer: 1, explanation: "CT provides detailed imaging of nasal structures."},
         {question: "Pulmonary hypertension can be estimated on echocardiography by measuring what parameter?", options: ["Aortic velocity", "Tricuspid regurgitation velocity", "Mitral valve area", "Right atrial size"], answer: 1, explanation: "TR velocity helps estimate pulmonary artery pressure."},
         {question: "Which sedative is often used for thoracic radiographs in cats due to minimal respiratory effects?", options: ["Dexmedetomidine", "Acepromazine", "Ketamine", "Midazolam"], answer: 3, explanation: "Midazolam provides mild sedation with minimal respiratory depression."},
-        {question: "Which lungworm infects dogs via ingestion of gastropods?", options: ["Filaroides hirthi", "Angiostrongylus vasorum", "Aelurostrongylus abstrusus", "Capillaria aerophila"], answer: 1, explanation: "Dogs acquire Angiostrongylus vasorum from snails and slugs."}
+        {question: "Which lungworm infects dogs via ingestion of gastropods?", options: ["Filaroides hirthi", "Angiostrongylus vasorum", "Aelurostrongylus abstrusus", "Capillaria aerophila"], answer: 1, explanation: "Dogs acquire Angiostrongylus vasorum from snails and slugs."},
         {question: "Brachycephalic obstructive airway syndrome primarily affects which breeds?", options: ["Greyhound", "Bulldog", "Border Collie", "Labrador"], answer: 1, explanation: "Bulldogs and other brachycephalics commonly develop airway obstruction."},
     ],
     "Renal": [
@@ -283,7 +283,7 @@ const categories = {
         {question: "Which reflex is decreased with an L4-S3 spinal cord lesion in dogs?", options: ["Patellar reflex", "Forelimb withdrawal", "Cutaneous trunci", "Hopping"], answer: 0, explanation: "Lesions in this region diminish the patellar reflex."},
         {question: "What is the main treatment for idiopathic vestibular disease in dogs?", options: ["Surgery", "Supportive care and time", "High-dose steroids", "Antibiotics"], answer: 1, explanation: "Most cases resolve with supportive care over several days."},
         {question: "Which drug can be used to treat spasticity associated with spinal cord injury in dogs?", options: ["Baclofen", "Diazepam", "Phenobarbital", "Morphine"], answer: 0, explanation: "Baclofen acts as a muscle relaxant."},
-        {question: "A seizure that lasts more than five minutes is classified as what?", options: ["Cluster seizure", "Focal seizure", "Status epilepticus", "Petit mal seizure"], answer: 2, explanation: "Prolonged seizures are termed status epilepticus."}
+        {question: "A seizure that lasts more than five minutes is classified as what?", options: ["Cluster seizure", "Focal seizure", "Status epilepticus", "Petit mal seizure"], answer: 2, explanation: "Prolonged seizures are termed status epilepticus."},
         {question: "Which breed commonly develops idiopathic epilepsy between 1 and 3 years of age?", options: ["Border Collie", "Boxer", "Beagle", "Irish Wolfhound"], answer: 2, explanation: "Beagles frequently present with idiopathic epilepsy early in life."},
     ],
     "Oncology": [
@@ -324,7 +324,7 @@ const categories = {
         {question: "Paraneoplastic hypoglycemia is most commonly associated with which tumor in dogs?", options: ["Insulinoma", "Lymphoma", "Osteosarcoma", "Mast cell tumor"], answer: 0, explanation: "Insulinoma secretes insulin causing hypoglycemia."},
         {question: "Which tumor arises from the perianal glands of intact male dogs?", options: ["Perianal adenoma", "Melanoma", "Perianal adenocarcinoma", "Sebaceous adenoma"], answer: 0, explanation: "Hormone-dependent perianal adenomas develop in intact males."},
         {question: "What is the preferred treatment for low-grade mast cell tumors in dogs?", options: ["Wide surgical excision", "Radiation therapy only", "Chemotherapy only", "No treatment"], answer: 0, explanation: "Surgery with wide margins can be curative."},
-        {question: "Which cytologic feature is typical of histiocytic sarcoma in dogs?", options: ["Epithelial cell clusters", "Spindle-shaped cells with collagen", "Large pleomorphic histiocytes", "Small lymphocytes"], answer: 2, explanation: "Histiocytic sarcoma shows large pleomorphic macrophage-like cells."}
+        {question: "Which cytologic feature is typical of histiocytic sarcoma in dogs?", options: ["Epithelial cell clusters", "Spindle-shaped cells with collagen", "Large pleomorphic histiocytes", "Small lymphocytes"], answer: 2, explanation: "Histiocytic sarcoma shows large pleomorphic macrophage-like cells."},
         {question: "Which tumor often causes hyperestrogenism in intact female dogs?", options: ["Granulosa cell tumor", "Mammary carcinoma", "Melanoma", "Lymphoma"], answer: 0, explanation: "Ovarian granulosa cell tumors can secrete estrogens."},
     ],
 
@@ -352,7 +352,7 @@ const categories = {
         {question: "Which medication is used as an immunomodulator in cats with eosinophilic granuloma complex?", options: ["Cyclosporine", "Doxycycline", "Prednisone", "Azathioprine"], answer: 0, explanation: "Cyclosporine can control allergic inflammation."},
         {question: "Which ear cleaning agent is contraindicated in dogs with a ruptured tympanic membrane?", options: ["Water-based cleanser", "Chlorhexidine", "Sterile saline", "Isopropyl alcohol-based cleanser"], answer: 3, explanation: "Alcohol can damage middle ear structures."},
         {question: "Dermatophytosis typically fluoresces under a Wood's lamp due to which species?", options: ["Microsporum gypseum", "Microsporum canis", "Trichophyton mentagrophytes", "Trichophyton verrucosum"], answer: 1, explanation: "M. canis often fluoresces apple green."},
-        {question: "Which nutritional supplement is often recommended to improve skin barrier function in atopic dogs?", options: ["Omega-3 fatty acids", "Vitamin K", "Lysine", "Selenium"], answer: 0, explanation: "Omega-3 fatty acids help reduce inflammation and improve skin."}
+        {question: "Which nutritional supplement is often recommended to improve skin barrier function in atopic dogs?", options: ["Omega-3 fatty acids", "Vitamin K", "Lysine", "Selenium"], answer: 0, explanation: "Omega-3 fatty acids help reduce inflammation and improve skin."},
         {question: "Which skin condition in dogs is associated with Malassezia overgrowth and greasy seborrhea?", options: ["Sebaceous adenitis", "Malassezia dermatitis", "Demodicosis", "Pemphigus foliaceus"], answer: 1, explanation: "Malassezia dermatitis presents with oily skin and pruritus."},
     ],
     "Hepatic": [
@@ -365,7 +365,7 @@ const categories = {
         {question: "Which substance is measured to evaluate hepatic synthetic function?", options: ["Bilirubin", "Albumin", "ALT", "GGT"], answer: 1, explanation: "Albumin production reflects hepatic synthetic capacity."},
         {question: "A common sign of hepatic encephalopathy in dogs is:", options: ["Seizures", "Pruritus", "Tachycardia", "Increased appetite"], answer: 0, explanation: "Toxin accumulation can cause seizures and neurologic signs."},
         {question: "Which drug is used to bind ammonia and treat hepatic encephalopathy?", options: ["Lactulose", "Metronidazole", "Prednisone", "Furosemide"], answer: 0, explanation: "Lactulose acidifies the colon and traps ammonia."},
-        {question: "Cholangitis/cholangiohepatitis complex is most commonly seen in which species?", options: ["Dogs", "Cats", "Horses", "Ferrets"], answer: 1, explanation: "Cats frequently develop inflammatory diseases of the biliary system."}
+        {question: "Cholangitis/cholangiohepatitis complex is most commonly seen in which species?", options: ["Dogs", "Cats", "Horses", "Ferrets"], answer: 1, explanation: "Cats frequently develop inflammatory diseases of the biliary system."},
         {question: "Which medication acts as a copper chelator for treating copper-associated hepatitis?", options: ["Cyclosporine", "Penicillamine", "Azathioprine", "Ketoconazole"], answer: 1, explanation: "Penicillamine binds copper allowing excretion."},
     ],
     "Immune-Mediated": [
@@ -378,8 +378,8 @@ const categories = {
         {question: "Which breed has a predisposition for primary immune-mediated polyarthritis?", options: ["Beagle", "German Shepherd", "Shar Pei", "Toy Poodle"], answer: 2, explanation: "Shar Peis commonly develop this condition."},
         {question: "Cyclosporine exerts its immunosuppressive effect by inhibiting:", options: ["T-lymphocyte activation", "Bacterial protein synthesis", "DNA replication", "Collagen formation"], answer: 0, explanation: "Cyclosporine blocks T-cell activation pathways."},
         {question: "Immune-mediated hemolytic anemia typically causes which type of anemia?", options: ["Regenerative anemia", "Non-regenerative anemia", "Iron deficiency anemia", "Aplastic anemia"], answer: 0, explanation: "The destruction of red cells stimulates strong regeneration."},
-        {question: "What adjunct therapy can reduce clot risk in dogs with IMHA?", options: ["Low-dose aspirin", "Vitamin K", "Iron supplementation", "Thyroxine"], answer: 0, explanation: "Antithrombotic drugs such as aspirin may decrease thrombosis."}
-        {question: "Immune-mediated polyarthritis is often accompanied by which systemic sign?", options: ["Hyperthermia", "Hypotension", "Severe bradycardia", "Icterus"], answer: 0, explanation: "Fever commonly occurs with immune-mediated polyarthritis."}
+        {question: "What adjunct therapy can reduce clot risk in dogs with IMHA?", options: ["Low-dose aspirin", "Vitamin K", "Iron supplementation", "Thyroxine"], answer: 0, explanation: "Antithrombotic drugs such as aspirin may decrease thrombosis."},
+        {question: "Immune-mediated polyarthritis is often accompanied by which systemic sign?", options: ["Hyperthermia", "Hypotension", "Severe bradycardia", "Icterus"], answer: 0, explanation: "Fever commonly occurs with immune-mediated polyarthritis."},
     ],
 };
 const categoryContainer = document.getElementById('categories');
