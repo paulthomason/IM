@@ -15,6 +15,23 @@ function createZone(pos, radius = 1.5){
   return circle;
 }
 
+function createNumberMesh(num, size = 4){
+  const canvas = document.createElement('canvas');
+  canvas.width = canvas.height = 256;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#000000';
+  ctx.font = 'bold 200px Arial';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(num.toString(), canvas.width / 2, canvas.height / 2);
+  const texture = new THREE.CanvasTexture(canvas);
+  const material = new THREE.MeshBasicMaterial({map: texture});
+  const geometry = new THREE.PlaneGeometry(size, size);
+  return new THREE.Mesh(geometry, material);
+}
+
 function initSurgeryScene(){
   const canvas = document.getElementById('surgeryCanvas');
   renderer = new THREE.WebGLRenderer({canvas, antialias: true});
@@ -71,6 +88,25 @@ function initSurgeryScene(){
   rightWall.rotation.y = -Math.PI/2;
   rightWall.position.set(-10,2.5,0);
   scene.add(rightWall);
+
+  const backNum = createNumberMesh(1);
+  backNum.position.set(0, 2.5, -9.99);
+  scene.add(backNum);
+
+  const frontNum = createNumberMesh(2);
+  frontNum.rotation.y = Math.PI;
+  frontNum.position.set(0, 2.5, 9.99);
+  scene.add(frontNum);
+
+  const leftNum = createNumberMesh(3);
+  leftNum.rotation.y = Math.PI/2;
+  leftNum.position.set(9.99, 2.5, 0);
+  scene.add(leftNum);
+
+  const rightNum = createNumberMesh(4);
+  rightNum.rotation.y = -Math.PI/2;
+  rightNum.position.set(-9.99, 2.5, 0);
+  scene.add(rightNum);
 
   let bed, surgeonObj, spot;
 
