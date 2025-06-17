@@ -330,6 +330,47 @@ body.dark button:hover {
     background-color: #0d47a1;
 }
 
+#special3DContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 1000;
+    overflow: hidden;
+}
+#specialCanvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+#specialUI {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    text-shadow: 0 0 4px #000;
+}
+#specialExit {
+    margin-top: 8px;
+    padding: 6px 10px;
+    border: none;
+    background-color: #1565c0;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#specialExit:hover {
+    background-color: #0d47a1;
+}
+
 #joystick {
     position: absolute;
     bottom: 100px;
