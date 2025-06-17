@@ -71,15 +71,16 @@ function createRoom() {
 
 function loadDesk() {
   const mtlLoader = new THREE.MTLLoader();
-  mtlLoader.setPath('Special_Procedures_3D_Models/Computer_Desk/');
-  mtlLoader.load('Surgeon.mtl', mats => {
+  mtlLoader.setPath('Special_Procedures_3D_Models/computer_Desk/');
+  mtlLoader.load('computer_desk.mtl', mats => {
     mats.preload();
     const objLoader = new THREE.OBJLoader();
     objLoader.setMaterials(mats);
-    objLoader.setPath('Special_Procedures_3D_Models/Computer_Desk/');
-    objLoader.load('Surgeon.obj', obj => {
+    objLoader.setPath('Special_Procedures_3D_Models/computer_Desk/');
+    objLoader.load('computer_desk.obj', obj => {
       obj.scale.set(0.01, 0.01, 0.01);
-      obj.position.set(-9.5, 0, -9.5);
+      // Place the desk in the corner where wall 4 meets wall 1
+      obj.position.set(-9.7, 0, -9.7);
       obj.rotation.y = Math.PI / 2;
       scene.add(obj);
     });
