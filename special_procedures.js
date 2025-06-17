@@ -16,6 +16,7 @@ function initScene() {
   scene.add(ambient);
 
   createRoom();
+  loadDesk();
   document.addEventListener('keydown', onKeyDown);
   document.addEventListener('keyup', onKeyUp);
   window.addEventListener('resize', onWindowResize);
@@ -66,6 +67,23 @@ function createRoom() {
   const table = new THREE.Mesh(new THREE.BoxGeometry(20, 0.4, 0.6), new THREE.MeshPhongMaterial({ color: 0x888888 }));
   table.position.set(0, 0.2, -9.7);
   scene.add(table);
+}
+
+function loadDesk() {
+  const mtlLoader = new THREE.MTLLoader();
+  mtlLoader.setPath('Special_Procedures_3D_Models/Computer_Desk/');
+  mtlLoader.load('Surgeon.mtl', mats => {
+    mats.preload();
+    const objLoader = new THREE.OBJLoader();
+    objLoader.setMaterials(mats);
+    objLoader.setPath('Special_Procedures_3D_Models/Computer_Desk/');
+    objLoader.load('Surgeon.obj', obj => {
+      obj.scale.set(0.01, 0.01, 0.01);
+      obj.position.set(-9.5, 0, -9.5);
+      obj.rotation.y = Math.PI / 2;
+      scene.add(obj);
+    });
+  });
 }
 
 function onKeyDown(e) { keys[e.code] = true; }
