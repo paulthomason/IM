@@ -28,22 +28,37 @@ function createRoom() {
   floor.rotation.x = -Math.PI / 2;
   scene.add(floor);
 
-  const wallMat = new THREE.MeshPhongMaterial({ color: 0xffffff, side: THREE.DoubleSide });
-  const northWall = new THREE.Mesh(new THREE.PlaneGeometry(20, 5), wallMat);
+  function createNumberMaterial(num) {
+    const canvas = document.createElement('canvas');
+    canvas.width = 512;
+    canvas.height = 512;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#000000';
+    ctx.font = 'bold 400px Arial';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(num.toString(), canvas.width / 2, canvas.height / 2);
+    const texture = new THREE.CanvasTexture(canvas);
+    return new THREE.MeshPhongMaterial({ map: texture, side: THREE.DoubleSide });
+  }
+
+  const northWall = new THREE.Mesh(new THREE.PlaneGeometry(20, 5), createNumberMaterial(1));
   northWall.position.set(0, 2.5, -10);
   scene.add(northWall);
 
-  const southWall = northWall.clone();
+  const southWall = new THREE.Mesh(new THREE.PlaneGeometry(20, 5), createNumberMaterial(2));
   southWall.position.set(0, 2.5, 10);
   southWall.rotation.y = Math.PI;
   scene.add(southWall);
 
-  const eastWall = northWall.clone();
+  const eastWall = new THREE.Mesh(new THREE.PlaneGeometry(20, 5), createNumberMaterial(3));
   eastWall.position.set(10, 2.5, 0);
   eastWall.rotation.y = -Math.PI / 2;
   scene.add(eastWall);
 
-  const westWall = northWall.clone();
+  const westWall = new THREE.Mesh(new THREE.PlaneGeometry(20, 5), createNumberMaterial(4));
   westWall.position.set(-10, 2.5, 0);
   westWall.rotation.y = Math.PI / 2;
   scene.add(westWall);
