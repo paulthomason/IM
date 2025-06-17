@@ -32,9 +32,7 @@ function initSurgeryScene(){
     controls.target.set(0,1,0);
     controls.update();
   }else{
-    controls = new THREE.PointerLockControls(camera, document.body);
-    scene.add(controls.getObject());
-    canvas.addEventListener("click", ()=>controls.lock());
+    controls = {update: ()=>{}};
   }
   const light = new THREE.AmbientLight(0xffffff,0.6);
   scene.add(light);
@@ -309,22 +307,15 @@ function setupJoystick(el){
 
 function moveCamera(delta){
   const moveSpeed = 2;
-  if(controls instanceof THREE.PointerLockControls){
-    if(keys["KeyW"] || keys["ArrowUp"]) controls.moveForward(moveSpeed * delta);
-    if(keys["KeyS"] || keys["ArrowDown"]) controls.moveForward(-moveSpeed * delta);
-    if(keys["KeyA"] || keys["ArrowLeft"]) controls.moveRight(-moveSpeed * delta);
-    if(keys["KeyD"] || keys["ArrowRight"]) controls.moveRight(moveSpeed * delta);
-  }else{
-    const rotSpeed = 1.5 * delta;
-    if(keys["ArrowLeft"] || keys["KeyA"]) camera.rotation.y += rotSpeed;
-    if(keys["ArrowRight"] || keys["KeyD"]) camera.rotation.y -= rotSpeed;
-    const dir = new THREE.Vector3();
-    camera.getWorldDirection(dir);
-    dir.y = 0;
-    dir.normalize();
-    if(keys["ArrowUp"] || keys["KeyW"]) camera.position.add(dir.multiplyScalar(moveSpeed * delta));
-    if(keys["ArrowDown"] || keys["KeyS"]) camera.position.add(dir.multiplyScalar(-moveSpeed * delta));
-  }
+  const rotSpeed = 1.5 * delta;
+  if(keys["KeyW"] || keys["ArrowLeft"]) camera.rotation.y += rotSpeed;
+  if(keys["KeyD"] || keys["ArrowRight"]) camera.rotation.y -= rotSpeed;
+  const dir = new THREE.Vector3();
+  camera.getWorldDirection(dir);
+  dir.y = 0;
+  dir.normalize();
+  if(keys["KeyA"] || keys["ArrowUp"]) camera.position.add(dir.multiplyScalar(moveSpeed * delta));
+  if(keys["KeyS"] || keys["ArrowDown"]) camera.position.add(dir.multiplyScalar(-moveSpeed * delta));
 }
 function animate(){
   animationId = requestAnimationFrame(animate);
@@ -337,7 +328,7 @@ function animate(){
 
 function showIntro(){
   const qEl = document.getElementById('surgeryQuestion');
-  qEl.textContent = "Click the canvas to lock the cursor. Use WASD or the on-screen joystick to move, and drag the mouse to look around. Approach a station and press E to start questions.";
+  qEl.textContent = "Use A/S to move forward and back. Use W and D to turn left and right. The mouse is disabled. Approach a station and press E to start questions.";
   document.getElementById('surgeryOptions').innerHTML = '';
   document.getElementById('surgeryNext').classList.add('hidden');
   const promptEl = document.getElementById('interactPrompt');
